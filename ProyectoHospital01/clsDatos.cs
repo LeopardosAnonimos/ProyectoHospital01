@@ -65,7 +65,7 @@ namespace ProyectoHospital01
         public void obtenerPaciente(string nombre)
         {
             // Read and display the data from your file.
-            string path = pathPacientes + "/" + nombre;
+            string path = pathPacientes + "/" + nombre + ".txt";
             try
             {
                 byte[] readBuffer = System.IO.File.ReadAllBytes(path);
