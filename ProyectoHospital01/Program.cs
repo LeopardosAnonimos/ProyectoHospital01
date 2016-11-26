@@ -12,6 +12,8 @@ namespace ProyectoHospital01
         {
             clsDatos archivo = new clsDatos();
             archivo.crearPaciente("juan");
+
+            archivo.obtenerPaciente("juan");
         }
     }
 }
