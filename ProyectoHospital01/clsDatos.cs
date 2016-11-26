@@ -71,7 +71,8 @@ namespace ProyectoHospital01
                 byte[] readBuffer = System.IO.File.ReadAllBytes(path);
                 foreach (byte b in readBuffer)
                 {
-                    Console.Write(b + " ");
+                    Console.Write(b + "\n ");
+                    Console.WriteLine(Convert.ToString(b));
                 }
                 Console.WriteLine();
             }
