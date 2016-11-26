@@ -10,7 +10,6 @@ namespace ProyectoHospital01
     {
         static void Main(string[] args)
         {
-            //este es el main,,, prueba!!!
         }
     }
 }
