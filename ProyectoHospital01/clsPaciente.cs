@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoHospital01
 {
-    class clsPaciente
+    class clsPaciente:clsPersona
     {
         public clsHistClinica historia;
 
