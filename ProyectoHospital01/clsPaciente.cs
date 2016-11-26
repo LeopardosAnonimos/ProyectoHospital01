@@ -9,7 +9,7 @@ namespace ProyectoHospital01
     class clsPaciente:clsPersona
     {
         public clsHistClinica historia;
-
+        /*
         public clsHistClinica Historia 
         {
             get
@@ -36,5 +36,6 @@ namespace ProyectoHospital01
             clsCita cita = new clsCita();
 
         }
+        */
     }
 }

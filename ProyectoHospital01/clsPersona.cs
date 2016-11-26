@@ -20,6 +20,8 @@ namespace ProyectoHospital01
 
         protected String pswd { get; set; }
 
+        private clsDatos db;
+
         protected string Id
         {
             get
@@ -33,7 +35,12 @@ namespace ProyectoHospital01
             }
         }
 
-        public clsPersona(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
+        public clsPersona()
+        {
+            this.db = new clsDatos();
+        }
+
+        public void crear(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
         {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -45,13 +52,49 @@ namespace ProyectoHospital01
             this.fechNac = fechNac;
             this.pswd = pswd;
 
+            
+            if(db.insertarPersona(id, nombre, apellido, direccion, telefono, sexo, edad, pswd, fechNac))
+            {
+                Console.WriteLine("Persona creada " + id + " | " + nombre);
+            } else
+            {
+                Console.WriteLine("No se ha podido crear la persona " + id + " | " + nombre);
+            }
+            
         }
 
-        public clsPersona(String nombre, String apellido, String telefono)
+        public void buscar(string id)
         {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.telefono = telefono;
+            this.id = id;
+            this.nombre = db.obtenerDatoPersona(id, "nombre");
+            this.apellido = db.obtenerDatoPersona(id, "apellido");
+
         }
+
+        public bool editar(string campo, string contenido)
+        {
+            if(db.actualizarPersona(this.id, campo, contenido))
+            {
+                buscar(this.id);
+                return true;
+            }
+            return false;
+        }
+
+        public bool borrar()
+        {
+            return db.borrarPersona(this.id);
+        }
+
+        public string getNombre()
+        {
+            return this.nombre;
+        }
+
+        public string getApellido(string id)
+        {
+            return this.apellido;
+        }
+
     }
 }

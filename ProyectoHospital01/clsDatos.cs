@@ -10,15 +10,74 @@ namespace ProyectoHospital01
     class clsDatos
     {
         private string pathHospital =  @"c:\hospital";
-        private string pathPacientes = @"c:\hospita\pacientes";
+        private string pathPersonas = @"c:\hospital\personas";
+        private string pathPacientes = @"c:\hospital\pacientes";
 
-        public void crearPaciente(string nombre)
+        public bool insertarPersona(string id, string name, string apellido, string direccion, string telefono, char sexo, int edad, string password, DateTime fecha)
         {
+            // hospital\personas\{id}
+            string path = pathPersonas + "\\" + id;
+            string edadString = Convert.ToString(edad);
+            string fechaString = Convert.ToString(fecha);
+            string sexoString = Convert.ToString(sexo);
+
+            if (System.IO.File.Exists(path))
+            {
+                Console.WriteLine("El ID de la persona ya existe " + id);
+                Console.WriteLine("En la carpeta " + path);
+                Console.ReadKey();
+                return false;
+            }
+
+            // Crear nombre.txt;
+            // Crear apellido.txt, etc..
+            crearArchivo(name, "nombre", path);
+            crearArchivo(apellido, "apellido", path);
+            crearArchivo(direccion, "direccion", path);
+            crearArchivo(telefono, "telefono", path);
+            crearArchivo(sexoString, "sexo", path);
+            crearArchivo(edadString, "edad", path);
+            crearArchivo(password, "password", path);
+            crearArchivo(fechaString, "fecha", path);
+
+            return true;
+
+        }
+
+        public bool actualizarPersona(string id, string campo, string contenido)
+        {
+            string path = pathPersonas + "\\" + id + "\\" + campo + ".txt";
+
+            return insertarContendido(contenido, path);
+        }
+        public string obtenerDatoPersona(string id, string dato)
+        {
+            string path = pathPersonas + "\\" + id + "\\" + dato + ".txt";
+            // Console.WriteLine(path);
+
+            return obtenerArchivo(path);
             
+        }
+
+        public bool borrarPersona(string id)
+        {
+            if (id.Length > 0)
+            {
+                string path = pathPersonas + "\\" + id;
+                return borrarArchivo(path);
+            }
+
+            return false;
+
+        }
+
+        private void crearArchivo(string content, string filename, string path)
+        {
+            // System.Console.ReadKey();
 
             // To create a string that specifies the path to a subfolder under your 
             // top-level folder, add a name for the subfolder to folderName.
-            string pathString = pathPacientes;
+            string pathString = path;
 
             // You can extend the depth of your path if you want to.
             //pathString = System.IO.Path.Combine(pathString, "SubSubFolder");
@@ -31,7 +90,7 @@ namespace ProyectoHospital01
             System.IO.Directory.CreateDirectory(pathString);
 
             // Create a file name for the file you want to create. 
-            string fileName = nombre + ".txt";
+            string fileName = filename + ".txt";
 
             // Use Combine again to add the file name to the path.
             pathString = System.IO.Path.Combine(pathString, fileName);
@@ -45,13 +104,7 @@ namespace ProyectoHospital01
             // This could happen even with random file names, although it is unlikely.
             if (!System.IO.File.Exists(pathString))
             {
-                using (System.IO.FileStream fs = System.IO.File.Create(pathString))
-                {
-                    Byte[] contenido = new UTF8Encoding(true).GetBytes("New Text File");
-
-                    fs.Write(contenido, 0, contenido.Length);
-                    
-                }
+                insertarContendido(content, pathString);
             }
             else
             {
@@ -59,21 +112,41 @@ namespace ProyectoHospital01
                 return;
             }
 
+            Console.WriteLine("archivo creado {0}", filename);
             
         }
 
+        private bool insertarContendido(string content, string path)
+        {
+            try
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(path))
+                {
+                    Byte[] contenido = new UTF8Encoding(true).GetBytes(content);
 
-        public void obtenerPaciente(string nombre)
+                    fs.Write(contenido, 0, contenido.Length);
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("No se ha podido insertar el contenido en " + path);
+                Console.WriteLine(e.Message);
+            }
+            return false;
+        }
+
+        private string obtenerArchivo(string path)
         {
             // Read and display the data from your file.
-            string path = pathPacientes + "/" + nombre + ".txt";
             try
             {   // Open the text file using a stream reader.
                 using (StreamReader sr = new StreamReader(path))
                 {
                     // Read the stream to a string, and write the string to the console.
                     String line = sr.ReadToEnd();
-                    Console.WriteLine(line);
+                    // Console.WriteLine(line);
+                    return line;
                 }
             }
             catch (Exception e)
@@ -82,13 +155,27 @@ namespace ProyectoHospital01
                 Console.WriteLine(e.Message);
             }
 
+            return "";
             // Keep the console window open in debug mode.
             System.Console.WriteLine("Press any key to exit.");
             System.Console.ReadKey();
         }
 
-
-
+        private bool borrarArchivo(string path)
+        {
+            try
+            {
+    
+                Directory.Delete(path, true);
+                Console.WriteLine("Directorio borrado " + path);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.Message);
+            }
+            return false;
+        }
 
 
     }

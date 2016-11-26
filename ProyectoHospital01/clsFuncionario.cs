@@ -10,7 +10,8 @@ namespace ProyectoHospital01
     {
         private String oficina;
 
-        public clsFuncionario(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
+        /*
+          public clsFuncionario(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
             DateTime fechNac, String pswd, clsFuncionario secre)
             : base(nombre, apellido, direccion, id, telefono, sexo, edad, fechNac, pswd)
         {
@@ -30,5 +31,6 @@ namespace ProyectoHospital01
                 oficina = value;
             }
         }
+        */
     }
 }

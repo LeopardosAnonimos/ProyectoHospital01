@@ -15,14 +15,14 @@ namespace ProyectoHospital01
         private DateTime hora { get; set; }
 
 
-        public clsCita()
+        /*public clsCita()
         {
 
             clsMedico medico = new clsMedico("", "", "", "");
             DateTime fecha = new DateTime();
             DateTime hora = new DateTime();
 
-        }
+        }*/
 
         public void mostrarMedico()
         {

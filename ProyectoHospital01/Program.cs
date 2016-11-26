@@ -10,10 +10,26 @@ namespace ProyectoHospital01
     {
         static void Main(string[] args)
         {
-            clsDatos archivo = new clsDatos();
-            archivo.crearPaciente("juan");
+            DateTime fecha = DateTime.MinValue;
 
-            archivo.obtenerPaciente("juan");
+            
+             new clsPersona().crear("maria", "gutierrez", "la paz", "1702393783", "2038923", 'h', 18, fecha, "12345678");
+             System.Console.ReadKey();
+             
+
+            clsPersona persona = new clsPersona();
+            persona.buscar("1702393783");
+            Console.WriteLine("El nombre es " + persona.getNombre());
+            Console.ReadKey();
+
+            persona.editar("nombre", "Lucrecia");
+            Console.WriteLine("Nombre cambiado a " + persona.getNombre());
+            Console.ReadKey();
+
+            persona.borrar();
+            Console.ReadKey();
+
+
         }
     }
 }
