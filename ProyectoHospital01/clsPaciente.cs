@@ -16,7 +16,7 @@ namespace ProyectoHospital01
             {
           
                 
-                return historia;racu
+                return historia;
             }
             set
             {

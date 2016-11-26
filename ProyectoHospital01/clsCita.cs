@@ -23,5 +23,11 @@ namespace ProyectoHospital01
             DateTime hora = new DateTime();
 
         }
+
+        public void mostrarMedico()
+        {
+        
+
+        }
     }
 }
