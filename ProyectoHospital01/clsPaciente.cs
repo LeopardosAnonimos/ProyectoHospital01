@@ -15,7 +15,7 @@ namespace ProyectoHospital01
             get
             {
                 // comment
-                // oasjdoi
+                // oasjdoid
                 return historia;
             }
             set
