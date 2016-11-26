@@ -10,13 +10,13 @@ namespace ProyectoHospital01
     {
         public clsHistClinica historia;
 
-        public clsHistClinica Historia
+        public clsHistClinica Historia 
         {
             get
             {
-                // comment
-                // oasjdoid
-                return historia;
+          
+                
+                return historia;racu
             }
             set
             {
