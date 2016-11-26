@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ProyectoHospital01
 {
@@ -67,17 +68,17 @@ namespace ProyectoHospital01
             // Read and display the data from your file.
             string path = pathPacientes + "/" + nombre + ".txt";
             try
-            {
-                byte[] readBuffer = System.IO.File.ReadAllBytes(path);
-                foreach (byte b in readBuffer)
+            {   // Open the text file using a stream reader.
+                using (StreamReader sr = new StreamReader(path))
                 {
-                    Console.Write(b + "\n ");
-                    Console.WriteLine(Convert.ToString(b));
+                    // Read the stream to a string, and write the string to the console.
+                    String line = sr.ReadToEnd();
+                    Console.WriteLine(line);
                 }
-                Console.WriteLine();
             }
-            catch (System.IO.IOException e)
+            catch (Exception e)
             {
+                Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
 
