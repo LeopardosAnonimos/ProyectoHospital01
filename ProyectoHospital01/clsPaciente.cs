@@ -14,6 +14,7 @@ namespace ProyectoHospital01
         {
             get
             {
+                // comment
                 return historia;
             }
             set

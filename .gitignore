@@ -47,3 +47,5 @@ Temporary Items
 .apdisk
 .cache
 .suo
+**/bin/Debug/
+**/bin/Release/
