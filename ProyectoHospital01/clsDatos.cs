@@ -8,14 +8,14 @@ namespace ProyectoHospital01
 {
     class clsDatos
     {
-        public void crear()
+        private string pathHospital =  @"c:\hospital";
+        public void crearPaciente(string nombre)
         {
-            // Specify a name for your top-level folder.
-            string folderName = @"c:\hospital";
+            
 
             // To create a string that specifies the path to a subfolder under your 
             // top-level folder, add a name for the subfolder to folderName.
-            string pathString = System.IO.Path.Combine(folderName, "paciente");
+            string pathString = System.IO.Path.Combine(pathHospital, "pacientes");
 
             // You can extend the depth of your path if you want to.
             //pathString = System.IO.Path.Combine(pathString, "SubSubFolder");
@@ -28,7 +28,7 @@ namespace ProyectoHospital01
             System.IO.Directory.CreateDirectory(pathString);
 
             // Create a file name for the file you want to create. 
-            string fileName = "nombrePaciente.txt";
+            string fileName = nombre + ".txt";
 
             // Use Combine again to add the file name to the path.
             pathString = System.IO.Path.Combine(pathString, fileName);
@@ -44,10 +44,10 @@ namespace ProyectoHospital01
             {
                 using (System.IO.FileStream fs = System.IO.File.Create(pathString))
                 {
-                    for (byte i = 0; i < 100; i++)
-                    {
-                        fs.WriteByte(i);
-                    }
+                    Byte[] contenido = new UTF8Encoding(true).GetBytes("New Text File");
+
+                    fs.Write(contenido, 0, contenido.Length);
+                    
                 }
             }
             else

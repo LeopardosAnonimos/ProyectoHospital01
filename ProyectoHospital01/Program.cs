@@ -11,7 +11,7 @@ namespace ProyectoHospital01
         static void Main(string[] args)
         {
             clsDatos archivo = new clsDatos();
-            archivo.crear();
+            archivo.crearPaciente("juan");
         }
     }
 }
