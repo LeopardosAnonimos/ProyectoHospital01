@@ -1,2 +1,6 @@
 c:\users\johanna\documents\visual studio 2015\Projects\ProyectoHospital01\ProyectoHospital01\bin\Debug\ProyectoHospital01.exe.config
+<<<<<<< HEAD
+D:\Theo\Documents\Universidad\SEGUNDO SEMESTRE\PROGRA II\Visual Studio\ProyectoHospital01\ProyectoHospital01\bin\Debug\ProyectoHospital01.exe.config
+=======
 C:\Users\USER\Documents\Visual Studio 2015\ProyectoHospital01\ProyectoHospital01\bin\Debug\ProyectoHospital01.exe.config
+>>>>>>> origin/master
