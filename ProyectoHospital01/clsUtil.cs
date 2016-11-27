@@ -50,9 +50,6 @@ namespace ProyectoHospital01
             }
 
 
-
-
-
             else
             {
                 Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)\n\t");
@@ -110,13 +107,14 @@ namespace ProyectoHospital01
                                     break;
                                 }
 
-                            case 4:
+                            default:
                                 {
-                                    default(/* algo de error */);
+                                    Console.WriteLine("Opcion no valida!");
                                     break;
                                 }
                         }
-                    } while (selec != 4);
+
+                    } while (selec != 3);
                             //IngresarDatos();
                             //Console.WriteLine("El usuario se ha ingresado correctamente..!");
                             //MenuBienvenida();// Reconocer que rol tiene el usuario y dejarlo en su menu 
@@ -143,9 +141,41 @@ namespace ProyectoHospital01
             Console.WriteLine("Bienvenido" + paciente.getNombre() + paciente.getApellido() + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Concluciones Medicas\n" +
-                                "3. Consultar Pago\n" +
+                                "3. Consultar ..........\n" +
                                 "4. Salir al Menu Anterior\n\n\t=>");
-            selec = LectorOpciones();
+            do
+            {
+                selec = LectorOpciones();
+                switch (selec)
+                {
+                    case 1:
+                        {
+                            //F(x) listar citas
+                            break;
+                        }
+                    case 2:
+                        {
+                            //consultar HC.Concluciones
+                            break;
+                        }
+                    case 3:
+                        {
+                            //consulta algo....
+                            break;
+                        }
+                    case 4:
+                        {
+                            MenuBienvenida();
+                            break;
+                        }
+
+                    default:
+                        {
+                            Console.WriteLine("Opcion no valida!");
+                            break;
+                        }
+                }
+            } while (selec != 4);
         }
 
 
