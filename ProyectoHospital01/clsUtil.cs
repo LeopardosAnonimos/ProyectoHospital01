@@ -30,7 +30,7 @@ namespace ProyectoHospital01
                 if (persona.tieneRol("paciente"))
                 {
                     clsPaciente paciente = new clsPaciente();
-                    paciente.buscar(id);
+                    paciente.buscar(id);//el momento de ingresar un nuevo tipo de persona permitir ingresar datos generales y luego según la opción elejida agregar datos del tipo escojido 
                     
                     MenuPaciente(paciente);
                 } else if (persona.tieneRol("medico"))
@@ -53,7 +53,44 @@ namespace ProyectoHospital01
                     selec = LectorOpciones();
                 if (selec == 1)
                 {
-                    IngresarDatos();
+                    Console.ReadLine("Seleccione una opción:\n"+
+                        "1.MEDICO\n" +
+                        "2.PACIENTE\n" +
+                        "3.FUNCIONARIO\n");
+                    selec = LectorOpciones();
+                    switch (selec)
+                    {
+                        case 1:
+                            {
+                                string rol = "medico";
+                                IngresarDatos();
+                                Console.WriteLine("Ingrese su especialidad:");
+                                string especialidad = Console.ReadLine();
+                                clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
+                                MenuMedico(medico);
+
+
+                                medico.buscar(id);
+                                Console.WriteLine("El nombre es " + medico.getApellido());
+                                Console.ReadKey();
+                                break;
+                            }
+                        case 2:
+                            {
+                                string rol = "paciente";
+                                IngresarDatos();
+
+                                clsFuncionario funcionario = new clsFuncionario()
+                            }
+                        
+                    }
+
+
+
+
+
+
+                    IngresarDatos();//Hacer menu de que tipo de persona quiere ingresar datos(medico,paciente,func)
                     Console.WriteLine("El usuario se ha ingresado correctamente..!");
                     MenuBienvenida();
                 }
@@ -103,7 +140,7 @@ namespace ProyectoHospital01
         }
 
 
-        public void IngresarDatos(/*cls.......*/)
+        public void IngresarDatos(/*cls.......*/)//Hacer menu de que tipo de persona quiere ingresar datos(medico,paciente,func)
         {
             Console.WriteLine("Inserte Cedula");
             string id = Console.ReadLine();
