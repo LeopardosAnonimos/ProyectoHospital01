@@ -11,10 +11,10 @@ namespace ProyectoHospital01
         private String especialidad { get; set; }
         
         // Cambiar String a string
-        public clsMedico(String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
+        public clsMedico(String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNac)
             :base()
         {
-            base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac, pswd);
+            base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac);
             base.getDb().actualizarPersona(id, "especialidad", especialidad);
         }
 
