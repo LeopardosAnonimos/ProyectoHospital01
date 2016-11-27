@@ -48,6 +48,11 @@ namespace ProyectoHospital01
                 }
 
             }
+
+
+
+
+
             else
             {
                 Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)\n\t");
@@ -55,6 +60,7 @@ namespace ProyectoHospital01
                 if (selec == 1)
                 {
 
+<<<<<<< HEAD
                     Console.ReadLine("Seleccione una opción:\n"+
                         "1.MEDICO\n" +
                         "2.PACIENTE\n" +
@@ -102,6 +108,12 @@ namespace ProyectoHospital01
                                         "1.MEDICO\n" +
                                         "2.PACIENTE\n" +
                                         "3.FUNCIONARIO\n\t=>");
+=======
+                    Console.WriteLine("Seleccione una opción:\n"+
+                        "1.MEDICO\n" +
+                        "2.PACIENTE\n" +
+                        "3.FUNCIONARIO\n");
+>>>>>>> origin/master
                     do
                     {
                         selec = LectorOpciones();
