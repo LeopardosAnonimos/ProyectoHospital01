@@ -50,9 +50,9 @@ namespace ProyectoHospital01
 
             return insertarContendido(contenido, path);
         }
-        public string obtenerDatoPersona(string id, string dato)
+        public string obtenerDatoPersona(string id, string campo)
         {
-            string path = pathPersonas + "\\" + id + "\\" + dato + ".txt";
+            string path = pathPersonas + "\\" + id + "\\" + campo + ".txt";
             // Console.WriteLine(path);
 
             return obtenerArchivo(path);
@@ -154,8 +154,7 @@ namespace ProyectoHospital01
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
-
-            return "";
+            return String.Empty;
             // Keep the console window open in debug mode.
             System.Console.WriteLine("Press any key to exit.");
             System.Console.ReadKey();
