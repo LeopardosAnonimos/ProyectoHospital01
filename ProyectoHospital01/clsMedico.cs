@@ -14,7 +14,6 @@ namespace ProyectoHospital01
             DateTime fechNac, String pswd)
             : base(nombre, apellido, direccion, id, telefono, sexo, edad, fechNac, pswd)
         {
-            
         }
 
         public clsMedico(String nombre, String apellido, String telefono, String especialidad)

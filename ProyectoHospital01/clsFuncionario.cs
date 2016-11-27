@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//pinche theo mamón
+
 namespace ProyectoHospital01
 {
     class clsFuncionario:clsPersona
@@ -30,5 +30,7 @@ namespace ProyectoHospital01
                 oficina = value;
             }
         }
+
+
     }
 }
