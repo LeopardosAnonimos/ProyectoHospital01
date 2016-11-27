@@ -11,7 +11,7 @@ namespace ProyectoHospital01
     {
 
 
-        private String oficina { get; set; }
+        private string oficina { get; set; }
 
         // Cambiar String a string
         public clsFuncionario(String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNac,string oficina)
@@ -30,6 +30,8 @@ namespace ProyectoHospital01
             base.buscar(id);
             this.oficina = base.getDb().obtenerDatoPersona(id, "oficina");
         }
+
+       
         /*
               public clsFuncionario(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
                 DateTime fechNac, String pswd, clsFuncionario secre)
