@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 namespace ProyectoHospital01
 {
     class clsFuncionario:clsPersona
     {
         private String oficina;
 
-        public clsFuncionario(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
+        /*
+          public clsFuncionario(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
             DateTime fechNac, String pswd, clsFuncionario secre)
             : base(nombre, apellido, direccion, id, telefono, sexo, edad, fechNac, pswd)
         {
@@ -30,7 +35,11 @@ namespace ProyectoHospital01
                 oficina = value;
             }
         }
+<<<<<<< HEAD
 
 
+=======
+        */
+>>>>>>> origin/master
     }
 }

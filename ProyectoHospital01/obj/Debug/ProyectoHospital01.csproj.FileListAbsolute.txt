@@ -9,7 +9,14 @@ C:\Users\Johanna\documents\visual studio 2015\Projects\ProyectoHospital01\Proyec
 C:\Users\Johanna\documents\visual studio 2015\Projects\ProyectoHospital01\ProyectoHospital01\bin\Debug\ProyectoHospital01.pdb
 C:\Users\Johanna\documents\visual studio 2015\Projects\ProyectoHospital01\ProyectoHospital01\obj\Debug\ProyectoHospital01.exe
 C:\Users\Johanna\documents\visual studio 2015\Projects\ProyectoHospital01\ProyectoHospital01\obj\Debug\ProyectoHospital01.pdb
+<<<<<<< HEAD
 C:\Users\USER\Documents\Visual Studio 2015\ProyectoHospital01\ProyectoHospital01\bin\Debug\ProyectoHospital01.exe
 C:\Users\USER\Documents\Visual Studio 2015\ProyectoHospital01\ProyectoHospital01\bin\Debug\ProyectoHospital01.pdb
 C:\Users\USER\Documents\Visual Studio 2015\ProyectoHospital01\ProyectoHospital01\obj\Debug\ProyectoHospital01.exe
 C:\Users\USER\Documents\Visual Studio 2015\ProyectoHospital01\ProyectoHospital01\obj\Debug\ProyectoHospital01.pdb
+=======
+D:\Theo\Documents\Universidad\SEGUNDO SEMESTRE\PROGRA II\Visual Studio\ProyectoHospital01\ProyectoHospital01\bin\Debug\ProyectoHospital01.exe
+D:\Theo\Documents\Universidad\SEGUNDO SEMESTRE\PROGRA II\Visual Studio\ProyectoHospital01\ProyectoHospital01\bin\Debug\ProyectoHospital01.pdb
+D:\Theo\Documents\Universidad\SEGUNDO SEMESTRE\PROGRA II\Visual Studio\ProyectoHospital01\ProyectoHospital01\obj\Debug\ProyectoHospital01.exe
+D:\Theo\Documents\Universidad\SEGUNDO SEMESTRE\PROGRA II\Visual Studio\ProyectoHospital01\ProyectoHospital01\obj\Debug\ProyectoHospital01.pdb
+>>>>>>> origin/master

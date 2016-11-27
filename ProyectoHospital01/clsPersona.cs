@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoHospital01
 {
-    class clsPersona
+    class clsPersona:clsDatos
     {
         protected String nombre { get; set; }
         protected String apellido { get; set; }
@@ -19,6 +19,8 @@ namespace ProyectoHospital01
         protected DateTime fechNac { get; set; }
 
         protected String pswd { get; set; }
+
+        private clsDatos db;
 
         protected string Id
         {
@@ -33,25 +35,72 @@ namespace ProyectoHospital01
             }
         }
 
-        public clsPersona(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
+        public clsPersona()
         {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.direccion = direccion;
-            this.Id = id;
-            this.telefono = telefono;
-            this.sexo = sexo;
-            this.edad = edad;
-            this.fechNac = fechNac;
-            this.pswd = pswd;
-
+            this.db = new clsDatos();
         }
 
-        public clsPersona(String nombre, String apellido, String telefono)
+        public clsDatos getDb()
         {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.telefono = telefono;
+            return this.db;
         }
+
+        public void crear(String id, string rol, String nombre, String apellido, String direccion, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
+        {          
+            if(db.insertarPersona(id, rol, nombre, apellido, direccion, telefono, sexo, edad, pswd, fechNac))
+            {
+                Console.WriteLine("Persona creada " + id + " | " + nombre);
+            } else
+            {
+                Console.WriteLine("No se ha podido crear la persona " + id + " | " + nombre);
+            }
+            
+        }
+
+        public bool buscar(string id)
+        {
+            if (!db.existe(id))
+            {
+                return false;
+            }
+            this.id = id;
+            this.nombre = db.obtenerDatoPersona(id, "nombre");
+            this.apellido = db.obtenerDatoPersona(id, "apellido"); //
+            // completar los demas datos...
+            return true;
+        }
+
+        public bool editar(string campo, string contenido)
+        {
+            if(db.actualizarPersona(this.id, campo, contenido))
+            {
+                buscar(this.id);
+                return true;
+            }
+            return false;
+        }
+
+        public bool tieneRol(string rol)
+        {
+            return db.existeCampo(id, rol);
+        }
+
+        public bool borrar()
+        {
+            return db.borrarPersona(this.id);
+        }
+
+        public string getNombre()
+        {
+            return this.nombre;
+        }
+
+        public string getApellido()
+        {
+            return this.apellido;
+        }
+
+        // Crear los demas getters...
+
     }
 }

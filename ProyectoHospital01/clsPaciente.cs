@@ -9,12 +9,17 @@ namespace ProyectoHospital01
     class clsPaciente:clsPersona
     {
         public clsHistClinica historia;
-
+        /*
         public clsHistClinica Historia 
         {
             get
             {
+<<<<<<< HEAD
  
+=======
+          
+                
+>>>>>>> origin/master
                 return historia;
             }
             set
@@ -35,5 +40,6 @@ namespace ProyectoHospital01
             clsCita cita = new clsCita();
 
         }
+        */
     }
 }
