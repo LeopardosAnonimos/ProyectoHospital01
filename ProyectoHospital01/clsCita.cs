@@ -21,6 +21,8 @@ namespace ProyectoHospital01
             clsMedico medico = new clsMedico("", "", "", "");
             DateTime fecha = new DateTime();
             DateTime hora = new DateTime();
+<<<<<<< HEAD
+=======
 
         }*/
 
@@ -28,6 +30,10 @@ namespace ProyectoHospital01
         {
         
 
+>>>>>>> origin/master
         }
+
+
+
     }
 }
