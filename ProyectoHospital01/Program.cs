@@ -19,8 +19,8 @@ namespace ProyectoHospital01
 
 
             menus.MenuBienvenida();
-
-            /*
+            
+            
             
             Console.WriteLine("Inserte Cedula");
             string id = Console.ReadLine();
@@ -58,7 +58,7 @@ namespace ProyectoHospital01
 
             new clsListar().obtener("medico");
             Console.ReadKey();
-            /*
+            
             medico.buscar(id);
             Console.WriteLine("El nombre es " + medico.getApellido());
 

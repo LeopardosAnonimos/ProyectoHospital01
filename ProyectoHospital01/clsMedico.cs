@@ -18,6 +18,10 @@ namespace ProyectoHospital01
             base.getDb().actualizarPersona(id, "especialidad", especialidad);
         }
 
+        public clsMedico()
+        {
+        }
+
         public void buscar(string id)
         {
             base.buscar(id);
