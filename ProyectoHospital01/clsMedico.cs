@@ -27,6 +27,11 @@ namespace ProyectoHospital01
             base.buscar(id);
             this.especialidad =  base.getDb().obtenerDatoPersona(id, "especialidad"); 
         }
+
+        public void Atender(clsPaciente p)
+        {
+            p.setEstadoPac(p.getEstado);
+        }
         /*
         public clsMedico(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
             DateTime fechNac, String pswd)

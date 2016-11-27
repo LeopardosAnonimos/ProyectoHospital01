@@ -9,16 +9,43 @@ namespace ProyectoHospital01
 {
     class clsHistClinica
     {
-        private string no_HistCl { get; set; }
+        clsPaciente paciente = new clsPaciente();
+        private string no_HistCl;
         private string obsGenerales { get; set; }
         private string sintomas { get; set; }
         private decimal peso { get; set; }
         private decimal temperatura { get; set; }
         private decimal altura { get; set; }
         private string diagnostico { get; set; }
-        private string concluMedicas { get; set; }
+        private string concluMedicas;
 
-        private string pathHistClinica = @"c:\hospital\histClinica";
+        public string No_HistCl
+        {
+            get
+            {
+                return no_HistCl;
+            }
+
+            set
+            {
+                no_HistCl = value;
+            }
+        }
+
+        public string ConcluMedicas
+        {
+            get
+            {
+                return concluMedicas;
+            }
+
+            set
+            {
+                concluMedicas = value;
+            }
+        }
+
+        private string pathHistClinica = @"c:\hospital\personas\paciente\histClinica";//editado ...para acceder a los datos de hist clinica
         private string pathPersonas = @"c:\hospital\personas";
         private string currentPath = String.Empty;
 
@@ -69,7 +96,7 @@ namespace ProyectoHospital01
         {
             if (no_HistCl.Length > 0)
             {
-                return borrarHistClinica(pathHistClinica(no_HistClinica));
+                return borrarHistClinica(pathHistClinica(no_HistCl));
             }
 
             return false;
@@ -206,24 +233,29 @@ namespace ProyectoHospital01
 
 
 
+ 
+   /* public string Parse()
+    {
+        
+        string conclu = h.ConcluMedicas;
+        return conclu;
+            
+       }*/
 
 
 
 
 
+    //public clsHistClinica()
+    //{
+    //    no_HistCl = "";
+    //    obsGenerales = "";
+    //    sintomas = "";
+    //    peso = 0;
+    //    temperatura = 0;
+    //    altura = 0;
+    //    diagnostico = "";
+    //    concluMedicas = "";
 
-
-
-        //public clsHistClinica()
-        //{
-        //    no_HistCl = "";
-        //    obsGenerales = "";
-        //    sintomas = "";
-        //    peso = 0;
-        //    temperatura = 0;
-        //    altura = 0;
-        //    diagnostico = "";
-        //    concluMedicas = "";
-
-        //}
- }
+    //}
+}

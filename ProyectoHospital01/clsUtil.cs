@@ -19,6 +19,9 @@ namespace ProyectoHospital01
         }
 
 
+
+
+
         public void MenuBienvenida()
         {
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Ingrese su numero de cedula...:");
@@ -121,17 +124,10 @@ namespace ProyectoHospital01
                         }
 
                     } while (selec != 3);
-<<<<<<< HEAD
-                            //IngresarDatos();
-                            //Console.WriteLine("El usuario se ha ingresado correctamente..!");
-                            //MenuBienvenida();// Reconocer que rol tiene el usuario y dejarlo en su menu 
-                    }
-=======
                     //IngresarDatos();
                     //Console.WriteLine("El usuario se ha ingresado correctamente..!");
                     //MenuBienvenida();// Reconocer que rol tiene el usuario y dejarlo en su menu 
                 }
->>>>>>> origin/master
 
                 else if (selec == 2)
                     MenuBienvenida();
@@ -192,6 +188,8 @@ namespace ProyectoHospital01
         }
 
 
+
+
         public void MenuMedico(clsMedico medico)
         {
             Console.WriteLine("Bienvenido" + medico.getNombre() + medico.getApellido() + "\nSelecciona una opcion:\n");
@@ -201,6 +199,8 @@ namespace ProyectoHospital01
                                 "4. Salir\n\n\t=>");
             selec = LectorOpciones();
         }
+
+
 
 
         public void MenuFuncionario(clsFuncionario funcionario)
@@ -213,6 +213,8 @@ namespace ProyectoHospital01
                                 "5. Salir\n\n\t=>");
             selec = LectorOpciones();
         }
+
+
 
 
         public void IngresarDatos(/*cls.......*/)//Hacer menu de que tipo de persona quiere ingresar datos(medico,paciente,func)
