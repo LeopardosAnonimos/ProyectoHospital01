@@ -8,17 +8,16 @@ namespace ProyectoHospital01
 {
     class clsPersona:clsDatos
     {
-        protected String nombre { get; set; }
-        protected String apellido { get; set; }
-        protected String direccion { get; set; }
+        protected String nombre;
+        protected String apellido;
+        protected String direccion;
         private String id;
-        protected String telefono { get; set; }
-        protected char sexo { get; set; }
-        protected int edad { get; set; }
+        protected String telefono;
+        protected char sexo;
+        protected int edad;
+        protected DateTime fechNac;
 
-        protected DateTime fechNac { get; set; }
-
-        protected String pswd { get; set; }
+      
 
         private clsDatos db;
 
@@ -45,7 +44,7 @@ namespace ProyectoHospital01
             return this.db;
         }
 
-        public void crear(String id, string rol, String nombre, String apellido, String direccion, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
+        public void crear(string id, string rol, string nombre, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
         {          
             if(db.insertarPersona(id, rol, nombre, apellido, direccion, telefono, sexo, edad, pswd, fechNac))
             {
@@ -59,13 +58,22 @@ namespace ProyectoHospital01
 
         public bool buscar(string id)
         {
+            string sexoString = Convert.ToString(this.sexo);
+            string edadString = Convert.ToString(this.edad);
+            string fechNacString = Convert.ToString(this.fechNac);
             if (!db.existe(id))
             {
                 return false;
             }
             this.id = id;
             this.nombre = db.obtenerDatoPersona(id, "nombre");
-            this.apellido = db.obtenerDatoPersona(id, "apellido"); //
+            this.apellido = db.obtenerDatoPersona(id, "apellido");
+            this.direccion = db.obtenerDatoPersona(id, "direccion");
+            this.telefono = db.obtenerDatoPersona(id, "telefono");
+            sexoString = db.obtenerDatoPersona(id, "sexo");
+            edadString = db.obtenerDatoPersona(id, "edad");
+            fechNacString = db.obtenerDatoPersona(id, "fechaNac");
+
             // completar los demas datos...
             return true;
         }
@@ -99,6 +107,27 @@ namespace ProyectoHospital01
         {
             return this.apellido;
         }
+        public string getDireccion()
+        {
+            return this.direccion;
+        }
+        public string getTelefono()
+        {
+            return this.telefono;
+        }
+        public char getSexo()
+        {
+            return this.sexo;
+        }
+        public int getEdad()
+        {
+            return this.edad;
+        }
+        public DateTime getFechNac()
+        {
+            return this.fechNac;
+        }
+
 
         // Crear los demas getters...
 
