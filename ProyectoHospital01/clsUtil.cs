@@ -45,12 +45,18 @@ namespace ProyectoHospital01
 
             }else
             {
-                Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO)\n\t");
+                Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)\n\t");
                     selec = LectorOpciones();
                 if (selec == 1)
+                {
                     IngresarDatos();
+                    Console.WriteLine("El usuario se ha ingresado correctamente..!");
+                    MenuBienvenida();
+                }
                 else if (selec == 2)
                     MenuBienvenida();
+                else if (selec == 3)
+                    Console.ReadKey();
             }
             Console.WriteLine();
         }
@@ -58,7 +64,7 @@ namespace ProyectoHospital01
 
         public void MenuPaciente(clsPaciente paciente)
         {
-            Console.WriteLine("Bienvenido" + paciente.getNombre() + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido" + paciente.getNombre() + paciente.getApellido() + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Recetas\n" +
                                 "3. Consultar Pago\n" +
@@ -67,9 +73,9 @@ namespace ProyectoHospital01
         }
 
 
-        public void MenuMedico(/*clsMedico m1*/)
+        public void MenuMedico(clsMedico medico)
         {
-            Console.WriteLine("Bienvenido" /*+ m1.nombre + m1.apellido*/ + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido" + medico.getNombre() + medico.getApellido() + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
                                 "3. Consultar Rol de Pago\n" +
@@ -78,9 +84,9 @@ namespace ProyectoHospital01
         }
 
 
-        public void MenuFuncionario(/*clsFuncionario f1*/)
+        public void MenuFuncionario(clsFuncionario funcionario)
         {
-            Console.WriteLine("Bienvenido" /*+ f1.nombre + f1.apellido*/ + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido" + funcionario.getNombre() + funcionario.getApellido() + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
@@ -88,8 +94,7 @@ namespace ProyectoHospital01
                                 "5. Listar Habitaciones\n" +
                                 "6. Listar Consultorios\n" +
                                 "7. Listar Oficinas\n" +
-                                "8. \n" +
-                                "*. Salir\n\n\t=>");
+                                "8. Salir\n\n\t=>");
             selec = LectorOpciones();
         }
 

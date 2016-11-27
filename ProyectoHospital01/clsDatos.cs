@@ -14,7 +14,7 @@ namespace ProyectoHospital01
         private string pathPacientes = @"c:\hospital\pacientes";
         private string currentPath = String.Empty;
 
-        public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, string password, DateTime fecha)
+        public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fecha)
         {
             // hospital\personas\{id}
             string path = pathPersonas + "\\" + id;
@@ -39,7 +39,6 @@ namespace ProyectoHospital01
             crearArchivo(telefono, "telefono", path);
             crearArchivo(sexoString, "sexo", path);
             crearArchivo(edadString, "edad", path);
-            crearArchivo(password, "password", path);
             crearArchivo(fechaString, "fecha", path);
             crearArchivo(String.Empty, rol, path);
 
