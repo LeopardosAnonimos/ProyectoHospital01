@@ -13,7 +13,6 @@ namespace ProyectoHospital01
             DateTime fecha = DateTime.MinValue;
 
             /*
-
             
             Console.WriteLine("Inserte Cedula");
             string id = Console.ReadLine();

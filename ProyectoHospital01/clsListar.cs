@@ -24,6 +24,7 @@ namespace ProyectoHospital01
                 string file = rol + ".txt";
                 string path = String.Empty;
                 int i = 0;
+                
                 foreach (string dir in dirs)
                 {
                     path = dir + "\\" + file;

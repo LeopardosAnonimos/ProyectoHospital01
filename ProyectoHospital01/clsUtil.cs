@@ -34,13 +34,38 @@ namespace ProyectoHospital01
         {
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Ingrese su numero de cedula...:");
             //Console.ReadLine
+
+            Console.WriteLine("Inserte Cedula");
+            string id = Console.ReadLine();
+
+            clsPersona persona = new clsPersona();
+            if (persona.buscar(id))
+            {
+                if (persona.tieneRol("medico"))
+                {
+                    clsPaciente paciente = new clsPaciente();
+                    paciente.buscar(id);
+                    
+                    MenuPaciente(paciente);
+                } else if (persona.tieneRol("paciente"))
+                {
+
+                } else if (persona.tieneRol("funcionario"))
+                {
+
+                }
+
+            }else
+            {
+                // menuCrear()
+            }
             Console.WriteLine();
         }
 
 
-        public void MenuPaciente(/*clsPaciente p1.nombre + p1.apellido*/)
+        public void MenuPaciente(clsPaciente paciente)
         {
-            Console.WriteLine("Bienvenido" /*+ p1.nombre + p1.apellido*/ + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido" + paciente.getNombre() + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Recetas\n" +
                                 "3. Consultar Pago\n" +

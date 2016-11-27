@@ -69,6 +69,11 @@ namespace ProyectoHospital01
 
         }
 
+        public bool existe(string id)
+        {
+            return System.IO.File.Exists(pathPersona(id));
+        }
+
         public bool existeCampo(string id, string campo)
         {
             return System.IO.File.Exists(pathPersonaCampo(id, campo));

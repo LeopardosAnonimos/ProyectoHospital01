@@ -57,12 +57,17 @@ namespace ProyectoHospital01
             
         }
 
-        public void buscar(string id)
+        public bool buscar(string id)
         {
+            if (!db.existe(id))
+            {
+                return false;
+            }
             this.id = id;
             this.nombre = db.obtenerDatoPersona(id, "nombre");
             this.apellido = db.obtenerDatoPersona(id, "apellido"); //
             // completar los demas datos...
+            return true;
         }
 
         public bool editar(string campo, string contenido)
@@ -73,11 +78,6 @@ namespace ProyectoHospital01
                 return true;
             }
             return false;
-        }
-
-        public void crearRol(string id, string rol)
-        {
-            db.actualizarPersona(id, rol, "");
         }
 
         public bool tieneRol(string rol)
