@@ -9,7 +9,18 @@ namespace ProyectoHospital01
     class clsPaciente:clsPersona
     {
         public clsHistClinica historia;
+
+
+
+
+
         /*
+         * 
+         * No_HistC, medico, observaciones generales / síntomas, peso, temperatura, altura, diagnostico, conclusiones medicas (medicamentos).
+
+         * 
+         * 
+         * 
         public clsHistClinica Historia 
         {
             get
