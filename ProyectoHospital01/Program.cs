@@ -15,7 +15,7 @@ namespace ProyectoHospital01
 
             clsUtil menus = new clsUtil();
 
-
+            Console.ReadKey();
 
 
             menus.MenuBienvenida();
