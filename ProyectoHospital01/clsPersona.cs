@@ -40,19 +40,8 @@ namespace ProyectoHospital01
             this.db = new clsDatos();
         }
 
-        public void crear(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
-        {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.direccion = direccion;
-            this.Id = id;
-            this.telefono = telefono;
-            this.sexo = sexo;
-            this.edad = edad;
-            this.fechNac = fechNac;
-            this.pswd = pswd;
-
-            
+        public void crear(String id, String nombre, String apellido, String direccion, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
+        {            
             if(db.insertarPersona(id, nombre, apellido, direccion, telefono, sexo, edad, pswd, fechNac))
             {
                 Console.WriteLine("Persona creada " + id + " | " + nombre);
@@ -67,8 +56,8 @@ namespace ProyectoHospital01
         {
             this.id = id;
             this.nombre = db.obtenerDatoPersona(id, "nombre");
-            this.apellido = db.obtenerDatoPersona(id, "apellido");
-
+            this.apellido = db.obtenerDatoPersona(id, "apellido"); //
+            // completar los demas datos...
         }
 
         public bool editar(string campo, string contenido)
@@ -91,10 +80,12 @@ namespace ProyectoHospital01
             return this.nombre;
         }
 
-        public string getApellido(string id)
+        public string getApellido()
         {
             return this.apellido;
         }
+
+        // Crear los demas getters...
 
     }
 }

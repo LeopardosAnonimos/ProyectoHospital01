@@ -9,7 +9,13 @@ namespace ProyectoHospital01
     class clsMedico:clsPersona
     {
         private String especialidad { get; set; }
-
+        
+        // Cambiar String a string
+        public clsMedico(String id, String nombre, String apellido, String direccion, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
+            :base()
+        {
+            base.crear(id, nombre, apellido, direccion, telefono, sexo, edad, fechNac, pswd);
+        }
         /*
         public clsMedico(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
             DateTime fechNac, String pswd)

@@ -12,22 +12,61 @@ namespace ProyectoHospital01
         {
             DateTime fecha = DateTime.MinValue;
 
-            
-             new clsPersona().crear("maria", "gutierrez", "la paz", "1702393783", "2038923", 'h', 18, fecha, "12345678");
-             System.Console.ReadKey();
+            /*
              
+            */
+            
 
-            clsPersona persona = new clsPersona();
-            persona.buscar("1702393783");
-            Console.WriteLine("El nombre es " + persona.getNombre());
+            
+            Console.WriteLine("Inserte Cedula");
+            string id = Console.ReadLine();
+
+            Console.WriteLine("Inserte Nombre");
+            string nombre = Console.ReadLine();
+
+            Console.WriteLine("Inserte Apellido");
+            string apellido = Console.ReadLine();
+
+            Console.WriteLine("Inserte Direccion");
+            string direccion = Console.ReadLine();
+
+            Console.WriteLine("Inserte Telefono");
+            string telefono = Console.ReadLine();
+
+            Console.WriteLine("Inserte sexo");
+            string sexo = Console.ReadLine();
+
+            Console.WriteLine("Inserte Edad");
+            string edad = Console.ReadLine();
+
+            Console.WriteLine("Inserte Contrasena");
+            string pasword = Console.ReadLine();
+
+            char sexoChar = Convert.ToChar(sexo);
+            int edadInt = Convert.ToInt32(edad);
+            clsMedico medico = new clsMedico(id, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, pasword);
+
+            medico.buscar(id);
+            Console.WriteLine("El nombre es " + medico.getApellido());
             Console.ReadKey();
 
+
+
+
+
+
+
+
+
+
+            /*
             persona.editar("nombre", "Lucrecia");
             Console.WriteLine("Nombre cambiado a " + persona.getNombre());
             Console.ReadKey();
 
             persona.borrar();
             Console.ReadKey();
+            */
 
 
         }
