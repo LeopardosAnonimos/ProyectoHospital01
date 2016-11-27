@@ -18,14 +18,15 @@ namespace ProyectoHospital01
         private string diagnostico { get; set; }
         private string concluMedicas { get; set; }
 
-        private string pathHistorias = @"c:\hospital\histClinica";
+        private string pathHistClinica = @"c:\hospital\histClinica";
+        private string pathPersonas = @"c:\hospital\personas";
         private string currentPath = String.Empty;
 
 
         public bool insertarHistClinica(string no_Histcl, string obsGenerales, string sintomas, decimal peso, decimal temperatura, decimal altura, string diagnostico, string concluMedicas)
         {
 
-            string path = pathHistorias + "\\" + no_Histcl;
+            string path = pathHistClinica + "\\" + no_Histcl;
             string pesoString = Convert.ToString(peso);
             string temperaturaString = Convert.ToString(temperatura);
             string alturaString = Convert.ToString(altura);
@@ -213,22 +214,16 @@ namespace ProyectoHospital01
 
 
 
+        //public clsHistClinica()
+        //{
+        //    no_HistCl = "";
+        //    obsGenerales = "";
+        //    sintomas = "";
+        //    peso = 0;
+        //    temperatura = 0;
+        //    altura = 0;
+        //    diagnostico = "";
+        //    concluMedicas = "";
 
-
-
-
-
-        public clsHistClinica()
-        {
-            no_HistCl = "";
-            obsGenerales = "";
-            sintomas = "";
-            peso = 0;
-            temperatura = 0;
-            altura = 0;
-            diagnostico = "";
-            concluMedicas = "";
-
-        }
-    }
-}
+        //}
+ }

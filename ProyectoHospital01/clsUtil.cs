@@ -48,59 +48,22 @@ namespace ProyectoHospital01
                 }
 
             }
+
+
+
+
+
             else
             {
                 Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)\n\t");
                     selec = LectorOpciones();
                 if (selec == 1)
                 {
-<<<<<<< HEAD
-                    Console.ReadLine("Seleccione una opción:\n"+
+
+                    Console.WriteLine("Seleccione una opción:\n"+
                         "1.MEDICO\n" +
                         "2.PACIENTE\n" +
                         "3.FUNCIONARIO\n");
-                    selec = LectorOpciones();
-                    switch (selec)
-                    {
-                        case 1:
-                            {
-                                string rol = "medico";
-                                IngresarDatos();
-                                Console.WriteLine("Ingrese su especialidad:");
-                                string especialidad = Console.ReadLine();
-                                clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
-                                MenuMedico(medico);
-
-
-                                medico.buscar(id);
-                                Console.WriteLine("El nombre es " + medico.getApellido());
-                                Console.ReadKey();
-                                break;
-                            }
-                        case 2:
-                            {
-                                string rol = "paciente";
-                                IngresarDatos();
-
-                                clsFuncionario funcionario = new clsFuncionario()
-                            }
-                        
-                    }
-
-
-
-
-
-
-                    IngresarDatos();//Hacer menu de que tipo de persona quiere ingresar datos(medico,paciente,func)
-                    Console.WriteLine("El usuario se ha ingresado correctamente..!");
-                    MenuBienvenida();
-                }
-=======
-                    Console.WriteLine("Seleccione una opcion:\n" +
-                                        "1.MEDICO\n" +
-                                        "2.PACIENTE\n" +
-                                        "3.FUNCIONARIO\n\t=>");
                     do
                     {
                         selec = LectorOpciones();
@@ -158,7 +121,7 @@ namespace ProyectoHospital01
                             //Console.WriteLine("El usuario se ha ingresado correctamente..!");
                             //MenuBienvenida();// Reconocer que rol tiene el usuario y dejarlo en su menu 
                     }
->>>>>>> origin/master
+
                 else if (selec == 2)
                     MenuBienvenida();
                 else if (selec == 3)
