@@ -126,13 +126,20 @@ namespace ProyectoHospital01
             Console.WriteLine("Inserte Edad");
             string edad = Console.ReadLine();
 
+            Console.WriteLine("Inserte rol");
+            string rol = Console.ReadLine();
+
+            Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAA");
+            string fechaNac=Console.ReadLine();
+
+            DateTime fecha=DateTime.Parse(fechaNac);
+
+            Console.WriteLine("Ingrese su especialidad");
+            string especialidad = Console.ReadLine();
 
             char sexoChar = Convert.ToChar(sexo);
             int edadInt = Convert.ToInt32(edad);
-            clsMedico medico = new clsMedico(id, rol, nombre, apellido,direccion, telefono, sexoChar, edadInt);
-            //String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNa    
-
-
+            clsMedico medico = new clsMedico(id,rol, nombre, apellido,especialidad,direccion, telefono, sexoChar, edadInt,fecha);
 
             medico.buscar(id);
             Console.WriteLine("El nombre es " + medico.getApellido());

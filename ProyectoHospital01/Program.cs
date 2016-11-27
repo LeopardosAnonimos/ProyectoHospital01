@@ -51,13 +51,13 @@ namespace ProyectoHospital01
 
             char sexoChar = Convert.ToChar(sexo);
             int edadInt = Convert.ToInt32(edad);
-<<<<<<< HEAD
-            clsMedico medico = new clsMedico(id, rol, nombre, apellido, "cardiologo", direccion, telefono, sexoChar, edadInt, fecha, pasword);
-            //
-=======
+
             clsMedico medico = new clsMedico(id, rol, nombre, apellido, "cardiologo", direccion, telefono, sexoChar, edadInt, fecha);
+            //
+
+            //clsMedico medico = new clsMedico(id, rol, nombre, apellido, "cardiologo", direccion, telefono, sexoChar, edadInt, fecha);
         
->>>>>>> origin/master
+
             new clsListar().obtener("paciente");
             Console.ReadKey();
 
