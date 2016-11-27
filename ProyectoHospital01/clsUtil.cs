@@ -22,7 +22,7 @@ namespace ProyectoHospital01
         public void MenuBienvenida()
         {
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Ingrese su numero de cedula...:");
-                    string id = Console.ReadLine();
+            string id = Console.ReadLine();
 
             clsPersona persona = new clsPersona();
             if (persona.buscar(id))
@@ -31,15 +31,17 @@ namespace ProyectoHospital01
                 {
                     clsPaciente paciente = new clsPaciente();
                     paciente.buscar(id);//el momento de ingresar un nuevo tipo de persona permitir ingresar datos generales y luego según la opción elejida agregar datos del tipo escojido 
-                    
+
                     MenuPaciente(paciente);
-                } else if (persona.tieneRol("medico"))
+                }
+                else if (persona.tieneRol("medico"))
                 {
                     clsMedico medico = new clsMedico();
                     medico.buscar(id);
 
                     MenuMedico(medico);
-                } else if (persona.tieneRol("funcionario"))
+                }
+                else if (persona.tieneRol("funcionario"))
                 {
                     clsFuncionario funcionario = new clsFuncionario();
                     funcionario.buscar(id);
@@ -53,11 +55,11 @@ namespace ProyectoHospital01
             else
             {
                 Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)\n\t");
-                    selec = LectorOpciones();
+                selec = LectorOpciones();
                 if (selec == 1)
                 {
 
-                    Console.WriteLine("Seleccione una opción:\n"+
+                    Console.WriteLine("Seleccione una opción:\n" +
                         "1.MEDICO\n" +
                         "2.PACIENTE\n" +
                         "3.FUNCIONARIO\n");
@@ -72,8 +74,9 @@ namespace ProyectoHospital01
                                     IngresarDatos();
                                     Console.WriteLine("Ingrese su especialidad");
                                     string especialidad = Console.ReadLine();
+                                    DateTime fecha= new DateTime();
 
-                                    clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
+                                    clsMedico medico = new clsMedico(id, rol, "", "", "", "", "", ' ', 0, fecha);
                                     medico.buscar(id);
                                     //F(x) guardar...
                                     MenuMedico(medico);
@@ -85,7 +88,7 @@ namespace ProyectoHospital01
                                 {
                                     string rol = "paciente";
                                     IngresarDatos();
-                                    
+
                                     clsPaciente paciente = new clsPaciente(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
                                     paciente.buscar(id);
                                     //F(x) guardar...
@@ -98,8 +101,11 @@ namespace ProyectoHospital01
                                 {
                                     string rol = "funcionario";
                                     IngresarDatos();
+                                    DateTime fecha = new DateTime();
 
-                                    clsFuncionario funcionario = new clsFuncionario(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
+                                    clsFuncionario funcionario = new clsFuncionario(id, rol, "", "", "", "", "",' ',0, fecha,"");
+
+                                    Console.WriteLine  (funcionario.generarLetra()+funcionario.generarEstructura());
                                     funcionario.buscar(id);
                                     //F(x) guardar...
                                     MenuFuncionario(funcionario);
@@ -115,10 +121,17 @@ namespace ProyectoHospital01
                         }
 
                     } while (selec != 3);
+<<<<<<< HEAD
                             //IngresarDatos();
                             //Console.WriteLine("El usuario se ha ingresado correctamente..!");
                             //MenuBienvenida();// Reconocer que rol tiene el usuario y dejarlo en su menu 
                     }
+=======
+                    //IngresarDatos();
+                    //Console.WriteLine("El usuario se ha ingresado correctamente..!");
+                    //MenuBienvenida();// Reconocer que rol tiene el usuario y dejarlo en su menu 
+                }
+>>>>>>> origin/master
 
                 else if (selec == 2)
                     MenuBienvenida();
@@ -229,22 +242,22 @@ namespace ProyectoHospital01
             //string rol = Console.ReadLine();
 
             Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAA]");
-            string fechaNac=Console.ReadLine();
+            string fechaNac = Console.ReadLine();
 
-            DateTime fecha=DateTime.Parse(fechaNac);
+            DateTime fecha = DateTime.Parse(fechaNac);
             char sexoChar = Convert.ToChar(sexo);
             int edadInt = Convert.ToInt32(edad);
-           
+
             Console.ReadKey();
         }
 
 
 
-      /*  clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
+        /*  clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
 
-        medico.buscar(id);
-            Console.WriteLine("El nombre es " + medico.getApellido());
-            */
+          medico.buscar(id);
+              Console.WriteLine("El nombre es " + medico.getApellido());
+              */
 
 
     }

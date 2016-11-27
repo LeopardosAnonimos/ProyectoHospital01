@@ -127,6 +127,22 @@ namespace ProyectoHospital01
             return this.fechNac;
         }
 
+        public char generarLetra()
+        {
+            Random abc = new Random();
+
+            int letras = abc.Next(65, 67);
+            char letras1 = Convert.ToChar(letras);
+            return letras1;
+        }
+
+        public int generarEstructura()
+        {
+            Random rnd = new Random();
+            int oficina = rnd.Next(1, 10);
+            return oficina;
+        }
+
 
     }
 }
