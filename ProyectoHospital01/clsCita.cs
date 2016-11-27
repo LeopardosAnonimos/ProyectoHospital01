@@ -30,7 +30,6 @@ namespace ProyectoHospital01
         {
         
 
->>>>>>> origin/master
         }
 
 

@@ -45,7 +45,12 @@ namespace ProyectoHospital01
 
             }else
             {
-                // menuCrear()
+                Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO)\n\t");
+                    selec = LectorOpciones();
+                if (selec == 1)
+                    IngresarDatos();
+                else if (selec == 2)
+                    MenuBienvenida();
             }
             Console.WriteLine();
         }
