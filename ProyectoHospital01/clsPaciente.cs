@@ -12,6 +12,23 @@ namespace ProyectoHospital01
 
 
 
+        // Cambiar String a string
+        public clsPaciente(String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNac)
+            :base()
+        {
+            base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac);
+           // base.getDb().actualizarPersona(id, "especialidad", especialidad);
+        }
+
+        public clsPaciente()
+        {
+        }
+
+        public void buscar(string id)
+        {
+            base.buscar(id);
+            //this.historia = base.getDb().obtenerDatoPersona(id, historia);
+        }
 
 
         /*

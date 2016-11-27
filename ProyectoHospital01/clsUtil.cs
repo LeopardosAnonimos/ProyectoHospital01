@@ -54,7 +54,7 @@ namespace ProyectoHospital01
                     selec = LectorOpciones();
                 if (selec == 1)
                 {
-<<<<<<< HEAD
+
                     Console.ReadLine("Seleccione una opción:\n"+
                         "1.MEDICO\n" +
                         "2.PACIENTE\n" +
@@ -85,6 +85,7 @@ namespace ProyectoHospital01
                                 clsFuncionario funcionario = new clsFuncionario()
                             }
                         
+                        
                     }
 
 
@@ -96,7 +97,7 @@ namespace ProyectoHospital01
                     Console.WriteLine("El usuario se ha ingresado correctamente..!");
                     MenuBienvenida();
                 }
-=======
+
                     Console.WriteLine("Seleccione una opcion:\n" +
                                         "1.MEDICO\n" +
                                         "2.PACIENTE\n" +
@@ -158,7 +159,7 @@ namespace ProyectoHospital01
                             //Console.WriteLine("El usuario se ha ingresado correctamente..!");
                             //MenuBienvenida();// Reconocer que rol tiene el usuario y dejarlo en su menu 
                     }
->>>>>>> origin/master
+
                 else if (selec == 2)
                     MenuBienvenida();
                 else if (selec == 3)
