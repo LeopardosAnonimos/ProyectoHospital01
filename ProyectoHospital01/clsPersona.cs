@@ -46,7 +46,7 @@ namespace ProyectoHospital01
 
         public void crear(string id, string rol, string nombre, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
         {          
-            if(db.insertarPersona(id, rol, nombre, apellido, direccion, telefono, sexo, edad, pswd, fechNac))
+            if(db.insertarPersona(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac))
             {
                 Console.WriteLine("Persona creada " + id + " | " + nombre);
             } else
@@ -74,7 +74,6 @@ namespace ProyectoHospital01
             edadString = db.obtenerDatoPersona(id, "edad");
             fechNacString = db.obtenerDatoPersona(id, "fechaNac");
 
-            // completar los demas datos...
             return true;
         }
 
@@ -128,8 +127,6 @@ namespace ProyectoHospital01
             return this.fechNac;
         }
 
-
-        // Crear los demas getters...
 
     }
 }

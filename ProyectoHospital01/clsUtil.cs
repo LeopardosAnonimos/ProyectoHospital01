@@ -37,10 +37,14 @@ namespace ProyectoHospital01
                 {
                     clsMedico medico = new clsMedico();
                     medico.buscar(id);
+
+                    MenuMedico(medico);
                 } else if (persona.tieneRol("funcionario"))
                 {
                     clsFuncionario funcionario = new clsFuncionario();
                     funcionario.buscar(id);
+
+                    MenuFuncionario(funcionario);
                 }
 
             }else
@@ -125,7 +129,10 @@ namespace ProyectoHospital01
 
             char sexoChar = Convert.ToChar(sexo);
             int edadInt = Convert.ToInt32(edad);
-            clsMedico medico = new clsMedico(id, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, pasword);
+            clsMedico medico = new clsMedico(id, rol, nombre, apellido,direccion, telefono, sexoChar, edadInt);
+            //String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNa    
+
+
 
             medico.buscar(id);
             Console.WriteLine("El nombre es " + medico.getApellido());
