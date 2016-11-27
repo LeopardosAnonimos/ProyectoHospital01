@@ -22,26 +22,25 @@ namespace ProyectoHospital01
         public void MenuBienvenida()
         {
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Ingrese su numero de cedula...:");
-            //Console.ReadLine
-
-            Console.WriteLine("Inserte Cedula");
-            string id = Console.ReadLine();
+                    string id = Console.ReadLine();
 
             clsPersona persona = new clsPersona();
             if (persona.buscar(id))
             {
-                if (persona.tieneRol("medico"))
+                if (persona.tieneRol("paciente"))
                 {
                     clsPaciente paciente = new clsPaciente();
                     paciente.buscar(id);
                     
                     MenuPaciente(paciente);
-                } else if (persona.tieneRol("paciente"))
+                } else if (persona.tieneRol("medico"))
                 {
-
+                    clsMedico medico = new clsMedico();
+                    medico.buscar(id);
                 } else if (persona.tieneRol("funcionario"))
                 {
-
+                    clsFuncionario funcionario = new clsFuncionario();
+                    funcionario.buscar(id);
                 }
 
             }else
@@ -113,25 +112,6 @@ namespace ProyectoHospital01
             Console.WriteLine("Inserte Edad");
             string edad = Console.ReadLine();
 
-<<<<<<< HEAD
-            Console.WriteLine("Ingresa el genero (1. Masculino / 2. Femenino): \t");
-            Console.WriteLine("Ingresa su rol (1. medico / 2. paciente / 3.funcionario): \t");
-
-            
-            
-
-            /*
-            do
-            {
-                selec = LectorOpciones();
-                 if (selec == 1)
-                    a.setSexo() = 'm'
-                 if (selec == 2)
-            } while (selec != (1 | 2));*/
-=======
-            Console.WriteLine("Inserte Contrasena");
-            string pasword = Console.ReadLine();
->>>>>>> origin/master
 
             char sexoChar = Convert.ToChar(sexo);
             int edadInt = Convert.ToInt32(edad);

@@ -12,6 +12,14 @@ namespace ProyectoHospital01
         {
             DateTime fecha = DateTime.MinValue;
 
+
+            clsUtil menus = new clsUtil();
+
+
+
+
+            menus.MenuBienvenida();
+
             /*
             
             Console.WriteLine("Inserte Cedula");
