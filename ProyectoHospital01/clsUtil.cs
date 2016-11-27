@@ -87,6 +87,11 @@ namespace ProyectoHospital01
             Console.WriteLine("Ingresa el numero de cedula: \t");
 
             Console.WriteLine("Ingresa el genero (1. Masculino / 2. Femenino): \t");
+            Console.WriteLine("Ingresa su rol (1. medico / 2. paciente / 3.funcionario): \t");
+
+            
+            
+
             /*
             do
             {

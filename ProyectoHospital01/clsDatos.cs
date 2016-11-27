@@ -12,8 +12,9 @@ namespace ProyectoHospital01
         private string pathHospital =  @"c:\hospital";
         private string pathPersonas = @"c:\hospital\personas";
         private string pathPacientes = @"c:\hospital\pacientes";
+        private string currentPath = String.Empty;
 
-        public bool insertarPersona(string id, string name, string apellido, string direccion, string telefono, char sexo, int edad, string password, DateTime fecha)
+        public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, string password, DateTime fecha)
         {
             // hospital\personas\{id}
             string path = pathPersonas + "\\" + id;
@@ -31,6 +32,7 @@ namespace ProyectoHospital01
 
             // Crear nombre.txt;
             // Crear apellido.txt, etc..
+            crearArchivo(id, "cedula", path);
             crearArchivo(name, "nombre", path);
             crearArchivo(apellido, "apellido", path);
             crearArchivo(direccion, "direccion", path);
@@ -39,6 +41,7 @@ namespace ProyectoHospital01
             crearArchivo(edadString, "edad", path);
             crearArchivo(password, "password", path);
             crearArchivo(fechaString, "fecha", path);
+            crearArchivo(String.Empty, rol, path);
 
             return true;
 
@@ -46,16 +49,12 @@ namespace ProyectoHospital01
 
         public bool actualizarPersona(string id, string campo, string contenido)
         {
-            string path = pathPersonas + "\\" + id + "\\" + campo + ".txt";
-
-            return insertarContendido(contenido, path);
+            return insertarContendido(contenido, pathPersonaCampo(id, campo));
         }
+
         public string obtenerDatoPersona(string id, string campo)
         {
-            string path = pathPersonas + "\\" + id + "\\" + campo + ".txt";
-            // Console.WriteLine(path);
-
-            return obtenerArchivo(path);
+            return obtenerArchivo(pathPersonaCampo(id, campo));
             
         }
 
@@ -63,12 +62,50 @@ namespace ProyectoHospital01
         {
             if (id.Length > 0)
             {
-                string path = pathPersonas + "\\" + id;
-                return borrarArchivo(path);
+                return borrarArchivo(pathPersona(id));
             }
 
             return false;
 
+        }
+
+        public bool existeCampo(string id, string campo)
+        {
+            return System.IO.File.Exists(pathPersonaCampo(id, campo));
+        }
+
+        public string obtenerArchivo(string path)
+        {
+            // Read and display the data from your file.
+            try
+            {   // Open the text file using a stream reader.
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    // Read the stream to a string, and write the string to the console.
+                    String line = sr.ReadToEnd();
+                    // Console.WriteLine(line);
+                    return line;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
+            return String.Empty;
+            // Keep the console window open in debug mode.
+            System.Console.WriteLine("Press any key to exit.");
+            System.Console.ReadKey();
+        }
+
+        private string pathPersona(string id)
+        {
+            return pathPersonas + "\\" + id;
+        }
+
+        private string pathPersonaCampo(string id, string campo)
+        {
+            return pathPersonas + "\\" + id + "\\" + campo + ".txt";
         }
 
         private void crearArchivo(string content, string filename, string path)
@@ -136,35 +173,10 @@ namespace ProyectoHospital01
             return false;
         }
 
-        private string obtenerArchivo(string path)
-        {
-            // Read and display the data from your file.
-            try
-            {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader(path))
-                {
-                    // Read the stream to a string, and write the string to the console.
-                    String line = sr.ReadToEnd();
-                    // Console.WriteLine(line);
-                    return line;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
-            return String.Empty;
-            // Keep the console window open in debug mode.
-            System.Console.WriteLine("Press any key to exit.");
-            System.Console.ReadKey();
-        }
-
         private bool borrarArchivo(string path)
         {
             try
             {
-    
                 Directory.Delete(path, true);
                 Console.WriteLine("Directorio borrado " + path);
                 return true;

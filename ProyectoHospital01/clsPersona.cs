@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoHospital01
 {
-    class clsPersona
+    class clsPersona:clsDatos
     {
         protected String nombre { get; set; }
         protected String apellido { get; set; }
@@ -40,9 +40,14 @@ namespace ProyectoHospital01
             this.db = new clsDatos();
         }
 
-        public void crear(String id, String nombre, String apellido, String direccion, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
-        {            
-            if(db.insertarPersona(id, nombre, apellido, direccion, telefono, sexo, edad, pswd, fechNac))
+        public clsDatos getDb()
+        {
+            return this.db;
+        }
+
+        public void crear(String id, string rol, String nombre, String apellido, String direccion, String telefono, char sexo, int edad, DateTime fechNac, String pswd)
+        {          
+            if(db.insertarPersona(id, rol, nombre, apellido, direccion, telefono, sexo, edad, pswd, fechNac))
             {
                 Console.WriteLine("Persona creada " + id + " | " + nombre);
             } else
@@ -68,6 +73,16 @@ namespace ProyectoHospital01
                 return true;
             }
             return false;
+        }
+
+        public void crearRol(string id, string rol)
+        {
+            db.actualizarPersona(id, rol, "");
+        }
+
+        public bool tieneRol(string rol)
+        {
+            return db.existeCampo(id, rol);
         }
 
         public bool borrar()

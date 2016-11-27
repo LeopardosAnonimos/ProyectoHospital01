@@ -47,6 +47,7 @@
     <Compile Include="clsDatos.cs" />
     <Compile Include="clsFuncionario.cs" />
     <Compile Include="clsHistClinica.cs" />
+    <Compile Include="clsListar.cs" />
     <Compile Include="clsMedico.cs" />
     <Compile Include="clsPaciente.cs" />
     <Compile Include="clsPersona.cs" />
