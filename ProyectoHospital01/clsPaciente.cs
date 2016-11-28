@@ -39,11 +39,11 @@ namespace ProyectoHospital01
         //string historia1 = historia.obtenerDatoHistClinica(" ","Conclusiones Medicas");
 
         // Cambiar String a string
-        public clsPaciente(String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNac)
+        public clsPaciente(String id, String rol, String nombre, String apellido, String direccion, String telefono, char sexo, int edad, DateTime fechNac)
             :base()
         {
             base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac);
-             base.getDb().actualizarPersona(id, "especialidad", especialidad);
+             //base.getDb().actualizarPersona(id, "especialidad", especialidad);
         }
 
         public clsPaciente()

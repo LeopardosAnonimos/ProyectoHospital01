@@ -91,8 +91,9 @@ namespace ProyectoHospital01
                                 {
                                     string rol = "paciente";
                                     IngresarDatos();
+                                    DateTime fecha = new DateTime();
 
-                                    clsPaciente paciente = new clsPaciente(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
+                                    clsPaciente paciente = new clsPaciente(id, rol, "", "", "", "", ' ' , 0, fecha);
                                     paciente.buscar(id);
                                     //F(x) guardar...
                                     MenuPaciente(paciente);

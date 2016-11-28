@@ -32,6 +32,7 @@ namespace ProyectoHospital01
         {
             p.setEstadoPac(p.getEstado);
         }
+
         /*
         public clsMedico(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
             DateTime fechNac, String pswd)
