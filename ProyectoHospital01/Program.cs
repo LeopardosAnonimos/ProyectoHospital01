@@ -15,14 +15,14 @@ namespace ProyectoHospital01
 
             clsUtil menus = new clsUtil();
 
-            Console.ReadKey();
+            Console.WriteLine("heello!");
 
 
-            menus.MenuBienvenida();
+           menus.MenuBienvenida();
             
             
-            
-            Console.WriteLine("Inserte Cedula");
+            /*
+            Console.WriteLine("Inserte Cedula") 
             string id = Console.ReadLine();
 
             Console.WriteLine("Inserte Rol (medico|funcionario|paciente)");

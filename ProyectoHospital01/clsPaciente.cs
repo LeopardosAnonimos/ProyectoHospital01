@@ -68,12 +68,9 @@ namespace ProyectoHospital01
         {
             get
             {
-<<<<<<< HEAD
- 
-=======
+
           
-                
->>>>>>> origin/master
+
                 return historia;
             }
             set

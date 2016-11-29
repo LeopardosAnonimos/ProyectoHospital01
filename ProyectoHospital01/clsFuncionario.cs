@@ -38,7 +38,7 @@ namespace ProyectoHospital01
             : base(nombre, apellido, direccion, id, telefono, sexo, edad, fechNac, pswd)
         {
 
-
+        
         }
 
         public string Oficina1

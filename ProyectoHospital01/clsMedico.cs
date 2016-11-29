@@ -30,7 +30,7 @@ namespace ProyectoHospital01
 
         public void Atender(clsPaciente p)
         {
-            p.setEstadoPac(p.getEstado);
+         //   p.setEstadoPac(p.getEstado);
         }
 
         /*

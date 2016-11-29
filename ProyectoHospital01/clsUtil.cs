@@ -65,7 +65,7 @@ namespace ProyectoHospital01
                     Console.WriteLine("Seleccione una opción:\n" +
                         "1.MEDICO\n" +
                         "2.PACIENTE\n" +
-                        "3.FUNCIONARIO\n");
+                        "3.FUNCIONARIO\n\t==>");
                     do
                     {
                         selec = LectorOpciones();
@@ -75,11 +75,11 @@ namespace ProyectoHospital01
                                 {
                                     string rol = "medico";
                                     IngresarDatos();
-                                    Console.WriteLine("Ingrese su especialidad");
+                                    Console.WriteLine("Ingrese su especialidad:\t\t");
                                     string especialidad = Console.ReadLine();
                                     DateTime fecha= new DateTime();
 
-                                    clsMedico medico = new clsMedico(id, rol, "", "", "", "", "", ' ', 0, fecha);
+                                    clsMedico medico = new clsMedico(id, rol, "", "", especialidad, "", "", ' ', 0, fecha);
                                     medico.buscar(id);
                                     //F(x) guardar...
                                     MenuMedico(medico);
