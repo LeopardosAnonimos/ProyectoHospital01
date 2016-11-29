@@ -20,7 +20,10 @@ namespace ProyectoHospital01
 
         public clsMedico()
         {
+
+            
         }
+
 
         public void buscar(string id)
         {

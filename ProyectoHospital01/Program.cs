@@ -11,10 +11,10 @@ namespace ProyectoHospital01
         static void Main(string[] args)
         {
             DateTime fecha = DateTime.MinValue;
-
+          
 
             clsUtil menus = new clsUtil();
-
+        
             Console.WriteLine("heello!");
 
 

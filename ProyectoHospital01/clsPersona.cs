@@ -61,6 +61,7 @@ namespace ProyectoHospital01
             string sexoString = Convert.ToString(this.sexo);
             string edadString = Convert.ToString(this.edad);
             string fechNacString = Convert.ToString(this.fechNac);
+
             if (!db.existe(id))
             {
                 return false;
@@ -72,7 +73,7 @@ namespace ProyectoHospital01
             this.telefono = db.obtenerDatoPersona(id, "telefono");
             sexoString = db.obtenerDatoPersona(id, "sexo");
             edadString = db.obtenerDatoPersona(id, "edad");
-            fechNacString = db.obtenerDatoPersona(id, "fechaNac");
+            fechNacString = db.obtenerDatoPersona(id, "fechNac");
 
             return true;
         }

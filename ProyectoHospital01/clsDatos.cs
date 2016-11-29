@@ -17,12 +17,12 @@ namespace ProyectoHospital01
         public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fecha)
         {
             // hospital\personas\{id}
-            string path = pathPersonas + "\\" + id;
+            string path = pathPersona(id);
             string edadString = Convert.ToString(edad);
             string fechaString = Convert.ToString(fecha);
             string sexoString = Convert.ToString(sexo);
 
-            if (System.IO.File.Exists(path))
+            if (existe(path))
             {
                 Console.WriteLine("El ID de la persona ya existe " + id);
                 Console.WriteLine("En la carpeta " + path);
@@ -39,7 +39,7 @@ namespace ProyectoHospital01
             crearArchivo(telefono, "telefono", path);
             crearArchivo(sexoString, "sexo", path);
             crearArchivo(edadString, "edad", path);
-            crearArchivo(fechaString, "fecha", path);
+            crearArchivo(fechaString, "fechNac", path);
             crearArchivo(String.Empty, rol, path);
 
             return true;
@@ -70,7 +70,7 @@ namespace ProyectoHospital01
 
         public bool existe(string id)
         {
-            return System.IO.File.Exists(pathPersona(id));
+            return System.IO.Directory.Exists(pathPersona(id));
         }
 
         public bool existeCampo(string id, string campo)
