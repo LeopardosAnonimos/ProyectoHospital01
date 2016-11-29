@@ -97,9 +97,7 @@ namespace ProyectoHospital01
                 Console.WriteLine(e.Message);
             }
             return String.Empty;
-            // Keep the console window open in debug mode.
-            System.Console.WriteLine("Press any key to exit.");
-            System.Console.ReadKey();
+            
         }
 
         private string pathPersona(string id)
