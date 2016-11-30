@@ -20,7 +20,10 @@ namespace ProyectoHospital01
 
         public clsMedico()
         {
+
+            
         }
+
 
         public void buscar(string id)
         {
@@ -30,8 +33,9 @@ namespace ProyectoHospital01
 
         public void Atender(clsPaciente p)
         {
-            p.setEstadoPac(p.getEstado);
+         //   p.setEstadoPac(p.getEstado);
         }
+
         /*
         public clsMedico(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
             DateTime fechNac, String pswd)

@@ -17,12 +17,12 @@ namespace ProyectoHospital01
         public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fecha)
         {
             // hospital\personas\{id}
-            string path = pathPersonas + "\\" + id;
+            string path = pathPersona(id);
             string edadString = Convert.ToString(edad);
             string fechaString = Convert.ToString(fecha);
             string sexoString = Convert.ToString(sexo);
 
-            if (System.IO.File.Exists(path))
+            if (existe(path))
             {
                 Console.WriteLine("El ID de la persona ya existe " + id);
                 Console.WriteLine("En la carpeta " + path);
@@ -39,7 +39,7 @@ namespace ProyectoHospital01
             crearArchivo(telefono, "telefono", path);
             crearArchivo(sexoString, "sexo", path);
             crearArchivo(edadString, "edad", path);
-            crearArchivo(fechaString, "fecha", path);
+            crearArchivo(fechaString, "fechNac", path);
             crearArchivo(String.Empty, rol, path);
 
             return true;
@@ -70,7 +70,7 @@ namespace ProyectoHospital01
 
         public bool existe(string id)
         {
-            return System.IO.File.Exists(pathPersona(id));
+            return System.IO.Directory.Exists(pathPersona(id));
         }
 
         public bool existeCampo(string id, string campo)
@@ -97,9 +97,7 @@ namespace ProyectoHospital01
                 Console.WriteLine(e.Message);
             }
             return String.Empty;
-            // Keep the console window open in debug mode.
-            System.Console.WriteLine("Press any key to exit.");
-            System.Console.ReadKey();
+            
         }
 
         private string pathPersona(string id)
@@ -114,20 +112,10 @@ namespace ProyectoHospital01
 
         private void crearArchivo(string content, string filename, string path)
         {
-            // System.Console.ReadKey();
 
-            // To create a string that specifies the path to a subfolder under your 
-            // top-level folder, add a name for the subfolder to folderName.
             string pathString = path;
 
-            // You can extend the depth of your path if you want to.
-            //pathString = System.IO.Path.Combine(pathString, "SubSubFolder");
-
-            // Create the subfolder. You can verify in File Explorer that you have this
-            // structure in the C: drive.
-            //    Local Disk (C:)
-            //        Top-Level Folder
-            //            SubFolder
+ 
             System.IO.Directory.CreateDirectory(pathString);
 
             // Create a file name for the file you want to create. 
@@ -139,10 +127,7 @@ namespace ProyectoHospital01
             // Verify the path that you have constructed.
             Console.WriteLine("Ruta a crear: {0}\n", pathString);
 
-            // Check that the file doesn't already exist. If it doesn't exist, create
-            // the file and write integers 0 - 99 to it.
-            // DANGER: System.IO.File.Create will overwrite the file if it already exists.
-            // This could happen even with random file names, although it is unlikely.
+       
             if (!System.IO.File.Exists(pathString))
             {
                 insertarContendido(content, pathString);

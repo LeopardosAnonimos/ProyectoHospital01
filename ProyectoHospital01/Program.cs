@@ -11,18 +11,18 @@ namespace ProyectoHospital01
         static void Main(string[] args)
         {
             DateTime fecha = DateTime.MinValue;
-
+          
 
             clsUtil menus = new clsUtil();
+        
+            Console.WriteLine("heello!");
 
-            Console.ReadKey();
 
-
-            menus.MenuBienvenida();
+           menus.MenuBienvenida();
             
             
-            
-            Console.WriteLine("Inserte Cedula");
+            /*
+            Console.WriteLine("Inserte Cedula") 
             string id = Console.ReadLine();
 
             Console.WriteLine("Inserte Rol (medico|funcionario|paciente)");

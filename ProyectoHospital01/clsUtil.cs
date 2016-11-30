@@ -3,140 +3,139 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ProyectoHospital01
 {
     class clsUtil
     {
         public int selec;
-
+        private DateTime fecha = new DateTime();
 
 
         public int LectorOpciones()
         {
-            int opc = Console.Read();
+            String abc = Console.ReadLine();
+            //if (abc!=("1" || "2" + "3" + "4" + "5"))
+            //{
+            //    Console.WriteLine("Opcion no valida!!!!");
+
+            //}
+
+            int opc = Convert.ToInt16(abc);
             return opc;
         }
 
 
-
-
-
         public void MenuBienvenida()
         {
-            Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Ingrese su numero de cedula...:");
-            string id = Console.ReadLine();
+            Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
+                                "1.Ingresar al sisema \n" +
+                                "2.Para Salir\n");
 
-            clsPersona persona = new clsPersona();
-            if (persona.buscar(id))
+            selec = LectorOpciones();
+
+
+            Console.Clear();
+            do
             {
-                if (persona.tieneRol("paciente"))
-                {
-                    clsPaciente paciente = new clsPaciente();
-                    paciente.buscar(id);//el momento de ingresar un nuevo tipo de persona permitir ingresar datos generales y luego según la opción elejida agregar datos del tipo escojido 
-
-                    MenuPaciente(paciente);
-                }
-                else if (persona.tieneRol("medico"))
-                {
-                    clsMedico medico = new clsMedico();
-                    medico.buscar(id);
-
-                    MenuMedico(medico);
-                }
-                else if (persona.tieneRol("funcionario"))
-                {
-                    clsFuncionario funcionario = new clsFuncionario();
-                    funcionario.buscar(id);
-
-                    MenuFuncionario(funcionario);
-                }
-
-            }
-
-
-            else
-            {
-                Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)\n\t");
-                selec = LectorOpciones();
                 if (selec == 1)
                 {
+                    Console.WriteLine("\nIngrese su numero de cedula...");
 
-                    Console.WriteLine("Seleccione una opción:\n" +
-                        "1.MEDICO\n" +
-                        "2.PACIENTE\n" +
-                        "3.FUNCIONARIO\n");
-                    do
+                    string id = Console.ReadLine();
+                    clsPersona persona = new clsPersona();
+                    Console.Clear();
+
+                    if (persona.buscar(id))
                     {
+                        if (persona.tieneRol("paciente"))
+                        {
+                            clsPaciente paciente = new clsPaciente();
+                            paciente.buscar(id);//el momento de ingresar un nuevo tipo de persona permitir ingresar datos generales y luego según la opción elejida agregar datos del tipo escojido 
+
+                            MenuPaciente(paciente);
+                        }
+                        else if (persona.tieneRol("medico"))
+                        {
+                            clsMedico medico = new clsMedico();
+                            medico.buscar(id);
+                            MenuMedico(medico);
+                        }
+                        else if (persona.tieneRol("funcionario"))
+                        {
+                            clsFuncionario funcionario = new clsFuncionario();
+                            funcionario.buscar(id);
+
+                            MenuFuncionario(funcionario);
+                        }
+
+                    }
+
+
+                    else if (!persona.buscar(id))
+                    {
+
+                        Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)");
+
                         selec = LectorOpciones();
+
+
                         switch (selec)
                         {
                             case 1:
+
+                                //DateTime fecha = new DateTime();
+                                //persona.crear(id, "", "", "", "", "", ' ', 0, fecha);
+
+                                Console.WriteLine("Seleccione una opción:\n" +
+                                "1.MEDICO\n" +
+                                "2.PACIENTE\n" +
+                                "3.FUNCIONARIO\n\t==>");
+                                do
                                 {
-                                    string rol = "medico";
-                                    IngresarDatos();
-                                    Console.WriteLine("Ingrese su especialidad");
-                                    string especialidad = Console.ReadLine();
-                                    DateTime fecha= new DateTime();
+                                    selec = LectorOpciones();
+                                    if (selec == 1 || selec == 2 || selec == 3)
+                                    {
+                                        IngresarDatos(selec);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Opcion no valida");
+                                    }
 
-                                    clsMedico medico = new clsMedico(id, rol, "", "", "", "", "", ' ', 0, fecha);
-                                    medico.buscar(id);
-                                    //F(x) guardar...
-                                    MenuMedico(medico);
+                                } while (selec != 4);
 
-                                    break;
-                                }
+                                break;
+
+
 
                             case 2:
-                                {
-                                    string rol = "paciente";
-                                    IngresarDatos();
-
-                                    clsPaciente paciente = new clsPaciente(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
-                                    paciente.buscar(id);
-                                    //F(x) guardar...
-                                    MenuPaciente(paciente);
-
-                                    break;
-                                }
-
+                                MenuBienvenida();
+                                break;
                             case 3:
-                                {
-                                    string rol = "funcionario";
-                                    IngresarDatos();
-                                    DateTime fecha = new DateTime();
-
-                                    clsFuncionario funcionario = new clsFuncionario(id, rol, "", "", "", "", "",' ',0, fecha,"");
-
-                                    Console.WriteLine  (funcionario.generarLetra()+funcionario.generarEstructura());
-                                    funcionario.buscar(id);
-                                    //F(x) guardar...
-                                    MenuFuncionario(funcionario);
-
-                                    break;
-                                }
+                                Console.ReadKey();
+                                break;
 
                             default:
-                                {
-                                    Console.WriteLine("Opcion no valida!");
-                                    break;
-                                }
+                                break;
+
                         }
 
-                    } while (selec != 3);
-                    //IngresarDatos();
-                    //Console.WriteLine("El usuario se ha ingresado correctamente..!");
-                    //MenuBienvenida();// Reconocer que rol tiene el usuario y dejarlo en su menu 
+                    }
                 }
 
                 else if (selec == 2)
-                    MenuBienvenida();
-                else if (selec == 3)
-                    Console.ReadKey();
-            }
-            Console.WriteLine();
-        }
+                {
+                    Console.WriteLine("\n\n\tFIN");
+                    { }
+                    System.Console.Out.Close();
+                }
 
+            } while (selec != 2);
+
+                
+        }
 
 
 
@@ -198,6 +197,41 @@ namespace ProyectoHospital01
                                 "3. Consultar Rol de Pago\n" +
                                 "4. Salir\n\n\t=>");
             selec = LectorOpciones();
+
+
+            do
+            {
+                selec = LectorOpciones();
+                switch (selec)
+                {
+                    case 1:
+                        {
+                            //F(x) listar citas
+                            break;
+                        }
+                    case 2:
+                        {
+                            //Informacion Pacientes
+                            break;
+                        }
+                    case 3:
+                        {
+                            //consulta algo....
+                            break;
+                        }
+                    case 4:
+                        {
+                            MenuBienvenida();
+                            break;
+                        }
+
+                    default:
+                        {
+                            Console.WriteLine("Opcion no valida!");
+                            break;
+                        }
+                }
+            } while (selec != 4);
         }
 
 
@@ -212,13 +246,58 @@ namespace ProyectoHospital01
                                 "4. Informacion(buscar) Medico\n" +
                                 "5. Salir\n\n\t=>");
             selec = LectorOpciones();
+
+            do
+            {
+                selec = LectorOpciones();
+                switch (selec)
+                {
+                    case 1:
+                        {
+                            //Ingresar un nuevo paciente
+                            break;
+                        }
+                    case 2:
+                        {
+                            //Buscar un paciente
+                            //FALTA HACER UN MENU DE EDICION DE HC DE PACIENTE....
+                            break;
+                        }
+                    case 3:
+                        {
+                            //Ingresar un nuevo medico
+                            break;
+                        }
+                    case 4:
+                        {
+                            //Buscar medico
+                            break;
+                        }
+                    case 5:
+                        {
+                            MenuBienvenida();
+                            break;
+                        }
+
+                    default:
+                        {
+                            Console.WriteLine("Opcion no valida!");
+                            break;
+                        }
+                }
+            } while (selec != 5);
         }
 
 
 
 
-        public void IngresarDatos(/*cls.......*/)//Hacer menu de que tipo de persona quiere ingresar datos(medico,paciente,func)
+
+
+
+        public void IngresarDatos(int selec)
         {
+
+            
             Console.WriteLine("Inserte Cedula");
             string id = Console.ReadLine();
 
@@ -240,15 +319,36 @@ namespace ProyectoHospital01
             Console.WriteLine("Inserte Edad");
             string edad = Console.ReadLine();
 
-            //Console.WriteLine("Inserte rol");
-            //string rol = Console.ReadLine();
-
-            Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAA]");
+            Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAAA]");
             string fechaNac = Console.ReadLine();
 
             DateTime fecha = DateTime.Parse(fechaNac);
             char sexoChar = Convert.ToChar(sexo);
             int edadInt = Convert.ToInt32(edad);
+
+            switch (selec)
+            {
+                case 1:
+                    string rol = "medico";
+                    Console.WriteLine("Ingrese su especialidad");
+                    string especialidad = Console.ReadLine();
+                    clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
+                    
+                    break;
+
+                case 2:
+                    rol = "paciente";
+                    clsPaciente pacinte = new clsPaciente(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha);
+                    break;
+
+                case 3:
+                    rol = "funcionario";
+                    string oficina = "";
+                    clsFuncionario funcionario = new clsFuncionario( id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
+                    break;
+                
+                        
+            }
 
             Console.ReadKey();
         }

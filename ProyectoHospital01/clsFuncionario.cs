@@ -24,7 +24,7 @@ namespace ProyectoHospital01
         private string oficina { get; set; }
 
         // Cambiar String a string
-        public clsFuncionario(String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNac,string oficina)
+        public clsFuncionario(string id, string rol, string nombre, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fechNac,string oficina)
             :base()
         {
             base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac);
@@ -48,7 +48,7 @@ namespace ProyectoHospital01
             : base(nombre, apellido, direccion, id, telefono, sexo, edad, fechNac, pswd)
         {
 
-
+        
         }
 
         public string Oficina1

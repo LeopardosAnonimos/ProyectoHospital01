@@ -96,7 +96,7 @@ namespace ProyectoHospital01
         {
             if (no_HistCl.Length > 0)
             {
-                return borrarHistClinica(pathHistClinica(no_HistCl));
+               // return borrarHistClinica(pathHistClinica(no_HistCl));
             }
 
             return false;
