@@ -9,7 +9,17 @@ namespace ProyectoHospital01
 {
     class clsFuncionario:clsPersona
     {
+        List<clsPaciente> pacientes = new List<clsPaciente>();
 
+        public void crearListasPacientes()
+        {
+            for (int i = 0; i < pacientes.Count(); i++)
+            {
+                clsPaciente p = new clsPaciente();
+                //pedir datos del paciente por teclado
+            }
+        }
+        
 
         private string oficina { get; set; }
 
