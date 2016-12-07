@@ -34,8 +34,6 @@ namespace ProyectoHospital01
                                 "2.Para Salir\n");
 
             selec = LectorOpciones();
-
-
             Console.Clear();
             do
             {
@@ -79,6 +77,7 @@ namespace ProyectoHospital01
                         Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)");
 
                         selec = LectorOpciones();
+                        Console.Clear();
 
 
                         switch (selec)
@@ -92,9 +91,11 @@ namespace ProyectoHospital01
                                 "1.MEDICO\n" +
                                 "2.PACIENTE\n" +
                                 "3.FUNCIONARIO\n\t==>");
+
                                 do
                                 {
                                     selec = LectorOpciones();
+                                    Console.Clear();
                                     if (selec == 1 || selec == 2 || selec == 3)
                                     {
                                         IngresarDatos(selec);
