@@ -8,18 +8,21 @@ using System.IO;
 namespace ProyectoHospital01
 {
 
-    
 
-    class clsListar:clsDatos
+
+    class clsListar
     {
-        private string pathPersonas = @"c:\hospital\personas";
-        private string pathPacientes = @"c:\hospital\pacientes";
+        private static string pathPersonas = @"c:\hospital\personas";
+        private static string pathPacientes = @"c:\hospital\pacientes";
+
+        private static clsDatos datos;
 
 
-        public void obtener(string rol)
+        public static void obtener(string rol)
         {
             try
             {
+                datos = new clsDatos();
                 string[] dirs = Directory.GetDirectories(pathPersonas);
                 string file = rol + ".txt";
                 string path = String.Empty;
@@ -32,21 +35,56 @@ namespace ProyectoHospital01
                     // Console.WriteLine(path);
                     if (System.IO.File.Exists(path))
                     {
-                        string ci = base.obtenerArchivo(dir + "\\cedula.txt");
-                        string nombre = base.obtenerArchivo(dir + "\\nombre.txt");
+                        string ci = datos.obtenerArchivo(dir + "\\cedula.txt");
+                        string nombre = datos.obtenerArchivo(dir + "\\nombre.txt");
 
                         Console.WriteLine(ci + " - " + nombre);
                         i++;
                     }
                 }
 
-                Console.WriteLine("Existen {0} "+ rol +"s en el registro.", i);
+                Console.WriteLine("Existen " + i + " "+ rol +"s en el registro.");
             }
             catch (Exception e)
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
         }
-    }
 
+
+        public static void obtenerHistorias(string id )
+        {
+            string pathHistorias = pathPersonas + "\\" + id + "\\historia" ;
+
+            try
+            {
+                datos = new clsDatos();
+                string[] dirs = Directory.GetDirectories(pathHistorias);
+                int i = 0;
+
+                foreach (string dir in dirs)
+                {
+                   
+                    string[] carpetas = dir.Split('\\');
+                    Console.WriteLine(carpetas[5]);
+                    i++;
+                    
+                }
+
+                Console.WriteLine("Existen " + i +  " Historias Clinicas en el registro.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+            }
+        }
+
+
+        public void obtenerDatosHistCl()
+        {
+
+        }
+    }
+    
+    
 }
