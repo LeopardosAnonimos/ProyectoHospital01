@@ -43,12 +43,15 @@ namespace ProyectoHospital01
             :base()
         {
             base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac);
-             //base.getDb().actualizarPersona(id, "especialidad", especialidad);
+
+            clsHistClinica histClinica = new clsHistClinica();
+
+            histClinica.insertarHistClinica( id, "observaciones Generales", "Sintomas", 21 , 2555 , 2544 , "Diagnostico", "Concluciones");
         }
 
         public clsPaciente()
         {
-        }
+        } 
 
         public void buscar(string id)
         {
@@ -82,15 +85,8 @@ namespace ProyectoHospital01
 
 
         private clsCita cita;
-
-        public clsPaciente(String nombre, String apellido, String direccion, String id, String telefono,
-            char sexo, int edad, DateTime fechNac, String pswd)
-            : base(nombre, apellido, direccion, id, telefono, sexo, edad, fechNac, pswd)
-        {
-            clsHistClinica historia = new clsHistClinica();
-            clsCita cita = new clsCita();
-
-        }
         */
+
+       
     }
 }

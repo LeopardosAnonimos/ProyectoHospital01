@@ -9,7 +9,7 @@ namespace ProyectoHospital01
 {
     class clsFuncionario:clsPersona
     {
-        List<clsPaciente> pacientes = new List<clsPaciente>();
+       /* List<clsPaciente> pacientes = new List<clsPaciente>();
 
         public void crearListasPacientes()
         {
@@ -17,8 +17,8 @@ namespace ProyectoHospital01
             {
                 clsPaciente p = new clsPaciente();
                 //pedir datos del paciente por teclado
-            }
-        }
+            }*/
+        
         
 
         private string oficina { get; set; }

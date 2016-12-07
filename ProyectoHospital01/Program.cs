@@ -10,17 +10,10 @@ namespace ProyectoHospital01
     {
         static void Main(string[] args)
         {
-            DateTime fecha = DateTime.MinValue;
-          
-
             clsUtil menus = new clsUtil();
-        
-            Console.WriteLine("heello!");
-
-
-           menus.MenuBienvenida();
+            menus.MenuBienvenida ();
             
-            
+
             /*
             Console.WriteLine("Inserte Cedula") 
             string id = Console.ReadLine();
@@ -58,11 +51,6 @@ namespace ProyectoHospital01
             //clsMedico medico = new clsMedico(id, rol, nombre, apellido, "cardiologo", direccion, telefono, sexoChar, edadInt, fecha);
         
 
-            new clsListar().obtener("paciente");
-            Console.ReadKey();
-
-            new clsListar().obtener("medico");
-            Console.ReadKey();
             
             medico.buscar(id);
             Console.WriteLine("El nombre es " + medico.getApellido());

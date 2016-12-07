@@ -16,12 +16,6 @@ namespace ProyectoHospital01
         public int LectorOpciones()
         {
             String abc = Console.ReadLine();
-            //if (abc!=("1" || "2" + "3" + "4" + "5"))
-            //{
-            //    Console.WriteLine("Opcion no valida!!!!");
-
-            //}
-
             int opc = Convert.ToInt16(abc);
             return opc;
         }
@@ -32,6 +26,7 @@ namespace ProyectoHospital01
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
+
 
             selec = LectorOpciones();
 
@@ -52,7 +47,7 @@ namespace ProyectoHospital01
                         if (persona.tieneRol("paciente"))
                         {
                             clsPaciente paciente = new clsPaciente();
-                            paciente.buscar(id);//el momento de ingresar un nuevo tipo de persona permitir ingresar datos generales y luego según la opción elejida agregar datos del tipo escojido 
+                            paciente.buscar(id);
 
                             MenuPaciente(paciente);
                         }
@@ -71,8 +66,6 @@ namespace ProyectoHospital01
                         }
 
                     }
-
-
                     else if (!persona.buscar(id))
                     {
 
@@ -84,9 +77,6 @@ namespace ProyectoHospital01
                         switch (selec)
                         {
                             case 1:
-
-                                //DateTime fecha = new DateTime();
-                                //persona.crear(id, "", "", "", "", "", ' ', 0, fecha);
 
                                 Console.WriteLine("Seleccione una opción:\n" +
                                 "1.MEDICO\n" +
@@ -158,7 +148,7 @@ namespace ProyectoHospital01
                 {
                     case 1:
                         {
-                            //F(x) listar citas
+                            
                             break;
                         }
                     case 2:
@@ -196,12 +186,13 @@ namespace ProyectoHospital01
                                 "2. Informacion Pacientes\n" +
                                 "3. Consultar Rol de Pago\n" +
                                 "4. Salir\n\n\t=>");
+
+
             selec = LectorOpciones();
-
-
+           
             do
             {
-                selec = LectorOpciones();
+                
                 switch (selec)
                 {
                     case 1:
@@ -211,7 +202,8 @@ namespace ProyectoHospital01
                         }
                     case 2:
                         {
-                            //Informacion Pacientes
+                            clsListar.obtener("paciente");
+                            MenuElegirPaciente();
                             break;
                         }
                     case 3:
@@ -235,6 +227,23 @@ namespace ProyectoHospital01
         }
 
 
+       public void MenuElegirPaciente()
+        {
+            Console.WriteLine("Ingrese el numero de cedula del paciente al que desee acceder");
+            string id = Console.ReadLine();
+            clsListar.obtenerHistorias(id);
+            MenuElegirHistoria();
+            Console.ReadKey();
+
+        }
+
+        public void MenuElegirHistoria()
+        {
+            Console.WriteLine("Ingrese el numero de historia clinica al que desee acceder");
+            string historia = Console.ReadLine();
+            Console.WriteLine("Ingrese el numero del campo que desee modificar: 1 Estatura || 2 Peso || 3 Concluciones Medicas || 4 Diagnostico || 5 Obsevaciones Generales || 6 Sintomas || 7 Temperatura ");
+
+        }
 
 
         public void MenuFuncionario(clsFuncionario funcionario)
@@ -245,32 +254,38 @@ namespace ProyectoHospital01
                                 "3. Ingresar un nuevo Medico\n" +
                                 "4. Informacion(buscar) Medico\n" +
                                 "5. Salir\n\n\t=>");
+
+
             selec = LectorOpciones();
 
             do
             {
-                selec = LectorOpciones();
+
+              
                 switch (selec)
                 {
                     case 1:
                         {
-                            //Ingresar un nuevo paciente
+                            Console.WriteLine("A continucaion ingrese los datos del nuevo Paciente");
+                            IngresarDatos(2);
                             break;
                         }
                     case 2:
                         {
-                            //Buscar un paciente
-                            //FALTA HACER UN MENU DE EDICION DE HC DE PACIENTE....
+                            
+                            clsListar.obtener("paciente");
+                            Console.ReadKey();
                             break;
                         }
                     case 3:
                         {
-                            //Ingresar un nuevo medico
+                            Console.WriteLine("A continucaion ingrese los datos del nuevo Medico");
+                            IngresarDatos(1);
                             break;
                         }
                     case 4:
                         {
-                            //Buscar medico
+                            clsListar.obtener("medico");
                             break;
                         }
                     case 5:
@@ -333,33 +348,31 @@ namespace ProyectoHospital01
                     Console.WriteLine("Ingrese su especialidad");
                     string especialidad = Console.ReadLine();
                     clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
-                    
+                    MenuMedico(medico);
                     break;
 
                 case 2:
-                    rol = "paciente";
-                    clsPaciente pacinte = new clsPaciente(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha);
+                    rol = "paciente";                    
+                    clsPaciente paciente = new clsPaciente(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha);
+                    MenuPaciente(paciente);
                     break;
 
                 case 3:
                     rol = "funcionario";
                     string oficina = "";
                     clsFuncionario funcionario = new clsFuncionario( id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
+                    MenuFuncionario(funcionario);
                     break;
                 
                         
             }
-
+            
             Console.ReadKey();
         }
 
 
 
-        /*  clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
-
-          medico.buscar(id);
-              Console.WriteLine("El nombre es " + medico.getApellido());
-              */
+      
 
 
     }

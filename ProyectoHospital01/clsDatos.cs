@@ -11,7 +11,7 @@ namespace ProyectoHospital01
     {
         private string pathHospital =  @"c:\hospital";
         private string pathPersonas = @"c:\hospital\personas";
-        private string pathPacientes = @"c:\hospital\pacientes";
+        private    string pathPacientes = @"c:\hospital\pacientes";
         private string currentPath = String.Empty;
 
         public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fecha)
@@ -68,9 +68,9 @@ namespace ProyectoHospital01
 
         }
 
-        public bool existe(string id)
+        public bool existe(string path)
         {
-            return System.IO.Directory.Exists(pathPersona(id));
+            return System.IO.Directory.Exists(path);
         }
 
         public bool existeCampo(string id, string campo)
@@ -100,17 +100,17 @@ namespace ProyectoHospital01
             
         }
 
-        private string pathPersona(string id)
+        public string pathPersona(string id)
         {
             return pathPersonas + "\\" + id;
         }
 
-        private string pathPersonaCampo(string id, string campo)
+        public string pathPersonaCampo(string id, string campo)
         {
             return pathPersonas + "\\" + id + "\\" + campo + ".txt";
         }
 
-        private void crearArchivo(string content, string filename, string path)
+        public void crearArchivo(string content, string filename, string path)
         {
 
             string pathString = path;
@@ -142,7 +142,7 @@ namespace ProyectoHospital01
             
         }
 
-        private bool insertarContendido(string content, string path)
+        public bool insertarContendido(string content, string path)
         {
             try
             {
@@ -162,7 +162,7 @@ namespace ProyectoHospital01
             return false;
         }
 
-        private bool borrarArchivo(string path)
+        public bool borrarArchivo(string path)
         {
             try
             {

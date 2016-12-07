@@ -44,15 +44,16 @@ namespace ProyectoHospital01
             return this.db;
         }
 
-        public void crear(string id, string rol, string nombre, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
+        public bool crear(string id, string rol, string nombre, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
         {          
             if(db.insertarPersona(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac))
             {
                 Console.WriteLine("Persona creada " + id + " | " + nombre);
-            } else
-            {
-                Console.WriteLine("No se ha podido crear la persona " + id + " | " + nombre);
+                return true;
             }
+
+            Console.WriteLine("No se ha podido crear la persona " + id + " | " + nombre);
+            return false;
             
         }
 
@@ -62,7 +63,7 @@ namespace ProyectoHospital01
             string edadString = Convert.ToString(this.edad);
             string fechNacString = Convert.ToString(this.fechNac);
 
-            if (!db.existe(id))
+            if (!db.existe(db.pathPersona(id)))
             {
                 return false;
             }
