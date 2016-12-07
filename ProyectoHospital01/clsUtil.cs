@@ -16,8 +16,14 @@ namespace ProyectoHospital01
         public int LectorOpciones()
         {
             String abc = Console.ReadLine();
-            int opc = Convert.ToInt16(abc);
-            return opc;
+            if(abc.Length > 0)
+            {
+                int opc = Convert.ToInt16(abc);
+                return opc;
+            }
+
+            Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
+            return 0;
         }
 
 
@@ -97,13 +103,14 @@ namespace ProyectoHospital01
                                 } while (selec != 4);
 
                                 break;
-
-
-
+                                
                             case 2:
+
                                 MenuBienvenida();
                                 break;
+
                             case 3:
+
                                 Console.ReadKey();
                                 break;
 
@@ -114,7 +121,6 @@ namespace ProyectoHospital01
 
                     }
                 }
-
                 else if (selec == 2)
                 {
                     Console.WriteLine("\n\n\tFIN");
@@ -229,22 +235,54 @@ namespace ProyectoHospital01
 
        public void MenuElegirPaciente()
         {
-            Console.WriteLine("Ingrese el numero de cedula del paciente al que desee acceder");
-            string id = Console.ReadLine();
-            clsListar.obtenerHistorias(id);
-            MenuElegirHistoria();
-            Console.ReadKey();
-
+           
+           
+                Console.WriteLine("Ingrese el numero de cedula del paciente al que desee acceder");
+                string id = Console.ReadLine();
+                clsListar.obtenerHistorias(id);
+                MenuElegirHistoria(id);
+                Console.ReadKey();
+                                   
+            
         }
 
-        public void MenuElegirHistoria()
+       
+
+        public void MenuElegirHistoria(string id)
         {
+            // hacer if para editar o ver datos de la histcl
+            Console.WriteLine("Desea: 1 Editar los datos de una historia clinica | 2 Mirar una hist cl");
+            selec = LectorOpciones();
+            clsHistClinica historia = new clsHistClinica();
             Console.WriteLine("Ingrese el numero de historia clinica al que desee acceder");
-            string historia = Console.ReadLine();
-            Console.WriteLine("Ingrese el numero del campo que desee modificar: 1 Estatura || 2 Peso || 3 Concluciones Medicas || 4 Diagnostico || 5 Obsevaciones Generales || 6 Sintomas || 7 Temperatura ");
+            string no_HistCl = Console.ReadLine();
+            historia.buscar(id, no_HistCl);
 
+            if (selec == 1)
+            {
+
+                               
+                Console.WriteLine("Ingrese el numero del campo que desee modificar: 1 Estatura || 2 Peso || 3 Concluciones Medicas || 4 Diagnostico || 5 Obsevaciones Generales || 6 Sintomas || 7 Temperatura ");
+                selec = LectorOpciones();
+                Console.WriteLine("Ingrese el texto que desea agregar");
+                string cambioArchivo = Console.ReadLine();
+                string[] opciones = { "", "Altura", "Peso", "Concluciones Medicas", "Diagnostico", "Observaciones Generales", "Sintomas", "Temperatura" };
+                string campo = opciones[selec];
+                historia.actualizar(campo, cambioArchivo);
+            }
+            else
+            {
+                Console.WriteLine("En la historia clinica numero: " + historia.getNo_HistCl() + " existen los siguientes registros: ");
+                Console.WriteLine("La altura es" + historia.getAltura());
+                // poner los demas datos 
+
+            }
+             
+                   
+
+            
         }
-
+      
 
         public void MenuFuncionario(clsFuncionario funcionario)
         {

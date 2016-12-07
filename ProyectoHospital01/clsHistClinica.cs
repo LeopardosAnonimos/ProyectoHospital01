@@ -11,48 +11,65 @@ namespace ProyectoHospital01
     {
         clsPaciente paciente = new clsPaciente();
         private string no_HistCl;
-        private string obsGenerales { get; set; }
-        private string sintomas { get; set; }
-        private decimal peso { get; set; }
-        private decimal temperatura { get; set; }
-        private decimal altura { get; set; }
-        private string diagnostico { get; set; }
+        private string cedula;
+        private string obsGenerales;
+        private string sintomas;
+        private string peso;
+        private string temperatura;
+        private string altura;
+        private string diagnostico;
         private string concluMedicas;
+       
 
-        public string No_HistCl
+        public string getPeso()
         {
-            get
-            {
-                return no_HistCl;
-            }
-
-            set
-            {
-                no_HistCl = value;
-            }
+            return peso;
         }
 
-        public string ConcluMedicas
+        public string getNo_HistCl()
         {
-            get
-            {
-                return concluMedicas;
-            }
-
-            set
-            {
-                concluMedicas = value;
-            }
+            return no_HistCl;
         }
+
+        public string getAltura()
+        {
+            return altura;
+        }
+
+        public string getDiagnostico()
+        {
+            return diagnostico;
+        }
+
+        public string getSintomas()
+        {
+            return sintomas;
+        }
+
+        public string getTemperatura()
+        {
+            return temperatura;
+        }
+
+        public string getConcluMedicas()
+        {
+            return concluMedicas;
+        }
+
+        public string getObsGenerales()
+        {
+            return obsGenerales;
+        }
+
 
         public bool insertarHistClinica(string id, string obsGenerales, string sintomas, decimal peso, decimal temperatura, decimal altura, string diagnostico, string concluMedicas)
         {
             string no_Histcl = DateTime.Now.ToString("ddMMyyyy-HHmmss");
-            string path = @"c:\hospital\personas\" + id + "\\historia\\" + no_Histcl;
+            string path = pathHistoria(id, no_HistCl);
             string pesoString = Convert.ToString(peso);
             string temperaturaString = Convert.ToString(temperatura);
             string alturaString = Convert.ToString(altura);
-            
+
 
             if (existe(path))
             {
@@ -62,7 +79,7 @@ namespace ProyectoHospital01
                 return false;
             }
 
-           
+
             crearArchivo(no_Histcl, "#HistoriaClinica", path);
             crearArchivo(obsGenerales, "Observaciones Generales", path);
             crearArchivo(sintomas, "Sintomas", path);
@@ -71,37 +88,60 @@ namespace ProyectoHospital01
             crearArchivo(alturaString, "Altura", path);
             crearArchivo(diagnostico, "Diagnostico", path);
             crearArchivo(concluMedicas, "Concluciones Medicas", path);
-        
+
             return true;
         }
 
-             public bool actualizarHistClinica(string no_HistCl, string campo, string contenido)
+        public bool buscar(string id, string no_HistCl)
         {
-            return insertarContendido(contenido, pathPersonaCampo(no_HistCl, campo));
+            string dirHistoria = pathHistoria(id, no_HistCl);
+            if (!existe(dirHistoria))
+            {
+                return false;
+            }
+            this.cedula = id;
+            this.no_HistCl = no_HistCl;
+            this.peso = base.obtenerArchivo(dirHistoria + "\\Peso.txt");
+            this.altura = base.obtenerArchivo(dirHistoria + "\\Altura.txt");
+            this.obsGenerales = base.obtenerArchivo(dirHistoria + "\\Observaciones Generales.txt");
+            this.sintomas = base.obtenerArchivo(dirHistoria + "\\Sintomas.txt");
+            this.temperatura = base.obtenerArchivo(dirHistoria + "\\Temperatura.txt");
+            this.concluMedicas = base.obtenerArchivo(dirHistoria + "\\Concluciones Medicas.txt");
+            this.diagnostico = base.obtenerArchivo(dirHistoria + "\\Diagnostico.txt");
+
+            return true;
         }
 
-        public string obtenerDatoHistClinica(string no_HistCl, string campo)
+        public bool actualizar(string campo, string contenido)
         {
-            return obtenerArchivo(pathPersonaCampo(no_HistCl, campo));
-
+            bool seInserto = insertarContendido(contenido, pathHistoriaCampo(campo));
+            // Se busca de nuevo para que se actualicen las variables con el nuevo contenido editado
+            buscar(cedula, no_HistCl);
+            return seInserto;
         }
 
-        public bool borrarHistClinica(string no_HistCl)
+
+        public bool borrar()
         {
             if (no_HistCl.Length > 0)
-            {
-               // return borrarHistClinica(pathHistClinica(no_HistCl));
+            {                
+                base.borrarArchivo(pathHistoria(cedula, no_HistCl));
+                return true;
             }
 
             return false;
 
         }
 
+        private string pathHistoriaCampo(string campo)
+        {
+            return @"c:\hospital\personas\" + cedula + "\\historia\\" + no_HistCl + "\\" + campo + ".txt";
+        }
 
+        private string pathHistoria(string id, string no_HistCl)
+        {
+            return @"c:\hospital\personas\" + id + "\\historia\\" + no_HistCl;
+        }
     }
-
-
-
-
 
 }

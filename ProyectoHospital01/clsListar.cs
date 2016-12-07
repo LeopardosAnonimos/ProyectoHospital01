@@ -78,6 +78,13 @@ namespace ProyectoHospital01
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
         }
-    }
 
+
+        public void obtenerDatosHistCl()
+        {
+
+        }
+    }
+    
+    
 }
