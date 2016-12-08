@@ -16,13 +16,28 @@ namespace ProyectoHospital01
         public int LectorOpciones()
         {
             String abc = Console.ReadLine();
-            if(abc.Length > 0)
+
+            try
             {
-                int opc = Convert.ToInt16(abc);
-                return opc;
+                int opc = Convert.ToInt32(abc);
+                if (opc > 0 & opc <= 9)
+                {
+                    return opc;
+                }
+                else
+                {
+                    Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
+                    LectorOpciones();
+
+                }
+
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine("Se ha ingresado un valor no valido: " + abc + "\nIngrese el valor correcto: ");
+                LectorOpciones();
             }
 
-            Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
             return 0;
         }
 
@@ -98,6 +113,8 @@ namespace ProyectoHospital01
                                     else
                                     {
                                         Console.WriteLine("Opcion no valida");
+                                        Console.ReadKey();
+                                        Console.Clear();
                                     }
 
                                 } while (selec != 4);
@@ -105,7 +122,7 @@ namespace ProyectoHospital01
                                 break;
                                 
                             case 2:
-
+                                Console.Clear();
                                 MenuBienvenida();
                                 break;
 
@@ -124,8 +141,8 @@ namespace ProyectoHospital01
                 else if (selec == 2)
                 {
                     Console.WriteLine("\n\n\tFIN");
-                    { }
-                    System.Console.Out.Close();
+                    Console.ReadKey();
+                    { }System.Console.Out.Close();
                 }
 
             } while (selec != 2);
@@ -174,6 +191,7 @@ namespace ProyectoHospital01
                         }
                     case 4:
                         {
+                            Console.Clear();
                             MenuBienvenida();
                             break;
                         }
@@ -210,13 +228,13 @@ namespace ProyectoHospital01
 
         public void MenuMedico(clsMedico medico)
         {
-<<<<<<< HEAD
+
             Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
-=======
+
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
             Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
->>>>>>> origin/master
+
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
                                 "3. Consultar Rol de Pago\n" +
@@ -320,13 +338,12 @@ namespace ProyectoHospital01
 
         public void MenuFuncionario(clsFuncionario funcionario)
         {
-<<<<<<< HEAD
+
             Console.WriteLine("Bienvenido " + " "+funcionario.getNombre()+" " + funcionario.getApellido() + "\nSelecciona una opcion:\n");
-=======
             string nombreUp = funcionario.getNombre().ToUpper();
             string apellidoUp = funcionario.getApellido().ToUpper();
             Console.WriteLine("Bienvenido " + nombreUp + " "  + apellidoUp + " \nSelecciona una opcion:\n");
->>>>>>> origin/master
+
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
@@ -393,12 +410,12 @@ namespace ProyectoHospital01
 
         public void IngresarDatos(int selec)
         {
+            char sexoChar;
 
-            
             Console.WriteLine("Inserte Cedula");
             string id = Console.ReadLine();
 
-            Console.WriteLine("Inserte Nombre");
+            Console.WriteLine("Inserte Primer Nombre");
             string nombre = Console.ReadLine();
 
             Console.WriteLine("Inserte Apellido");
@@ -411,17 +428,27 @@ namespace ProyectoHospital01
             string telefono = Console.ReadLine();
 
             Console.WriteLine("Inserte sexo (m/f)");
-            string sexo = Console.ReadLine();
+            //do
+            //{
+                string sexo = Console.ReadLine();
+                sexoChar = Convert.ToChar(sexo.ToUpper() );
+            //} while (sexoChar != 'M' || sexoChar != 'F');
 
-            Console.WriteLine("Inserte Edad");
+
+            Console.WriteLine("Inserte Edad en años");
             string edad = Console.ReadLine();
+            int edadInt = Convert.ToInt32(edad);
+            do
+            {
+                validarEDAD(edadInt);
+            } while (validarEDAD(edadInt) == false);
 
             Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAAA]");
             string fechaNac = Console.ReadLine();
 
             DateTime fecha = DateTime.Parse(fechaNac);
-            char sexoChar = Convert.ToChar(sexo);
-            int edadInt = Convert.ToInt32(edad);
+
+
 
             switch (selec)
             {
@@ -434,7 +461,7 @@ namespace ProyectoHospital01
                     break;
 
                 case 2:
-                    rol = "paciente";                    
+                    rol = "paciente";
                     clsPaciente paciente = new clsPaciente(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha);
                     MenuPaciente(paciente);
                     break;
@@ -442,18 +469,59 @@ namespace ProyectoHospital01
                 case 3:
                     rol = "funcionario";
                     string oficina = "";
-                    clsFuncionario funcionario = new clsFuncionario( id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
+                    clsFuncionario funcionario = new clsFuncionario(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
                     MenuFuncionario(funcionario);
                     break;
-                
-                        
+
+
             }
-            
+
             Console.ReadKey();
         }
+
+
+
+
+
+
+
+
+
+           public static bool validarEDAD(int line)
+            {
+                bool b;
+
+                  try
+                    {
+                        if (line <= 0 | line > 120)
+                        {
+                            Console.WriteLine("\nERROR!\n Edad no valida...");
+                            Console.ReadKey();
+                            b = false;
+                        }
+                        b = true;
+
+                    }
+                    catch (System.FormatException)
+                    {
+                        b = false;
+                        Console.WriteLine("\nERROR!\nIngrese la edad en numeros...!!");
+
+                    }
+                    Console.ReadKey();
+            // Console.Clear();
+            return b;
+            }
+
+
+
+
+
+
+    }
 
           
 
 
-    }
+
 }
