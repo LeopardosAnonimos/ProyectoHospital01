@@ -50,12 +50,10 @@ namespace ProyectoHospital01
         //}
 
 
->>>>>>> origin/master
         public int LectorOpciones()
         {
             String abc = Console.ReadLine();
             if (abc.Length > 0)
-<<<<<<< HEAD
             {
                 int opc = Convert.ToInt16(abc);
                 return opc;
@@ -66,78 +64,21 @@ namespace ProyectoHospital01
         }
        
 
-
-        /*public int LectorOpciones()
-        {
-
-            String abc = Console.ReadLine();
-
-            if (abc.Length > 0)
-            {
-
-                int opc = Convert.ToInt32(abc);
-
-                if (opc > 0 && opc <= 9)
-                {
-                    return opc;
-                }
-                else
-                {
-                    Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
-
-                }
-
-            }
-
-        }
-            catch (System.FormatException)
-            {
-                Console.WriteLine("Se ha ingresado un valor no valido: " + abc + "\nIngrese el valor correcto: ");
-                return 0;
-
-
-                int opc = Convert.ToInt16(abc);
-                return opc;
-
-=======
-            {
-                int opc = Convert.ToInt16(abc);
-                return opc;
->>>>>>> origin/master
-            }
-
-            Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
-            return 0;
-        }*/
-
-
-
+        
         public void MenuBienvenida()
         {
             Console.Clear();
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
-                                "1.Ingresar al sisema \n" +
+                                "1.Ingresar al sistema \n" +
                                 "2.Para Salir\n");
-<<<<<<< HEAD
 
                  //do
                     // {
                            // selec = LectorOpciones();
                     // } while (selec == 0);
 
-=======
->>>>>>> origin/master
-
-            
-
             selec = LectorOpciones();
 
-
-<<<<<<< HEAD
-            Console.Clear();
-
-=======
->>>>>>> origin/master
             do
             {
                 if (selec == 1)
@@ -313,18 +254,9 @@ namespace ProyectoHospital01
 
         public void MenuMedico(clsMedico medico)
         {
-<<<<<<< HEAD
+         
+            //  Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
 
-
-          //  Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
-
-
-
-=======
-
-          //  Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
-
->>>>>>> origin/master
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
             Console.Clear();
@@ -333,10 +265,6 @@ namespace ProyectoHospital01
                                 "2. Informacion Pacientes\n" +
                                 "3. Crear nueva historia clinica\n" +
                                 "4. Salir\n\n\t=>");
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 
 
             selec = LectorOpciones();
@@ -627,10 +555,7 @@ namespace ProyectoHospital01
 
                     string oficina = " ";
                     clsFuncionario funcionario = new clsFuncionario(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
                     MenuFuncionario(funcionario);
                     break;
                 
