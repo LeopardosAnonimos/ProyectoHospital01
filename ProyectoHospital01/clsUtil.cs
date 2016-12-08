@@ -20,6 +20,7 @@ namespace ProyectoHospital01
             try
             {
                 int opc = Convert.ToInt32(abc);
+
                 if (opc > 0 & opc <= 9)
                 {
                     return opc;
@@ -48,11 +49,10 @@ namespace ProyectoHospital01
             Console.WriteLine("\tBienvenido al HOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
-
-            selec = LectorOpciones();
-            
-            
-
+            do
+            {
+                selec = LectorOpciones();
+            } while (selec == 0);
 
             Console.Clear();
             do
