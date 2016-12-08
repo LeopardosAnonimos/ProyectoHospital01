@@ -12,13 +12,29 @@ namespace ProyectoHospital01
         public int selec;
         private DateTime fecha = new DateTime();
 
-
         public int LectorOpciones()
         {
             String abc = Console.ReadLine();
-            if(abc.Length > 0)
+            if (abc.Length > 0)
             {
-<<<<<<< HEAD
+                int opc = Convert.ToInt16(abc);
+                return opc;
+            }
+
+            Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
+            return 0;
+        }
+       
+
+
+        /*public int LectorOpciones()
+        {
+
+            String abc = Console.ReadLine();
+
+            if (abc.Length > 0)
+            {
+
                 int opc = Convert.ToInt32(abc);
 
                 if (opc > 0 && opc <= 9)
@@ -28,24 +44,26 @@ namespace ProyectoHospital01
                 else
                 {
                     Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
-         
+
                 }
 
             }
+
+        }
             catch (System.FormatException)
             {
                 Console.WriteLine("Se ha ingresado un valor no valido: " + abc + "\nIngrese el valor correcto: ");
                 return 0;
 
-=======
+
                 int opc = Convert.ToInt16(abc);
                 return opc;
->>>>>>> origin/master
+
             }
 
             Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
             return 0;
-        }
+        }*/
 
 
         public void MenuBienvenida()
@@ -53,19 +71,19 @@ namespace ProyectoHospital01
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
-<<<<<<< HEAD
-                 do
-                     {
-                            selec = LectorOpciones();
-                     } while (selec == 0);
-=======
+
+                 //do
+                    // {
+                           // selec = LectorOpciones();
+                    // } while (selec == 0);
+
 
 
             selec = LectorOpciones();
 
 
             Console.Clear();
->>>>>>> origin/master
+
             do
             {
                 if (selec == 1)
@@ -241,24 +259,20 @@ namespace ProyectoHospital01
 
         public void MenuMedico(clsMedico medico)
         {
-<<<<<<< HEAD
+
 
           //  Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
 
-=======
->>>>>>> origin/master
+
+
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
             Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
-<<<<<<< HEAD
-                                "3. Consultar Rol de Pago\n" +
-                                "4. Salir\n");
-=======
                                 "3. Crear nueva historia clinica\n" +
                                 "4. Salir\n\n\t=>");
->>>>>>> origin/master
+
 
 
             selec = LectorOpciones();
@@ -283,6 +297,8 @@ namespace ProyectoHospital01
                     case 3:
                         {
                             MenuInsertarHistoria();
+                            Console.Clear();
+                            
                             break;
                         }
                     case 4:
@@ -530,13 +546,9 @@ namespace ProyectoHospital01
 
                 case 3:
                     rol = "funcionario";
-<<<<<<< HEAD
+
                     string oficina = " ";
                     clsFuncionario funcionario = new clsFuncionario(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
-=======
-                    string oficina = "";
-                    clsFuncionario funcionario = new clsFuncionario( id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
->>>>>>> origin/master
                     MenuFuncionario(funcionario);
                     break;
                 
