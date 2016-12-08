@@ -196,8 +196,13 @@ namespace ProyectoHospital01
         {
             string nombreUp = paciente.getNombre().ToUpper();
             string apellidoUp = paciente.getApellido().ToUpper();
+<<<<<<< HEAD
             Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
 
+=======
+            Console.Clear();
+            Console.WriteLine("Bienvenido " + nombreUp + " "+ apellidoUp + " \nSelecciona una opcion:\n");
+>>>>>>> origin/master
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Historia Clinica\n" +
                                 "3. Consulta algo...\n" +
