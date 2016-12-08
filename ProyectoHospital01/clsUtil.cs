@@ -47,10 +47,8 @@ namespace ProyectoHospital01
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
 
-            do
-            {
-                selec = LectorOpciones();
-            } while (selec == 0);
+            selec = LectorOpciones();
+            
             
 
 
@@ -232,11 +230,32 @@ namespace ProyectoHospital01
             Console.WriteLine("Las observaciones generales son: " + historia.getObsGenerales());
             Console.WriteLine("Los sintomas son: " + historia.getSintomas());
             Console.WriteLine("La temperatura fue: " + historia.getTemperatura());
+
+            Console.WriteLine("\n\nPresione: \n 1. Regresar al menu\n 2. Salir\n");
+            selec = LectorOpciones();
+            do
+            {
+                if (selec == 1)
+                {
+                    Console.Clear();
+                    MenuPaciente(paciente);
+                }
+
+                else if (selec == 2)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n\tFIN");
+                    Console.ReadKey();
+                    { }
+                    System.Console.Out.Close();
+                }
+                Console.WriteLine("Opcion no valida!");
+                Console.ReadKey();
+            } while (selec != 2);
+
         }
 
-            Console.WriteLine("Para regresar pulse 1: ");
-            selec = LectorOpciones();
-            MenuPaciente(paciente);
+
 
 
 
@@ -356,18 +375,14 @@ namespace ProyectoHospital01
         public void MenuFuncionario(clsFuncionario funcionario)
         {
 
-            Console.WriteLine("Bienvenido " + " "+funcionario.getNombre()+" " + funcionario.getApellido() + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido " + " " + funcionario.getNombre() + " " + funcionario.getApellido() + "\nSelecciona una opcion:\n");
 
 
             string nombreUp = funcionario.getNombre().ToUpper();
             string apellidoUp = funcionario.getApellido().ToUpper();
 
-
-            string nombreUp = funcionario.getNombre().ToUpper();
-            string apellidoUp = funcionario.getApellido().ToUpper();
             Console.WriteLine("Bienvenido " + nombreUp + " "  + apellidoUp + " \nSelecciona una opcion:\n");
-
-
+            
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
@@ -444,7 +459,7 @@ namespace ProyectoHospital01
             Console.WriteLine("Inserte su primer nombre: ");
 
             Console.WriteLine("Inserte Cedula");
-            string id = Console.ReadLine();
+            id = Console.ReadLine();
 
             Console.WriteLine("Inserte Primer Nombre");
 
@@ -462,15 +477,7 @@ namespace ProyectoHospital01
 
             Console.WriteLine("Inserte sexo [M/F]: ");
             string sexo = Console.ReadLine();
-
-            Console.WriteLine("Inserte su edad en años: ");
-
-            Console.WriteLine("Inserte sexo (m/f)");
-            //do
-            //{
-              //  string sexo = Console.ReadLine();
-               // sexoChar = Convert.ToChar(sexo.ToUpper() );
-            //} while (sexoChar != 'M' || sexoChar != 'F');
+            sexoChar = Convert.ToChar(sexo);
 
 
             Console.WriteLine("Inserte Edad en años");
@@ -517,11 +524,6 @@ namespace ProyectoHospital01
 
             Console.ReadKey();
         }
-
-
-
-
-
 
 
 
