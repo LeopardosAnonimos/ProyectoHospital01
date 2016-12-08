@@ -161,12 +161,10 @@ namespace ProyectoHospital01
 
 
 
-
-
         public void MenuPaciente(clsPaciente paciente)
         {
            // string nombreUp = paciente.getNombre().ToUpper();
-            //string apellidoUp = paciente.getApellido().ToUpper();
+           //string apellidoUp = paciente.getApellido().ToUpper();
            // Console.WriteLine("Bienvenido " + nombreUp + " "+ apellidoUp + " \nSelecciona una opcion:\n");
             Console.Clear();
             Console.WriteLine("Bienvenido\n" + paciente.getNombre() + "  " + paciente.getApellido() + "\nSelecciona una opcion:\n");
@@ -459,10 +457,6 @@ namespace ProyectoHospital01
             Console.WriteLine("\tIngrese los datos requeridos para la creación de su perfil:\n");
             Console.WriteLine("Inserte su número de cédula o identidad: ");
             string id = Console.ReadLine();
-
-       
-            Console.WriteLine("Inserte Cedula");
-            id = Console.ReadLine();
 
             Console.WriteLine("Inserte Primer Nombre");
 
