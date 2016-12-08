@@ -19,7 +19,13 @@ namespace ProyectoHospital01
         private string altura;
         private string diagnostico;
         private string concluMedicas;
-       
+        private string estado;
+
+
+        public string getEstado()
+        {
+            return estado;
+        }
 
         public string getPeso()
         {
@@ -62,33 +68,29 @@ namespace ProyectoHospital01
         }
 
 
-        public bool insertarHistClinica(string id, string obsGenerales, string sintomas, decimal peso, decimal temperatura, decimal altura, string diagnostico, string concluMedicas)
+        public bool insertarHistClinica(string id, string obsGenerales, string sintomas, string peso, string temperatura, string altura, string diagnostico, string concluMedicas, string estado)
         {
-            string no_Histcl = DateTime.Now.ToString("ddMMyyyy-HHmmss");
+            string no_HistCl = DateTime.Now.ToString("ddMMyyyy-HHmmss");
             string path = pathHistoria(id, no_HistCl);
-            string pesoString = Convert.ToString(peso);
-            string temperaturaString = Convert.ToString(temperatura);
-            string alturaString = Convert.ToString(altura);
 
-
+           
             if (existe(path))
             {
-                Console.WriteLine("La historia clinica ya existe " + no_Histcl);
+                Console.WriteLine("La historia clinica ya existe " + no_HistCl);
                 Console.WriteLine("En la carpeta " + path);
                 Console.ReadKey();
                 return false;
             }
 
-
-            crearArchivo(no_Histcl, "#HistoriaClinica", path);
+            crearArchivo(no_HistCl, "#HistoriaClinica", path);
             crearArchivo(obsGenerales, "Observaciones Generales", path);
             crearArchivo(sintomas, "Sintomas", path);
-            crearArchivo(pesoString, "Peso", path);
-            crearArchivo(temperaturaString, "Temperatura", path);
-            crearArchivo(alturaString, "Altura", path);
+            crearArchivo(peso, "Peso", path);
+            crearArchivo(temperatura, "Temperatura", path);
+            crearArchivo(altura, "Altura", path);
             crearArchivo(diagnostico, "Diagnostico", path);
             crearArchivo(concluMedicas, "Concluciones Medicas", path);
-
+            crearArchivo(estado, "Estado", path);
             return true;
         }
 
@@ -108,7 +110,7 @@ namespace ProyectoHospital01
             this.temperatura = base.obtenerArchivo(dirHistoria + "\\Temperatura.txt");
             this.concluMedicas = base.obtenerArchivo(dirHistoria + "\\Concluciones Medicas.txt");
             this.diagnostico = base.obtenerArchivo(dirHistoria + "\\Diagnostico.txt");
-
+            this.estado = base.obtenerArchivo(dirHistoria + "\\Estado.txt");
             return true;
         }
 

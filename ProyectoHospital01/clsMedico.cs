@@ -8,46 +8,26 @@ namespace ProyectoHospital01
 {
     class clsMedico:clsPersona
     {
-        private String especialidad { get; set; }
+        private String especialidad;
         
-        // Cambiar String a string
-        public clsMedico(String id, String rol, String nombre, String apellido, String especialidad, String direccion, String telefono, char sexo, int edad, DateTime fechNac)
+        
+        public clsMedico(string id, string rol, string nombre, string apellido, string especialidad, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
             :base()
         {
             base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac);
             base.getDb().actualizarPersona(id, "especialidad", especialidad);
-        }
-
-        public clsMedico()
-        {
-
-            
-        }
-
-
-        public void buscar(string id)
-        {
             base.buscar(id);
-            this.especialidad =  base.getDb().obtenerDatoPersona(id, "especialidad"); 
         }
 
-        public void Atender(clsPaciente p)
+        public String getEspecialidad()
         {
-         //   p.setEstadoPac(p.getEstado);
+            return this.especialidad;
         }
 
-        /*
-        public clsMedico(String nombre, String apellido, String direccion, String id, String telefono, char sexo, int edad,
-            DateTime fechNac, String pswd)
-            : base(nombre, apellido, direccion, id, telefono, sexo, edad, fechNac, pswd)
-        {
-        }
+        public clsMedico() { }
 
-        public clsMedico(String nombre, String apellido, String telefono, String especialidad)
-            : base(nombre, apellido, telefono)
-        {
-            this.especialidad = especialidad;
-        }
-        */
+        
+             
+       
     }
 }
