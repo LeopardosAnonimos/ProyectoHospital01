@@ -27,15 +27,13 @@ namespace ProyectoHospital01
                 else
                 {
                     Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
-                    LectorOpciones();
-
                 }
 
             }
             catch (System.FormatException)
             {
                 Console.WriteLine("Se ha ingresado un valor no valido: " + abc + "\nIngrese el valor correcto: ");
-                LectorOpciones();
+                return 0;
             }
 
             return 0;
@@ -48,8 +46,11 @@ namespace ProyectoHospital01
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
 
-
-            selec = LectorOpciones();
+            do
+            {
+                selec = LectorOpciones();
+            } while (selec == 0);
+            
 
 
             Console.Clear();
@@ -181,7 +182,7 @@ namespace ProyectoHospital01
                 {
                     case 1:
                         {
-                            
+                            //Falta funcion listar cita
                             break;
                         }
                     case 2:
@@ -210,6 +211,9 @@ namespace ProyectoHospital01
             } while (selec != 4);
         }
 
+
+
+
         public void MenuPacienteConsultarHistoria( string id)
         {
             //Console.WriteLine("Sus hisorias clinicas son: ");
@@ -227,13 +231,13 @@ namespace ProyectoHospital01
             Console.WriteLine("Las observaciones generales son: " + historia.getObsGenerales());
             Console.WriteLine("Los sintomas son: " + historia.getSintomas());
             Console.WriteLine("La temperatura fue: " + historia.getTemperatura());
+        }
 
             Console.WriteLine("Para regresar pulse 1: ");
             selec = LectorOpciones();
             MenuPaciente(paciente);
 
 
-        }
 
 
         public void MenuMedico(clsMedico medico)
