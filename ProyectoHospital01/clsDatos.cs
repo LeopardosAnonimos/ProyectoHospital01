@@ -11,7 +11,6 @@ namespace ProyectoHospital01
     {
         private string pathHospital =  @"c:\hospital";
         private string pathPersonas = @"c:\hospital\personas";
-        private    string pathPacientes = @"c:\hospital\pacientes";
         private string currentPath = String.Empty;
 
         public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fecha)
@@ -29,9 +28,7 @@ namespace ProyectoHospital01
                 Console.ReadKey();
                 return false;
             }
-
-            // Crear nombre.txt;
-            // Crear apellido.txt, etc..
+            
             crearArchivo(id, "cedula", path);
             crearArchivo(name, "nombre", path);
             crearArchivo(apellido, "apellido", path);
@@ -87,7 +84,6 @@ namespace ProyectoHospital01
                 {
                     // Read the stream to a string, and write the string to the console.
                     String line = sr.ReadToEnd();
-                    // Console.WriteLine(line);
                     return line;
                 }
             }
@@ -125,7 +121,7 @@ namespace ProyectoHospital01
             pathString = System.IO.Path.Combine(pathString, fileName);
 
             // Verify the path that you have constructed.
-            Console.WriteLine("Ruta a crear: {0}\n", pathString);
+            // Console.WriteLine("Ruta a crear: {0}\n", pathString); no borrar este comentario
 
        
             if (!System.IO.File.Exists(pathString))
@@ -138,8 +134,8 @@ namespace ProyectoHospital01
                 return;
             }
 
-            Console.WriteLine("archivo creado {0}", filename);
-            
+            // Console.WriteLine("archivo creado {0}", filename); no borrar este comentario
+
         }
 
         public bool insertarContendido(string content, string path)
