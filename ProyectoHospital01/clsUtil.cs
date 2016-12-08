@@ -65,6 +65,7 @@ namespace ProyectoHospital01
 
         public void MenuBienvenida()
         {
+            Console.Clear();
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
@@ -73,8 +74,6 @@ namespace ProyectoHospital01
 
             selec = LectorOpciones();
 
-
-            Console.Clear();
 
             do
             {
@@ -149,7 +148,7 @@ namespace ProyectoHospital01
                                 break;
 
                             case 3:
-
+                                Console.Clear();
                                 Console.WriteLine("\n\t\t\t\t\t==FIN==");
                                 //Console.ReadKey();
                                 { }
@@ -165,9 +164,9 @@ namespace ProyectoHospital01
                 }
                 else if (selec == 2)
                 {
-                    Console.WriteLine("\n\n\tFIN");
-                    { }
-                    System.Console.Out.Close();
+                    Console.Clear();
+                    Console.WriteLine("\n\t\t\t\t\t==FIN==");
+                    { } System.Console.Out.Close();
                 }
 
             } while (selec != 2);
@@ -214,7 +213,6 @@ namespace ProyectoHospital01
                         }
                     case 4:
                         {
-                            Console.Clear();
                             MenuBienvenida();
                             break;
                         }
@@ -257,6 +255,7 @@ namespace ProyectoHospital01
 
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
+            Console.Clear();
             Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
@@ -290,7 +289,6 @@ namespace ProyectoHospital01
                         }
                     case 4:
                         {
-                            Console.Clear();
                             MenuBienvenida();
                             break;
                         }
@@ -307,39 +305,48 @@ namespace ProyectoHospital01
 
        public void MenuElegirPaciente()
         {
-           
-           
                 Console.WriteLine("\nIngrese el numero de cedula del paciente al que desee acceder");
                 string id = Console.ReadLine();
                 clsListar.obtenerHistorias(id);
                 MenuElegirHistoria(id);
                 Console.ReadKey();
-                                   
-            
         }
 
        
 
         public void MenuElegirHistoria(string id)
         {
-            Console.WriteLine("Desea: 1 Editar los datos de una historia clinica | 2 Consultar una Historia Clinica");
+            Console.WriteLine("Desea: \n1. Editar los datos de una historia clinica" +
+                                "\n2. Consultar una Historia Clinica");
             selec = LectorOpciones();
             clsHistClinica historia = new clsHistClinica();
             Console.WriteLine("Ingrese el numero de historia clinica al que desee acceder");
+            //Lista de historias clinicas existentes...
             string no_HistCl = Console.ReadLine();
             historia.buscar(id, no_HistCl);
 
             if (selec == 1)
             {
 
-                               
-                Console.WriteLine("Ingrese el numero del campo que desee modificar: 1 Estatura || 2 Peso || 3 Concluciones Medicas || 4 Diagnostico || 5 Obsevaciones Generales || 6 Sintomas || 7 Temperatura || 8 Estado  ");
+                Console.WriteLine("Ingrese el numero del campo que desee modificar:" +
+                                  "\n1. Estatura" + 
+                                  "\n2. Peso" +
+                                  "\n3. Concluciones Medicas" +
+                                  "\n4. Diagnostico" +
+                                  "\n5. Obsevaciones Generales" +
+                                  "\n6. Sintomas" +
+                                  "\n7. Temperatura" +
+                                  "\n8. Estado ");
                 selec = LectorOpciones();
                 Console.WriteLine("Ingrese el texto que desea agregar");
                 string cambioArchivo = Console.ReadLine();
                 string[] opciones = { "", "Altura", "Peso", "Concluciones Medicas", "Diagnostico", "Observaciones Generales", "Sintomas", "Temperatura", "Estado" };
                 string campo = opciones[selec];
                 historia.actualizar(campo, cambioArchivo);
+
+                Console.WriteLine("\n\nEl campo " + campo + " ha sido modificado correctamente!");
+                Console.ReadKey();
+
             }
             else
             {
@@ -358,39 +365,43 @@ namespace ProyectoHospital01
                                
         }
 
+
+
+
         public void MenuInsertarHistoria()
         {
-            Console.WriteLine("\nIngrese el numero de cedula del paciente al que desee acceder");
+            Console.WriteLine("\n\nIngrese el numero de cedula del paciente al que desee acceder");
             string id = Console.ReadLine();
             
             clsHistClinica historia = new clsHistClinica();
             
-            Console.WriteLine("\nInserte las observacones generales");
+            Console.WriteLine("\n\nInserte las observacones generales");
             string obs = Console.ReadLine();
 
-            Console.WriteLine("\nInserte los sintomas");
+            Console.WriteLine("\n\nInserte los sintomas");
             string sintomas = Console.ReadLine();
 
-            Console.WriteLine("\nInserte el peso");
+            Console.WriteLine("\n\nInserte el peso");
             string peso = Console.ReadLine();
 
-            Console.WriteLine("\nInserte la temperatura del paciente");
+            Console.WriteLine("\n\nInserte la temperatura del paciente");
             string temperatura = Console.ReadLine();
 
-            Console.WriteLine("\nInserte la altura paciente");
+            Console.WriteLine("\n\nInserte la altura paciente");
             string altura = Console.ReadLine();
 
-            Console.WriteLine("\nInserte el diagnostico");
+            Console.WriteLine("\n\nInserte el diagnostico");
             string diagnostico = Console.ReadLine();
 
-            Console.WriteLine("\nInserte las conclusiones medicas");
+            Console.WriteLine("\n\nInserte las conclusiones medicas");
             string concluMedicas = Console.ReadLine();
 
-            Console.WriteLine("\nInserte el estado del paciente, puede ser: Enfermo || En Tratamiento || Curado || Fallecido");
+            Console.WriteLine("\n\nInserte el estado del paciente, puede ser: Enfermo || En Tratamiento || Curado || Fallecido");
             string estado = Console.ReadLine();
 
             historia.insertarHistClinica(id, obs, sintomas, peso, temperatura,altura, diagnostico, concluMedicas, estado);
-                
+            Console.WriteLine("\n\t Los datos de la Historia clinica han sido ingresados correctamente!");
+
         }
 
 
@@ -400,6 +411,7 @@ namespace ProyectoHospital01
         {
             string nombreUp = funcionario.getNombre().ToUpper();
             string apellidoUp = funcionario.getApellido().ToUpper();
+            Console.Clear();
             Console.WriteLine("Bienvenido " + nombreUp + " "  + apellidoUp + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
