@@ -142,7 +142,7 @@ namespace ProyectoHospital01
 
         public void MenuPaciente(clsPaciente paciente)
         {
-            Console.WriteLine("Bienvenido" + paciente.getNombre() + paciente.getApellido() + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido\n" + paciente.getNombre() + "  " + paciente.getApellido() + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Concluciones Medicas\n" +
                                 "3. Consultar ..........\n" +
