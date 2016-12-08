@@ -243,11 +243,9 @@ namespace ProyectoHospital01
 
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
-<<<<<<< HEAD
-  
-=======
+
             Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
->>>>>>> origin/master
+
 
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
@@ -354,16 +352,16 @@ namespace ProyectoHospital01
         {
 
             Console.WriteLine("Bienvenido " + " "+funcionario.getNombre()+" " + funcionario.getApellido() + "\nSelecciona una opcion:\n");
-<<<<<<< HEAD
+
 
             string nombreUp = funcionario.getNombre().ToUpper();
             string apellidoUp = funcionario.getApellido().ToUpper();
 
-=======
+
             string nombreUp = funcionario.getNombre().ToUpper();
             string apellidoUp = funcionario.getApellido().ToUpper();
             Console.WriteLine("Bienvenido " + nombreUp + " "  + apellidoUp + " \nSelecciona una opcion:\n");
->>>>>>> origin/master
+
 
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
@@ -433,18 +431,18 @@ namespace ProyectoHospital01
         {
             char sexoChar;
 
-<<<<<<< HEAD
+
             Console.WriteLine("\tIngrese los datos requeridos para la creación de su perfil:\n");
             Console.WriteLine("Inserte su número de cédula o identidad: ");
             string id = Console.ReadLine();
 
             Console.WriteLine("Inserte su primer nombre: ");
-=======
+
             Console.WriteLine("Inserte Cedula");
             string id = Console.ReadLine();
 
             Console.WriteLine("Inserte Primer Nombre");
->>>>>>> origin/master
+
             string nombre = Console.ReadLine();
 
             Console.WriteLine("Inserte su primer apellido: ");
@@ -456,22 +454,22 @@ namespace ProyectoHospital01
             Console.WriteLine("Inserte su teléfono ó numero de contacto: ");
             string telefono = Console.ReadLine();
 
-<<<<<<< HEAD
+
             Console.WriteLine("Inserte sexo [M/F]: ");
             string sexo = Console.ReadLine();
 
             Console.WriteLine("Inserte su edad en años: ");
-=======
+
             Console.WriteLine("Inserte sexo (m/f)");
             //do
             //{
-                string sexo = Console.ReadLine();
-                sexoChar = Convert.ToChar(sexo.ToUpper() );
+              //  string sexo = Console.ReadLine();
+               // sexoChar = Convert.ToChar(sexo.ToUpper() );
             //} while (sexoChar != 'M' || sexoChar != 'F');
 
 
             Console.WriteLine("Inserte Edad en años");
->>>>>>> origin/master
+
             string edad = Console.ReadLine();
             int edadInt = Convert.ToInt32(edad);
             do
