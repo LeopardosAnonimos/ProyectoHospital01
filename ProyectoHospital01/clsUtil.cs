@@ -13,7 +13,7 @@ namespace ProyectoHospital01
         private DateTime fecha = new DateTime();
 
 
-        public int LectorOpciones()
+        public static int LectorOpciones()
         {
             String abc = Console.ReadLine();
 
@@ -38,6 +38,7 @@ namespace ProyectoHospital01
 
             return 0;
         }
+
 
 
         public void MenuBienvenida()
