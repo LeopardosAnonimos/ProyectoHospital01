@@ -12,8 +12,6 @@ namespace ProyectoHospital01
         public int selec;
         private DateTime fecha = new DateTime();
 
-<<<<<<< HEAD
-=======
 
         //public int LectorOpciones()
         //{
