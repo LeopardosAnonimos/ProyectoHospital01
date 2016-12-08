@@ -12,8 +12,6 @@ namespace ProyectoHospital01
         {
             clsUtil menus = new clsUtil();
             menus.MenuBienvenida ();
-            
-          
         }
     }
 }

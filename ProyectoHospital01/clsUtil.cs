@@ -13,13 +13,14 @@ namespace ProyectoHospital01
         private DateTime fecha = new DateTime();
 
 
-        public int LectorOpciones()
+        public static int LectorOpciones()
         {
             String abc = Console.ReadLine();
 
             try
             {
                 int opc = Convert.ToInt32(abc);
+
                 if (opc > 0 & opc <= 9)
                 {
                     return opc;
@@ -27,6 +28,7 @@ namespace ProyectoHospital01
                 else
                 {
                     Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
+                    //Console.Clear();
                 }
 
             }
@@ -39,18 +41,16 @@ namespace ProyectoHospital01
         }
 
 
+
         public void MenuBienvenida()
         {
             Console.WriteLine("\tBienvenido al HOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
-
             do
             {
                 selec = LectorOpciones();
             } while (selec == 0);
-            
-
 
             Console.Clear();
             do
@@ -227,12 +227,32 @@ namespace ProyectoHospital01
             Console.WriteLine("Los sintomas son: " + historia.getSintomas());
             Console.WriteLine("La temperatura fue: " + historia.getTemperatura());
 
-            Console.WriteLine("Para regresar pulse 1: ");
-            selec = LectorOpciones();
+            Console.WriteLine("\n\nPresione: \n 1. Regresar al menu\n 2. Salir\n");
+            selec = LectorOpciones(); 
             MenuPaciente(paciente);
+        
+            do
+            {
+                if (selec == 1)
+                {
+                    Console.Clear();
+                    MenuPaciente(paciente);
+                }
+
+                else if (selec == 2)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n\tFIN");
+                    Console.ReadKey();
+                    { }
+                    System.Console.Out.Close();
+                }
+                Console.WriteLine("Opcion no valida!");
+                Console.ReadKey();
+            } while (selec != 2);
         }
 
-
+        
 
 
         public void MenuMedico(clsMedico medico)
@@ -301,7 +321,6 @@ namespace ProyectoHospital01
                 MenuElegirHistoria(id);
                 Console.ReadKey();
                                    
-            
         }
 
        
@@ -385,14 +404,14 @@ namespace ProyectoHospital01
         public void MenuFuncionario(clsFuncionario funcionario)
         {
 
-            Console.WriteLine("Bienvenido " + " "+funcionario.getNombre()+" " + funcionario.getApellido() + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido " + " " + funcionario.getNombre() + " " + funcionario.getApellido() + "\nSelecciona una opcion:\n");
 
 
             string nombreUp = funcionario.getNombre().ToUpper();
             string apellidoUp = funcionario.getApellido().ToUpper();
             Console.WriteLine("Bienvenido " + nombreUp + " "  + apellidoUp + "\nSelecciona una opcion:\n");
 
-
+           
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
@@ -500,10 +519,7 @@ namespace ProyectoHospital01
 
 
             Console.WriteLine("Inserte sexo [M/F]: ");
-            string sexo = Console.ReadLine();
-
-
-               
+            string sexo = Console.ReadLine();               
 
             Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAAA]: ");
             string fechaNac = Console.ReadLine();
@@ -549,14 +565,7 @@ namespace ProyectoHospital01
         }
 
 
-
-
-
-
-
-
-     
-
+        
 
     }
 
