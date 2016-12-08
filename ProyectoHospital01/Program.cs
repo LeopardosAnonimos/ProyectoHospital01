@@ -13,6 +13,12 @@ namespace ProyectoHospital01
             clsUtil menus = new clsUtil();
             menus.MenuBienvenida ();
 
+
+
+
+
+
+            //AGREGO ESTA LINEA DE PRUEBA
         }
     }
 }
