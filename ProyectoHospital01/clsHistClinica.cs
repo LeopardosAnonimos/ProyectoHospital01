@@ -115,7 +115,6 @@ namespace ProyectoHospital01
         public bool actualizar(string campo, string contenido)
         {
             bool seInserto = insertarContendido(contenido, pathHistoriaCampo(campo));
-            // Se busca de nuevo para que se actualicen las variables con el nuevo contenido editado
             buscar(cedula, no_HistCl);
             return seInserto;
         }

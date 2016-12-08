@@ -32,7 +32,6 @@ namespace ProyectoHospital01
                 {
                     path = dir + "\\" + file;
 
-                    // Console.WriteLine(path);
                     if (System.IO.File.Exists(path))
                     {
                         string ci = datos.obtenerArchivo(dir + "\\cedula.txt");
