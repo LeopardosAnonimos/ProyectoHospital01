@@ -56,6 +56,7 @@ namespace ProyectoHospital01
         public static void obtenerHistorias(string id )
         {
             string pathHistorias = pathPersonas + "\\" + id + "\\historia" ;
+
             try
             {
                 datos = new clsDatos();
@@ -72,7 +73,6 @@ namespace ProyectoHospital01
                 }
 
                 Console.WriteLine("Existen " + i +  " Historias Clinicas en el registro.");
-              
             }
             catch (Exception e)
             {

@@ -17,26 +17,7 @@ namespace ProyectoHospital01
         }
 
 
-        public String setEstadoPac(int estado)
-        {
-            switch (estado)
-            {
-                case 1:
-                        this.estado = "Enfermo";
-                        return "Enfermo";   
-                case 2:
-                    this.estado = "En tratamiento";
-                        return this.estado;
-                case 3:
-                    this.estado = "Curado";
-                        return this.estado;
-                default:
-                    return null;
-            }
-            
-        }
-
-       
+          
 
         
         public clsPaciente(string id, string rol, string nombre, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
@@ -44,22 +25,17 @@ namespace ProyectoHospital01
         {
             base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac);
 
+            base.buscar(id);
+           
             clsHistClinica histClinica = new clsHistClinica();
-
-            histClinica.insertarHistClinica( id, "empty", "empty", 0 , 0 , 0 , "empty", "empty");
+            
+            histClinica.insertarHistClinica( id, "empty", "empty", " " , " " , " " , "empty", "empty", "empty");
         }
 
         public clsPaciente()
         {
         } 
-
-        public void buscar(string id)
-        {
-            base.buscar(id);
-            //this.historia = base.getDb().obtenerDatoPersona(id, historia);
-        }
-               
-       
+ 
        
     }
 }
