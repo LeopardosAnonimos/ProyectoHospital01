@@ -38,11 +38,13 @@ namespace ProyectoHospital01
                         string nombre = datos.obtenerArchivo(dir + "\\nombre.txt");
 
                         Console.WriteLine(ci + " - " + nombre);
+                     
                         i++;
                     }
                 }
 
-                Console.WriteLine("Existen " + i + " "+ rol +"s en el registro.");
+                Console.WriteLine("\nExisten " + i + " "+ rol +"s en el registro.");
+
             }
             catch (Exception e)
             {

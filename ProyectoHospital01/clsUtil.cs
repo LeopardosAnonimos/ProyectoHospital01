@@ -20,7 +20,8 @@ namespace ProyectoHospital01
             try
             {
                 int opc = Convert.ToInt32(abc);
-                if (opc > 0 & opc <= 9)
+
+                if (opc > 0 && opc <= 9)
                 {
                     return opc;
                 }
@@ -48,19 +49,20 @@ namespace ProyectoHospital01
             Console.WriteLine("\tBienvenido al HOSPITAL VALLE CEREZO\n" + "Presione:\n" +
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
-
-            selec = LectorOpciones();
-
-            Console.Clear();
+                 do
+                     {
+                            selec = LectorOpciones();
+                     } while (selec == 0);
             do
             {
                 if (selec == 1)
                 {
+                    Console.Clear();
                     Console.WriteLine("\nIngrese su numero de cedula...");
 
                     string id = Console.ReadLine();
                     clsPersona persona = new clsPersona();
-                    Console.Clear();
+                   // Console.Clear();
 
                     if (persona.buscar(id))
                     {
@@ -131,7 +133,10 @@ namespace ProyectoHospital01
 
                             case 3:
 
-                                Console.ReadKey();
+                                Console.WriteLine("\n\t\t\t\t\t==FIN==");
+                                //Console.ReadKey();
+                                { }
+                                System.Console.Out.Close();
                                 break;
 
                             default:
@@ -266,7 +271,7 @@ namespace ProyectoHospital01
         public void MenuMedico(clsMedico medico)
         {
 
-            Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
+          //  Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
 
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
@@ -277,10 +282,11 @@ namespace ProyectoHospital01
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
                                 "3. Consultar Rol de Pago\n" +
-                                "4. Salir\n\n\t=>");
+                                "4. Salir\n");
 
 
             selec = LectorOpciones();
+            Console.Clear();
            
             do
             {
@@ -323,7 +329,7 @@ namespace ProyectoHospital01
         {
            
            
-                Console.WriteLine("Ingrese el numero de cedula del paciente al que desee acceder");
+                Console.WriteLine("\nIngrese el numero de cedula del paciente al que desee acceder");
                 string id = Console.ReadLine();
                 clsListar.obtenerHistorias(id);
                 MenuElegirHistoria(id);
@@ -521,7 +527,7 @@ namespace ProyectoHospital01
 
                 case 3:
                     rol = "funcionario";
-                    string oficina = "";
+                    string oficina = " ";
                     clsFuncionario funcionario = new clsFuncionario(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
                     MenuFuncionario(funcionario);
                     break;
