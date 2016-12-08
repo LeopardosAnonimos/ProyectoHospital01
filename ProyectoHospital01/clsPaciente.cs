@@ -36,17 +36,17 @@ namespace ProyectoHospital01
             
         }
 
-        //string historia1 = historia.obtenerDatoHistClinica(" ","Conclusiones Medicas");
+       
 
-        // Cambiar String a string
-        public clsPaciente(String id, String rol, String nombre, String apellido, String direccion, String telefono, char sexo, int edad, DateTime fechNac)
+        
+        public clsPaciente(string id, string rol, string nombre, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
             :base()
         {
             base.crear(id, rol, nombre, apellido, direccion, telefono, sexo, edad, fechNac);
 
             clsHistClinica histClinica = new clsHistClinica();
 
-            histClinica.insertarHistClinica( id, "observaciones Generales", "Sintomas", 21 , 2555 , 2544 , "Diagnostico", "Concluciones");
+            histClinica.insertarHistClinica( id, "empty", "empty", 0 , 0 , 0 , "empty", "empty");
         }
 
         public clsPaciente()
@@ -58,9 +58,7 @@ namespace ProyectoHospital01
             base.buscar(id);
             //this.historia = base.getDb().obtenerDatoPersona(id, historia);
         }
-
-
-        
+               
 
        
     }
