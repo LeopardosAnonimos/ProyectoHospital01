@@ -29,7 +29,7 @@ namespace ProyectoHospital01
 
         public void MenuBienvenida()
         {
-            Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
+            Console.WriteLine("\tBienvenido al HOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
 
@@ -78,6 +78,7 @@ namespace ProyectoHospital01
                         Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)");
 
                         selec = LectorOpciones();
+                        Console.Clear();
 
 
                         switch (selec)
@@ -87,10 +88,13 @@ namespace ProyectoHospital01
                                 Console.WriteLine("Seleccione una opción:\n" +
                                 "1.MEDICO\n" +
                                 "2.PACIENTE\n" +
-                                "3.FUNCIONARIO\n\t==>");
+                                "3.FUNCIONARIO\n");
+
                                 do
                                 {
+                                    
                                     selec = LectorOpciones();
+                                    Console.Clear();
                                     if (selec == 1 || selec == 2 || selec == 3)
                                     {
                                         IngresarDatos(selec);
@@ -142,10 +146,10 @@ namespace ProyectoHospital01
 
         public void MenuPaciente(clsPaciente paciente)
         {
-            string nombreUp = paciente.getNombre().ToUpper();
-            string apellidoUp = paciente.getApellido().ToUpper();
-            Console.WriteLine("Bienvenido " + nombreUp + " "+ apellidoUp + " \nSelecciona una opcion:\n");
-
+           // string nombreUp = paciente.getNombre().ToUpper();
+            //string apellidoUp = paciente.getApellido().ToUpper();
+           // Console.WriteLine("Bienvenido " + nombreUp + " "+ apellidoUp + " \nSelecciona una opcion:\n");
+            Console.Clear();
             Console.WriteLine("Bienvenido\n" + paciente.getNombre() + "  " + paciente.getApellido() + "\nSelecciona una opcion:\n");
 
             Console.WriteLine("1. Listar Citas\n" +
@@ -155,6 +159,7 @@ namespace ProyectoHospital01
             do
             {
                 selec = LectorOpciones();
+                Console.Clear();
                 switch (selec)
                 {
                     case 1:
@@ -189,13 +194,14 @@ namespace ProyectoHospital01
 
         public void MenuPacienteConsultarHistoria( string id)
         {
-            Console.WriteLine("Sus hisorias clinicas son: ");
+            //Console.WriteLine("Sus hisorias clinicas son: ");
             clsListar.obtenerHistorias(id);
             clsHistClinica historia = new clsHistClinica();
+            clsPaciente paciente = new clsPaciente();
             Console.WriteLine("Ingrese el numero de historia clinica al que desee acceder");
             string no_HistCl = Console.ReadLine();
             historia.buscar(id, no_HistCl);
-            Console.WriteLine("En la historia clinica numero: " + historia.getNo_HistCl() + " existen los siguientes registros: ");
+            Console.WriteLine("En la historia clinica numero: " + no_HistCl + " existen los siguientes registros: ");
             Console.WriteLine("La altura es: " + historia.getAltura());
             Console.WriteLine("El peso es: " + historia.getPeso());
             Console.WriteLine("Las concluciones medicas son:" + historia.getConcluMedicas());
@@ -204,19 +210,23 @@ namespace ProyectoHospital01
             Console.WriteLine("Los sintomas son: " + historia.getSintomas());
             Console.WriteLine("La temperatura fue: " + historia.getTemperatura());
 
+            Console.WriteLine("Para regresar pulse 1: ");
+            selec = LectorOpciones();
+            MenuPaciente(paciente);
+
 
         }
 
 
         public void MenuMedico(clsMedico medico)
         {
-<<<<<<< HEAD
+
             Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
-=======
+
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
-            Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
->>>>>>> origin/master
+  
+
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
                                 "3. Consultar Rol de Pago\n" +
@@ -320,18 +330,18 @@ namespace ProyectoHospital01
 
         public void MenuFuncionario(clsFuncionario funcionario)
         {
-<<<<<<< HEAD
+
             Console.WriteLine("Bienvenido " + " "+funcionario.getNombre()+" " + funcionario.getApellido() + "\nSelecciona una opcion:\n");
-=======
+
             string nombreUp = funcionario.getNombre().ToUpper();
             string apellidoUp = funcionario.getApellido().ToUpper();
-            Console.WriteLine("Bienvenido " + nombreUp + " "  + apellidoUp + " \nSelecciona una opcion:\n");
->>>>>>> origin/master
+
+
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
                                 "4. Informacion(buscar) Medico\n" +
-                                "5. Salir\n\n\t=>");
+                                "5. Regresar\n\n\t=>");
 
 
             selec = LectorOpciones();
@@ -394,29 +404,29 @@ namespace ProyectoHospital01
         public void IngresarDatos(int selec)
         {
 
-            
-            Console.WriteLine("Inserte Cedula");
+            Console.WriteLine("\tIngrese los datos requeridos para la creación de su perfil:\n");
+            Console.WriteLine("Inserte su número de cédula o identidad: ");
             string id = Console.ReadLine();
 
-            Console.WriteLine("Inserte Nombre");
+            Console.WriteLine("Inserte su primer nombre: ");
             string nombre = Console.ReadLine();
 
-            Console.WriteLine("Inserte Apellido");
+            Console.WriteLine("Inserte su primer apellido: ");
             string apellido = Console.ReadLine();
 
-            Console.WriteLine("Inserte Direccion");
+            Console.WriteLine("Inserte la direccion actual de su domicilio: ");
             string direccion = Console.ReadLine();
 
-            Console.WriteLine("Inserte Telefono");
+            Console.WriteLine("Inserte su teléfono ó numero de contacto: ");
             string telefono = Console.ReadLine();
 
-            Console.WriteLine("Inserte sexo (m/f)");
+            Console.WriteLine("Inserte sexo [M/F]: ");
             string sexo = Console.ReadLine();
 
-            Console.WriteLine("Inserte Edad");
+            Console.WriteLine("Inserte su edad en años: ");
             string edad = Console.ReadLine();
 
-            Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAAA]");
+            Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAAA]: ");
             string fechaNac = Console.ReadLine();
 
             DateTime fecha = DateTime.Parse(fechaNac);
@@ -427,7 +437,7 @@ namespace ProyectoHospital01
             {
                 case 1:
                     string rol = "medico";
-                    Console.WriteLine("Ingrese su especialidad");
+                    Console.WriteLine("Ingrese su especialidad: ");
                     string especialidad = Console.ReadLine();
                     clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
                     MenuMedico(medico);
