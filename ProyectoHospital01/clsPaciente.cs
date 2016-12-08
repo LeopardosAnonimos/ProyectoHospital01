@@ -59,7 +59,7 @@ namespace ProyectoHospital01
             //this.historia = base.getDb().obtenerDatoPersona(id, historia);
         }
                
-
+       
        
     }
 }
