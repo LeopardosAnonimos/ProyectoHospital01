@@ -60,32 +60,7 @@ namespace ProyectoHospital01
         }
 
 
-        /*
-         * 
-         * No_HistC, medico, observaciones generales / síntomas, peso, temperatura, altura, diagnostico, conclusiones medicas (medicamentos).
-
-         * 
-         * 
-         * 
-        public clsHistClinica Historia 
-        {
-            get
-            {
-
-          
-
-                return historia;
-            }
-            set
-            {
-                historia = value;
-            }
-        }
-
-
-
-        private clsCita cita;
-        */
+        
 
        
     }

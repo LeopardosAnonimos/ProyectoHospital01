@@ -142,9 +142,11 @@ namespace ProyectoHospital01
 
         public void MenuPaciente(clsPaciente paciente)
         {
-            Console.WriteLine("Bienvenido" + paciente.getNombre() + paciente.getApellido() + "\nSelecciona una opcion:\n");
+            string nombreUp = paciente.getNombre().ToUpper();
+            string apellidoUp = paciente.getApellido().ToUpper();
+            Console.WriteLine("Bienvenido " + nombreUp + " "+ apellidoUp + " \nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
-                                "2. Consultar Concluciones Medicas\n" +
+                                "2. Consultar Historia Clinica\n" +
                                 "3. Consultar ..........\n" +
                                 "4. Salir al Menu Anterior\n\n\t=>");
             do
@@ -159,7 +161,7 @@ namespace ProyectoHospital01
                         }
                     case 2:
                         {
-                            //consultar HC.Concluciones
+                            MenuPacienteConsultarHistoria(paciente.getId());
                             break;
                         }
                     case 3:
@@ -182,12 +184,32 @@ namespace ProyectoHospital01
             } while (selec != 4);
         }
 
+        public void MenuPacienteConsultarHistoria( string id)
+        {
+            Console.WriteLine("Sus hisorias clinicas son: ");
+            clsListar.obtenerHistorias(id);
+            clsHistClinica historia = new clsHistClinica();
+            Console.WriteLine("Ingrese el numero de historia clinica al que desee acceder");
+            string no_HistCl = Console.ReadLine();
+            historia.buscar(id, no_HistCl);
+            Console.WriteLine("En la historia clinica numero: " + historia.getNo_HistCl() + " existen los siguientes registros: ");
+            Console.WriteLine("La altura es: " + historia.getAltura());
+            Console.WriteLine("El peso es: " + historia.getPeso());
+            Console.WriteLine("Las concluciones medicas son:" + historia.getConcluMedicas());
+            Console.WriteLine("El diagnostico es: " + historia.getDiagnostico());
+            Console.WriteLine("Las observaciones generales son: " + historia.getObsGenerales());
+            Console.WriteLine("Los sintomas son: " + historia.getSintomas());
+            Console.WriteLine("La temperatura fue: " + historia.getTemperatura());
 
+
+        }
 
 
         public void MenuMedico(clsMedico medico)
         {
-            Console.WriteLine("Bienvenido" + medico.getNombre() + medico.getApellido() + "\nSelecciona una opcion:\n");
+            string nombreUp = medico.getNombre().ToUpper();
+            string apellidoUp = medico.getApellido().ToUpper();
+            Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
                                 "3. Consultar Rol de Pago\n" +
@@ -250,7 +272,6 @@ namespace ProyectoHospital01
 
         public void MenuElegirHistoria(string id)
         {
-            // hacer if para editar o ver datos de la histcl
             Console.WriteLine("Desea: 1 Editar los datos de una historia clinica | 2 Mirar una hist cl");
             selec = LectorOpciones();
             clsHistClinica historia = new clsHistClinica();
@@ -273,8 +294,14 @@ namespace ProyectoHospital01
             else
             {
                 Console.WriteLine("En la historia clinica numero: " + historia.getNo_HistCl() + " existen los siguientes registros: ");
-                Console.WriteLine("La altura es" + historia.getAltura());
-                // poner los demas datos 
+                Console.WriteLine("La altura es: " + historia.getAltura());
+                Console.WriteLine("El peso es: " + historia.getPeso());
+                Console.WriteLine("Las concluciones medicas son:" + historia.getConcluMedicas());
+                Console.WriteLine("El diagnostico es: " + historia.getDiagnostico());
+                Console.WriteLine("Las observaciones generales son: " + historia.getObsGenerales());
+                Console.WriteLine("Los sintomas son: " + historia.getSintomas());
+                Console.WriteLine("La temperatura fue: " + historia.getAltura());
+                
 
             }
              
@@ -286,7 +313,9 @@ namespace ProyectoHospital01
 
         public void MenuFuncionario(clsFuncionario funcionario)
         {
-            Console.WriteLine("Bienvenido" + funcionario.getNombre() + funcionario.getApellido() + "\nSelecciona una opcion:\n");
+            string nombreUp = funcionario.getNombre().ToUpper();
+            string apellidoUp = funcionario.getApellido().ToUpper();
+            Console.WriteLine("Bienvenido " + nombreUp + " "  + apellidoUp + " \nSelecciona una opcion:\n");
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
@@ -408,9 +437,7 @@ namespace ProyectoHospital01
             Console.ReadKey();
         }
 
-
-
-      
+          
 
 
     }

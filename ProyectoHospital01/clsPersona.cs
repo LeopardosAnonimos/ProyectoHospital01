@@ -21,17 +21,14 @@ namespace ProyectoHospital01
 
         private clsDatos db;
 
-        protected string Id
+      public String getId()
         {
-            get
-            {
-                return id;
-            }
+            return this.id;
+        }
 
-            set
-            {
-                id = value;
-            }
+        public void setId(string id)
+        {
+            this.id = id;
         }
 
         public clsPersona()
