@@ -174,5 +174,8 @@ namespace ProyectoHospital01
         }
 
 
+
+   
+
     }
 }
