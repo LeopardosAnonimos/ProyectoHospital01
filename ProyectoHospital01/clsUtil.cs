@@ -13,34 +13,48 @@ namespace ProyectoHospital01
         private DateTime fecha = new DateTime();
 
 
+        //public int LectorOpciones()
+        //{
+        //    String abc = Console.ReadLine();
+        //    if(abc.Length > 0)
+        //    {
+
+        //        int opc = Convert.ToInt32(abc);
+
+        //        if (opc > 0 && opc <= 9)
+        //        {
+        //            return opc;
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
+
+        //        }
+
+        //    }
+        //    catch (System.FormatException)
+        //    {
+        //        Console.WriteLine("Se ha ingresado un valor no valido: " + abc + "\nIngrese el valor correcto: ");
+        //        return 0
+
+
+        //        int opc = Convert.ToInt16(abc);
+        //        return opc;
+
+        //    }
+
+        //    Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
+        //    return 0;
+        //}
+
+
         public int LectorOpciones()
         {
             String abc = Console.ReadLine();
-            if(abc.Length > 0)
+            if (abc.Length > 0)
             {
-<<<<<<< HEAD
-                int opc = Convert.ToInt32(abc);
-
-                if (opc > 0 && opc <= 9)
-                {
-                    return opc;
-                }
-                else
-                {
-                    Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
-         
-                }
-
-            }
-            catch (System.FormatException)
-            {
-                Console.WriteLine("Se ha ingresado un valor no valido: " + abc + "\nIngrese el valor correcto: ");
-                return 0;
-
-=======
                 int opc = Convert.ToInt16(abc);
                 return opc;
->>>>>>> origin/master
             }
 
             Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
@@ -48,24 +62,20 @@ namespace ProyectoHospital01
         }
 
 
+
         public void MenuBienvenida()
         {
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sisema \n" +
                                 "2.Para Salir\n");
-<<<<<<< HEAD
-                 do
-                     {
-                            selec = LectorOpciones();
-                     } while (selec == 0);
-=======
 
+            
 
             selec = LectorOpciones();
 
 
             Console.Clear();
->>>>>>> origin/master
+
             do
             {
                 if (selec == 1)
@@ -103,7 +113,7 @@ namespace ProyectoHospital01
                     }
                     else if (!persona.buscar(id))
                     {
-
+                        Console.Clear();
                         Console.WriteLine("El usuario no existe, desea crear uno nuevo? (1. SI || 2. NO || 3. SALIR)");
 
                         selec = LectorOpciones();
@@ -180,7 +190,7 @@ namespace ProyectoHospital01
 
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Historia Clinica\n" +
-                                "3. Consulta algo...\n" +
+                                "3. Editar datos Ingresados\n" +
                                 "4. Salir al Menu Anterior\n\n\t=>");
             do
             {
@@ -199,11 +209,12 @@ namespace ProyectoHospital01
                         }
                     case 3:
                         {
-                            //////
+                            // Funcion para sobreescribir los datos
                             break;
                         }
                     case 4:
                         {
+                            Console.Clear();
                             MenuBienvenida();
                             break;
                         }
@@ -241,24 +252,16 @@ namespace ProyectoHospital01
 
         public void MenuMedico(clsMedico medico)
         {
-<<<<<<< HEAD
 
           //  Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
 
-=======
->>>>>>> origin/master
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
             Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
-<<<<<<< HEAD
-                                "3. Consultar Rol de Pago\n" +
-                                "4. Salir\n");
-=======
                                 "3. Crear nueva historia clinica\n" +
                                 "4. Salir\n\n\t=>");
->>>>>>> origin/master
 
 
             selec = LectorOpciones();
@@ -287,6 +290,7 @@ namespace ProyectoHospital01
                         }
                     case 4:
                         {
+                            Console.Clear();
                             MenuBienvenida();
                             break;
                         }
@@ -356,33 +360,33 @@ namespace ProyectoHospital01
 
         public void MenuInsertarHistoria()
         {
-            Console.WriteLine("Ingrese el numero de cedula del paciente al que desee acceder");
+            Console.WriteLine("\nIngrese el numero de cedula del paciente al que desee acceder");
             string id = Console.ReadLine();
             
             clsHistClinica historia = new clsHistClinica();
             
-            Console.WriteLine("Inserte las observacones generales ");
+            Console.WriteLine("\nInserte las observacones generales");
             string obs = Console.ReadLine();
 
-            Console.WriteLine("Inserte los sintomas");
+            Console.WriteLine("\nInserte los sintomas");
             string sintomas = Console.ReadLine();
 
-            Console.WriteLine("Inserte el peso");
+            Console.WriteLine("\nInserte el peso");
             string peso = Console.ReadLine();
 
-            Console.WriteLine("Inserte la temperatura del paciente");
+            Console.WriteLine("\nInserte la temperatura del paciente");
             string temperatura = Console.ReadLine();
 
-            Console.WriteLine("Inserte la altura paciente");
+            Console.WriteLine("\nInserte la altura paciente");
             string altura = Console.ReadLine();
 
-            Console.WriteLine("Inserte el diagnostico");
+            Console.WriteLine("\nInserte el diagnostico");
             string diagnostico = Console.ReadLine();
 
-            Console.WriteLine("Inserte las conclusiones medicas");
+            Console.WriteLine("\nInserte las conclusiones medicas");
             string concluMedicas = Console.ReadLine();
 
-            Console.WriteLine("Inserte el estado del paciente, puede ser: Enfermo || En Tratamiento || Curado || Fallecido");
+            Console.WriteLine("\nInserte el estado del paciente, puede ser: Enfermo || En Tratamiento || Curado || Fallecido");
             string estado = Console.ReadLine();
 
             historia.insertarHistClinica(id, obs, sintomas, peso, temperatura,altura, diagnostico, concluMedicas, estado);
@@ -530,13 +534,10 @@ namespace ProyectoHospital01
 
                 case 3:
                     rol = "funcionario";
-<<<<<<< HEAD
+
                     string oficina = " ";
                     clsFuncionario funcionario = new clsFuncionario(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
-=======
-                    string oficina = "";
-                    clsFuncionario funcionario = new clsFuncionario( id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
->>>>>>> origin/master
+
                     MenuFuncionario(funcionario);
                     break;
                 
