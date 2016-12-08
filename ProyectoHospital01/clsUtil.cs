@@ -187,7 +187,7 @@ namespace ProyectoHospital01
 
         public void MenuMedico(clsMedico medico)
         {
-            Console.WriteLine("Bienvenido" + medico.getNombre() + medico.getApellido() + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
                                 "3. Consultar Rol de Pago\n" +
@@ -286,7 +286,7 @@ namespace ProyectoHospital01
 
         public void MenuFuncionario(clsFuncionario funcionario)
         {
-            Console.WriteLine("Bienvenido" + funcionario.getNombre() + funcionario.getApellido() + "\nSelecciona una opcion:\n");
+            Console.WriteLine("Bienvenido " + " "+funcionario.getNombre()+" " + funcionario.getApellido() + "\nSelecciona una opcion:\n");
             Console.WriteLine("1. Ingresar un nuevo Paciente\n" +
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
@@ -295,6 +295,7 @@ namespace ProyectoHospital01
 
 
             selec = LectorOpciones();
+            Console.Clear();
 
             do
             {
@@ -313,6 +314,9 @@ namespace ProyectoHospital01
                             
                             clsListar.obtener("paciente");
                             Console.ReadKey();
+                            Console.Clear();
+                            MenuFuncionario(funcionario);
+                            
                             break;
                         }
                     case 3:
