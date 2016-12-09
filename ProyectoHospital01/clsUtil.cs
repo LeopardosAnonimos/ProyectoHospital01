@@ -190,8 +190,8 @@ namespace ProyectoHospital01
                                 Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
                                 Console.WriteLine("Nombre: " + paciente.getNombre());
                                 Console.WriteLine("Apellido: " + paciente.getApellido());
-                                Console.WriteLine("Edad: " + paciente.getEdad());
-                                Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNac());
+                                Console.WriteLine("Edad: " + paciente.getEdadString());
+                                Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNacString());
                                 Console.WriteLine("Direccion: " + paciente.getDireccion());
                                 Console.WriteLine("Numero de Telefono: \n" + paciente.getTelefono());
                                 editarDatosPersona(paciente.getId());
@@ -202,8 +202,8 @@ namespace ProyectoHospital01
                                 Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
                                 Console.WriteLine("Nombre: " + paciente.getNombre());
                                 Console.WriteLine("Apellido: " + paciente.getApellido());
-                                Console.WriteLine("Edad: " + paciente.getEdad());
-                                Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNac());
+                                Console.WriteLine("Edad: " + paciente.getEdadString());
+                                Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNacString());
                                 Console.WriteLine("Direccion: " + paciente.getDireccion());
                                 Console.WriteLine("Numero de Telefono: " + paciente.getTelefono());
                                 Console.ReadKey();
@@ -289,7 +289,9 @@ namespace ProyectoHospital01
                 {
                     case 1:
                         {
-                            //F(x) listar citas
+                            medico.verCitas();
+                            Console.ReadKey();
+                            MenuMedico(medico);
                             break;
                         }
                     case 2:
@@ -318,9 +320,12 @@ namespace ProyectoHospital01
                                 Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
                                 Console.WriteLine("Nombre: " + medico.getNombre());
                                 Console.WriteLine("Apellido: " + medico.getApellido());
-                                Console.WriteLine("Especialidad: " + medico.getEspecialidad());
-                                Console.WriteLine("Edad: " + medico.getEdad());
-                                Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNac());
+                                clsDatos datos = new clsDatos();
+                                string especialidadMedico = datos.obtenerDatoPersona(medico.getId(), "especialidad");
+                                Console.WriteLine(especialidadMedico);
+                                Console.WriteLine("Especialidad: " + especialidadMedico);
+                                Console.WriteLine("Edad: " + medico.getEdadString());
+                                Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNacString());
                                 Console.WriteLine("Direccion: " + medico.getDireccion());
                                 Console.WriteLine("Numero de Telefono: " + medico.getTelefono());
                                 editarDatosPersona(medico.getId());
@@ -332,8 +337,8 @@ namespace ProyectoHospital01
                                 Console.WriteLine("Nombre: " + medico.getNombre());
                                 Console.WriteLine("Apellido: " + medico.getApellido());
                                 Console.WriteLine("Especialidad: " + medico.getEspecialidad());
-                                Console.WriteLine("Edad: " + medico.getEdad());
-                                Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNac());
+                                Console.WriteLine("Edad: " + medico.getEdadString());
+                                Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNacString());
                                 Console.WriteLine("Direccion: " + medico.getDireccion());
                                 Console.WriteLine("Numero de Telefono: " + medico.getTelefono());
                                 Console.ReadKey();
@@ -505,8 +510,8 @@ namespace ProyectoHospital01
                             paciente.buscar(id);
                             Console.WriteLine("Nombre: " + paciente.getNombre());
                             Console.WriteLine("Apellido: " + paciente.getApellido());
-                            Console.WriteLine("Edad: " + paciente.getEdad());
-                            Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNac());
+                            Console.WriteLine("Edad: " + paciente.getEdadString());
+                            Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNacString());
                             Console.WriteLine("Direccion: " + paciente.getDireccion());
                             Console.WriteLine("Numero de Telefono: " + paciente.getTelefono());
                             Console.ReadKey();
@@ -528,8 +533,8 @@ namespace ProyectoHospital01
                             Console.WriteLine("Nombre: " + medico.getNombre());
                             Console.WriteLine("Apellido: " + medico.getApellido());
                             Console.WriteLine("Especialidad: " + medico.getEspecialidad());
-                            Console.WriteLine("Edad: " + medico.getEdad());
-                            Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNac());
+                            Console.WriteLine("Edad: " + medico.getEdadString());
+                            Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNacString());
                             Console.WriteLine("Direccion: " + medico.getDireccion());
                             Console.WriteLine("Numero de Telefono: " + medico.getTelefono());
                             Console.ReadKey();
@@ -584,8 +589,8 @@ namespace ProyectoHospital01
                                 Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
                                 Console.WriteLine("Nombre: " + funcionario.getNombre());
                                 Console.WriteLine("Apellido: " + funcionario.getApellido());
-                                Console.WriteLine("Edad: " + funcionario.getEdad());
-                                Console.WriteLine("Fecha de Nacimiento: " + funcionario.getFechNac());
+                                Console.WriteLine("Edad: " + funcionario.getEdadString());
+                                Console.WriteLine("Fecha de Nacimiento: " + funcionario.getFechNacString());
                                 Console.WriteLine("Direccion: " + funcionario.getDireccion());
                                 Console.WriteLine("Numero de Telefono: " + funcionario.getTelefono());
                                 editarDatosPersona(funcionario.getId());
@@ -596,8 +601,8 @@ namespace ProyectoHospital01
                                 Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
                                 Console.WriteLine("Nombre: " + funcionario.getNombre());
                                 Console.WriteLine("Apellido: " + funcionario.getApellido());
-                                Console.WriteLine("Edad: " + funcionario.getEdad());
-                                Console.WriteLine("Fecha de Nacimiento: " + funcionario.getFechNac());
+                                Console.WriteLine("Edad: " + funcionario.getEdadString());
+                                Console.WriteLine("Fecha de Nacimiento: " + funcionario.getFechNacString());
                                 Console.WriteLine("Direccion: " + funcionario.getDireccion());
                                 Console.WriteLine("Numero de Telefono: " + funcionario.getTelefono());
                                 Console.ReadKey();

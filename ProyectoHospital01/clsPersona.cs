@@ -13,9 +13,12 @@ namespace ProyectoHospital01
         protected String direccion;
         private String id;
         protected String telefono;
-        protected char sexo;
-        protected int edad;
-        protected DateTime fechNac;
+        protected static char sexo;
+        protected static int edad;
+        protected static DateTime fechNac;
+        string sexoString = Convert.ToString(sexo);
+        string fechNacString = Convert.ToString(fechNac);
+        string edadString = Convert.ToString(edad);
 
       
 
@@ -56,9 +59,7 @@ namespace ProyectoHospital01
 
         public bool buscar(string id)
         {
-            string sexoString = Convert.ToString(this.sexo);
-            string edadString = Convert.ToString(this.edad);
-            string fechNacString = Convert.ToString(this.fechNac);
+            
 
             if (!db.existe(db.pathPersona(id)))
             {
@@ -96,6 +97,7 @@ namespace ProyectoHospital01
             return db.borrarPersona(this.id);
         }
 
+
         public string getNombre()
         {
             return this.nombre;
@@ -113,17 +115,17 @@ namespace ProyectoHospital01
         {
             return this.telefono;
         }
-        public char getSexo()
+        public string getSexoString()
         {
-            return this.sexo;
+            return sexoString;
         }
-        public int getEdad()
+        public string getEdadString()
         {
-            return this.edad;
+            return edadString;
         }
-        public DateTime getFechNac()
+        public string getFechNacString()
         {
-            return this.fechNac;
+            return fechNacString ;
         }
 
         public char generarLetra()
