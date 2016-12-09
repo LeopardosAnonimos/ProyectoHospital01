@@ -13,7 +13,7 @@ namespace ProyectoHospital01
     class clsListar
     {
         private static string pathPersonas = @"c:\hospital\personas";
-        private static string pathPacientes = @"c:\hospital\pacientes";
+       
 
         private static clsDatos datos;
 
@@ -79,6 +79,35 @@ namespace ProyectoHospital01
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
         }
+
+
+        public static void obtenerCitas(string id)
+        {
+            string pathCitas = pathPersonas + "\\" + id + "\\citas";
+
+            try
+            {
+                datos = new clsDatos();
+                string[] dirs = Directory.GetDirectories(pathCitas);
+                int i = 0;
+
+                foreach (string dir in dirs)
+                {
+
+                    string[] carpetas = dir.Split('\\');
+                    Console.WriteLine(carpetas[5]);
+                    i++;
+
+                }
+
+                Console.WriteLine("Existen " + i + " Citas en el registro.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+            }
+        }
+
 
 
         public void obtenerDatosHistCl()

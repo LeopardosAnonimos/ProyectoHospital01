@@ -9,8 +9,9 @@ namespace ProyectoHospital01
 {
     class clsFuncionario:clsPersona
     {
-          
-        
+
+
+        private clsCita cita = new clsCita();
 
         private string oficina { get; set; }
 
@@ -27,10 +28,39 @@ namespace ProyectoHospital01
         {
         }
 
-        public void buscar(string id)
+        /*public void buscar(string id)
         {
             base.buscar(id);
             this.oficina = base.getDb().obtenerDatoPersona(id, "oficina");
+        }*/
+
+        public bool anadirCita(string id, string idMedico, string fecha, string hora)
+        {
+            return cita.insertarCita(id, idMedico, fecha, hora);
+
+        }
+
+        public void verCita(string id, string no_cita)
+        {
+            cita.buscar(id, no_cita);
+
+            // Vista cita
+            Console.WriteLine("Fecha: " + cita.getFecha());
+            Console.WriteLine("Medico: " + cita.getMedico().getNombre());
+        }
+
+        public bool editarCita(string id, string no_cita, string campo, string contenido)
+        {
+            if(cita.buscar(id, no_cita))
+            {
+                return cita.actualizarCita(campo, contenido);
+            }
+            return false;
+        }
+
+        public bool borrarCita(string id, string no_cita)
+        {
+            return cita.borrar(id, no_cita);
         }
 
        

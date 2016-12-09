@@ -33,20 +33,13 @@ namespace ProyectoHospital01
         public void MenuBienvenida()
         {
             
-            //do
-            // {
-            // selec = LectorOpciones();
-            // } while (selec == 0);
-
+           
             Console.Clear();
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sistema \n" +
                                 "2.Para Salir\n");
 
-                 //do
-                    // {
-                           // selec = LectorOpciones();
-                    // } while (selec == 0);
+                
 
             selec = LectorOpciones();
 
@@ -59,7 +52,7 @@ namespace ProyectoHospital01
 
                     string id = Console.ReadLine();
                     clsPersona persona = new clsPersona();
-                   // Console.Clear();
+                   
 
                     if (persona.buscar(id))
                     {
@@ -172,7 +165,10 @@ namespace ProyectoHospital01
                 {
                     case 1:
                         {
-                            //LISTAR CITAS
+                            clsListar.obtenerCitas(paciente.getId());
+                            Console.WriteLine("Presione cualquier tecla para volver al menu anterior");
+                            Console.ReadKey();
+                            MenuPaciente(paciente);
                             break;
                         }
                     case 2:
@@ -469,7 +465,8 @@ namespace ProyectoHospital01
                                 "4. Informacion(buscar) Medico\n" +
                                 "5. Eliminar usuario\n"+
                                 "6. Datos personales\n" +
-                                "7. Salir\n\n\t");
+                                "7. Crear|Editar|Borrar una nuva cita"+
+                                "8. Salir\n\n\t");
 
 
             selec = LectorOpciones();
@@ -597,7 +594,16 @@ namespace ProyectoHospital01
                             }
                             break;
                         }
+                
                     case 7:
+                        {
+
+                            MenuCitas(funcionario);
+                            break;
+
+                        }
+
+                    case 8:
                         {
                             MenuBienvenida();
                             break;
@@ -608,11 +614,102 @@ namespace ProyectoHospital01
                             break;
                         }
                 }
-            } while (selec != 7);
+            } while (selec != 8);
         }
 
         
-        
+        public void MenuCitas(clsFuncionario funcionario)
+        {
+            Console.WriteLine("Ingrese la cedula del paciente");
+            string id = Console.ReadLine();
+
+            Console.WriteLine("\t==Elija una opción:==\n" +
+                                             "\n1.Crear una nueva cita\n" +
+                                             "2. Editar una cita\n"+
+                                             "3. Borrar una cita");
+            selec = LectorOpciones();
+
+            switch (selec)
+            {
+                case 1:
+                    {
+
+                        Console.WriteLine("Ingrese la cedula del medico que va a realizar la consulta");
+                        string idMedico = Console.ReadLine();
+                        Console.WriteLine("Ingrese la fecha en la que se realizara la cita, con el siguiente formado DD/MM/AAAA");
+                        string fecha = Console.ReadLine();
+                        Console.WriteLine("Ingrese la hora en la que se realizara la cita, con el siguiente formado HH:MM");
+                        string hora = Console.ReadLine();
+                        
+                       
+                        if (funcionario.anadirCita(id, idMedico, fecha, hora)) { 
+                            Console.WriteLine("cita creada exitosamente");
+                            MenuFuncionario(funcionario);
+                        }
+                        Console.WriteLine("no se puedo crear cita");
+                        MenuFuncionario(funcionario);
+
+                        break;
+
+                    }
+                case 2:
+                    {
+                        clsListar.obtenerCitas(id);
+                        Console.WriteLine("Ingregese el numero de cita que desee editar.");
+                        string no_cita = Console.ReadLine();
+                        Console.WriteLine("\t==Elija que campo desea editar:==\n" +
+                                             "\n1. Medico\n" +
+                                             "2. Fecha\n" +
+                                             "3. Hora");
+                        selec = LectorOpciones();
+                        if(selec == 1)
+                        {
+                            Console.WriteLine("Ingrese el numero de cedula del medico que realizara la cita");
+                            string idMedico = Console.ReadLine();
+                            string campo = "idMedico";
+                            
+                            funcionario.editarCita(id, no_cita, campo,idMedico);
+                        }
+                        else if(selec == 2)
+                        {
+                            Console.WriteLine("Ingrese la fecha en la que se realizara a cita con el siguiente formato: DD/MM/AAAA");
+                            string fecha = Console.ReadLine();
+                            string campo = "Fecha";
+                            funcionario.editarCita(id, no_cita, campo, fecha);
+                        }
+                        else if(selec == 3)
+                        {
+                            Console.WriteLine("Ingrese la hora en la que se realizara a cita con el siguiente formato: HH:MM");
+                            string hora = Console.ReadLine();
+                            string campo = "Hora";
+                            funcionario.editarCita(id, no_cita, campo, hora);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Opcion no valida");
+                            
+                        }
+                        MenuFuncionario(funcionario);
+                        break;
+                    }
+                    case 3:
+                    {
+                        clsListar.obtenerCitas(id);
+                        Console.WriteLine("Ingrese el nomero de la cita que se va a borrar");
+                        string no_cita = Console.ReadLine();
+                        funcionario.borrarCita(id, no_cita);
+                        MenuFuncionario(funcionario);
+                        break;
+
+                    }
+                default:
+                    {
+                        Console.WriteLine("Opcion no valida");
+                        MenuFuncionario(funcionario);
+                        break;
+                    }
+            }
+        }
 
         public void IngresarDatos(int selec)
         {

@@ -28,8 +28,8 @@ namespace ProyectoHospital01
             base.buscar(id);
            
             clsHistClinica histClinica = new clsHistClinica();
-            
             histClinica.insertarHistClinica( id, "empty", "empty", " " , " " , " " , "empty", "empty", "empty");
+            clsMedico medico = new clsMedico();
         }
 
         public clsPaciente()

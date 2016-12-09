@@ -10,10 +10,12 @@ namespace ProyectoHospital01
     {
         static void Main(string[] args)
         {
+            
             clsUtil menus = new clsUtil();
             menus.MenuBienvenida ();
             
           
+         
         }
     }
 }

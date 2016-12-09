@@ -15,7 +15,7 @@ namespace ProyectoHospital01
 
         public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fecha)
         {
-            // hospital\personas\{id}
+            
             string path = pathPersona(id);
             string edadString = Convert.ToString(edad);
             string fechaString = Convert.ToString(fecha);
