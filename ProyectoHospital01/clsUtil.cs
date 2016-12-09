@@ -196,8 +196,8 @@ namespace ProyectoHospital01
 
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Historia Clinica\n" +
-                                "3. Editar datos Ingresados\n" +
-                                "4. Salir al Menu Anterior\n\n\t=>");
+                                "3. Editar datos personales\n" +
+                                "4. Salir al Menu Anterior\n");
             do
             {
                 selec = LectorOpciones();
@@ -216,6 +216,7 @@ namespace ProyectoHospital01
                     case 3:
                         {
                             editarDatosPersona( paciente.getId() );
+                            MenuPaciente(paciente);
                             break;
                         }
                     case 4:
@@ -271,7 +272,8 @@ namespace ProyectoHospital01
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
                                 "3. Crear nueva historia clinica\n" +
-                                "4. Salir\n\n\t=>");
+                                "4. Editar datos personales\n" +
+                                "5. Salir\n\n\t");
 
 
             selec = LectorOpciones();
@@ -301,6 +303,12 @@ namespace ProyectoHospital01
                             break;
                         }
                     case 4:
+                        {
+                            editarDatosPersona(medico.getId());
+                            MenuMedico(medico);
+                            break;
+                        }
+                    case 5:
                         {
                             MenuBienvenida();
                             break;
@@ -433,7 +441,8 @@ namespace ProyectoHospital01
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
                                 "4. Informacion(buscar) Medico\n" +
-                                "5. Salir\n\n\t=>");
+                                "5. Editar datos personales\n" +
+                                "6. Salir\n\n\t");
 
 
             selec = LectorOpciones();
@@ -490,6 +499,12 @@ namespace ProyectoHospital01
                             break;
                         }
                     case 5:
+                        {
+                            editarDatosPersona(funcionario.getId());
+                            MenuFuncionario(funcionario);
+                            break;
+                        }
+                    case 6:
                         {
                             MenuBienvenida();
                             break;
