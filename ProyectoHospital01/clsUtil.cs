@@ -751,17 +751,17 @@ namespace ProyectoHospital01
             string sexo = Console.ReadLine();
 
             Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAAA]");
-            string fechaNac = Console.ReadLine();
+                string fechaNac = Console.ReadLine();
+                DateTime fecha = Convert.ToDateTime(fechaNac);
+                int edadInt = 2016 - fecha.Year;
+                char sexoChar = Convert.ToChar(sexo);
 
+            //string[] partesFecha = fechaNac.Split('/');
+            //string anioNac = partesFecha[2];
+            //int anioNacInt = Convert.ToInt32(anioNac);
+            //int edadInt = 2016 - anioNacInt;
 
-            string[] partesFecha = fechaNac.Split('/');
-            string anioNac = partesFecha[2];
-            int anioNacInt = Convert.ToInt32(anioNac);
-            int edadInt = 2016 - anioNacInt;
-            
-            DateTime fecha = DateTime.Parse(fechaNac);
-            char sexoChar = Convert.ToChar(sexo);
-                        
+            //DateTime fecha = DateTime.Parse(fechaNac);
 
             switch (selec)
             {
