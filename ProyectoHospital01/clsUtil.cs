@@ -100,7 +100,7 @@ namespace ProyectoHospital01
                                 Console.WriteLine("Seleccione una opción:\n" +
                                 "1.MEDICO\n" +
                                 "2.PACIENTE\n" +
-                                "3.FUNCIONARIO\n\t==>");
+                                "3.FUNCIONARIO\n\t");
                                 do
                                 {
                                     selec = LectorOpciones();
@@ -162,7 +162,7 @@ namespace ProyectoHospital01
 
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Historia Clinica\n" +
-                                "3. Editar datos personales\n" +
+                                "3. Datos personales\n" +
                                 "4. Salir al Menu Anterior\n");
             do
             {
@@ -182,8 +182,38 @@ namespace ProyectoHospital01
                         }
                     case 3:
                         {
-                            editarDatosPersona( paciente.getId() );
-                            MenuPaciente(paciente);
+                            clsDatos obtener = new clsDatos();
+                            Console.WriteLine("\t==Elija una opción:==\n" +
+                                              "\n1.Datos personales\n" +
+                                              "2.Consultar sus datos personales\n");
+                            selec = LectorOpciones();
+                            Console.Clear();
+                            if (selec == 1)
+                            {
+                                Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
+                                Console.WriteLine("Nombre: " + paciente.getNombre());
+                                Console.WriteLine("Apellido: " + paciente.getApellido());
+                                Console.WriteLine("Edad: " + paciente.getEdad());
+                                Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNac());
+                                Console.WriteLine("Direccion: " + paciente.getDireccion());
+                                Console.WriteLine("Numero de Telefono: \n" + paciente.getTelefono());
+                                editarDatosPersona(paciente.getId());
+                                MenuPaciente(paciente);
+                            }
+                            else if (selec == 2)
+                            {
+                                Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
+                                Console.WriteLine("Nombre: " + paciente.getNombre());
+                                Console.WriteLine("Apellido: " + paciente.getApellido());
+                                Console.WriteLine("Edad: " + paciente.getEdad());
+                                Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNac());
+                                Console.WriteLine("Direccion: " + paciente.getDireccion());
+                                Console.WriteLine("Numero de Telefono: " + paciente.getTelefono());
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuPaciente(paciente);
+                            }
+
                             break;
                         }
                     case 4:
@@ -237,7 +267,7 @@ namespace ProyectoHospital01
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Informacion Pacientes\n" +
                                 "3. Crear nueva historia clinica\n" +
-                                "4. Editar datos personales\n" +
+                                "4. Datos personales\n" +
                                 "5. Salir\n\n\t");
 
 
@@ -269,8 +299,39 @@ namespace ProyectoHospital01
                         }
                     case 4:
                         {
-                            editarDatosPersona(medico.getId());
-                            MenuMedico(medico);
+                            clsDatos obtener = new clsDatos();
+                            Console.WriteLine("\t==Elija una opción:==\n" +
+                                              "\n1.Editar sus datos personales\n" +
+                                              "2.Consultar sus datos personales\n");
+                            selec = LectorOpciones();
+                            Console.Clear();
+                            if (selec == 1)
+                            {
+                                Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
+                                Console.WriteLine("Nombre: " + medico.getNombre());
+                                Console.WriteLine("Apellido: " + medico.getApellido());
+                                Console.WriteLine("Especialidad: " + medico.getEspecialidad());
+                                Console.WriteLine("Edad: " + medico.getEdad());
+                                Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNac());
+                                Console.WriteLine("Direccion: " + medico.getDireccion());
+                                Console.WriteLine("Numero de Telefono: " + medico.getTelefono());
+                                editarDatosPersona(medico.getId());
+                                MenuMedico(medico);
+                            }
+                            else if (selec == 2)
+                            {
+                                Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
+                                Console.WriteLine("Nombre: " + medico.getNombre());
+                                Console.WriteLine("Apellido: " + medico.getApellido());
+                                Console.WriteLine("Especialidad: " + medico.getEspecialidad());
+                                Console.WriteLine("Edad: " + medico.getEdad());
+                                Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNac());
+                                Console.WriteLine("Direccion: " + medico.getDireccion());
+                                Console.WriteLine("Numero de Telefono: " + medico.getTelefono());
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuMedico(medico);
+                            }
                             break;
                         }
                     case 5:
@@ -406,12 +467,13 @@ namespace ProyectoHospital01
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
                                 "4. Informacion(buscar) Medico\n" +
-                                "5. Eliminar usuario"+
-                                "6. Editar datos personales\n" +
+                                "5. Eliminar usuario\n"+
+                                "6. Datos personales\n" +
                                 "7. Salir\n\n\t");
 
 
             selec = LectorOpciones();
+            Console.Clear();
 
             do
             {
@@ -502,8 +564,37 @@ namespace ProyectoHospital01
                         }
                     case 6:
                         {
-                            editarDatosPersona(funcionario.getId());
-                            MenuFuncionario(funcionario);
+                            clsDatos obtener = new clsDatos();
+                            Console.WriteLine("\t==Elija una opción:==\n" +
+                                              "\n1.Editar sus datos personales\n" +
+                                              "2.Consultar sus datos personales\n");
+                            selec = LectorOpciones();
+                            Console.Clear();
+                            if (selec == 1)
+                            {
+                                Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
+                                Console.WriteLine("Nombre: " + funcionario.getNombre());
+                                Console.WriteLine("Apellido: " + funcionario.getApellido());
+                                Console.WriteLine("Edad: " + funcionario.getEdad());
+                                Console.WriteLine("Fecha de Nacimiento: " + funcionario.getFechNac());
+                                Console.WriteLine("Direccion: " + funcionario.getDireccion());
+                                Console.WriteLine("Numero de Telefono: " + funcionario.getTelefono());
+                                editarDatosPersona(funcionario.getId());
+                                MenuFuncionario(funcionario);
+                            }
+                            else if (selec == 2)
+                            {
+                                Console.WriteLine("\t==Sus datos actuales son los siguientes:==\n");
+                                Console.WriteLine("Nombre: " + funcionario.getNombre());
+                                Console.WriteLine("Apellido: " + funcionario.getApellido());
+                                Console.WriteLine("Edad: " + funcionario.getEdad());
+                                Console.WriteLine("Fecha de Nacimiento: " + funcionario.getFechNac());
+                                Console.WriteLine("Direccion: " + funcionario.getDireccion());
+                                Console.WriteLine("Numero de Telefono: " + funcionario.getTelefono());
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuFuncionario(funcionario);
+                            }
                             break;
                         }
                     case 7:
@@ -595,7 +686,7 @@ namespace ProyectoHospital01
         {
             clsDatos dts = new clsDatos();
 
-            Console.WriteLine("Ingrese el numero del campo que desee modificar:" +
+            Console.WriteLine("\nIngrese el numero del campo que desee modificar:" +
                                   "\n1. Nombre" +
                                   "\n2. Apellido" +
                                   "\n3. Direccion" +
@@ -604,19 +695,16 @@ namespace ProyectoHospital01
                                   "\n6. Fecha de Nacimiento");
 
             selec = LectorOpciones();
-            Console.WriteLine("Ingrese el texto que desea modificar");
+            Console.WriteLine("\nIngrese el texto que desea modificar");
             string cambioArchivo = Console.ReadLine();
             Console.Clear();
             string[] opciones = { "", "nombre", "apellido", "direccion", "telefono", "sexo", "fechNac" };
             string campo = opciones[selec];
             dts.actualizarPersona(id, campo, cambioArchivo);
 
-            Console.WriteLine("Los datos han sido modificados con exito!");
+            Console.WriteLine("\nLos datos han sido modificados con exito!");
 
         }
-
-
-
 
         private int ValidarOpciones(string abc)
         {
