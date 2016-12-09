@@ -433,7 +433,8 @@ namespace ProyectoHospital01
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
                                 "4. Informacion(buscar) Medico\n" +
-                                "5. Salir\n\n\t=>");
+                                "5. Eliminar usuario\n"+
+                                "6. Salir\n\n\t=>");
 
 
             selec = LectorOpciones();
@@ -451,19 +452,29 @@ namespace ProyectoHospital01
                         }
                     case 2:
                         {
-                            
-                            clsListar.obtener("paciente");
                             clsPaciente paciente = new clsPaciente();
                             Console.WriteLine("Ingrese el id del paciente del cual desee acceder a la informacion");
                             string id = Console.ReadLine();
-                            paciente.buscar(id);
-                            Console.WriteLine("Nombre: " + paciente.getNombre());
-                            Console.WriteLine("Apellido: " + paciente.getApellido());
-                            Console.WriteLine("Edad: " + paciente.getEdad());
-                            Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNac());
-                            Console.WriteLine("Direccion: " + paciente.getDireccion());
-                            Console.WriteLine("Numero de Telefono: " + paciente.getTelefono());
-                            Console.ReadKey();
+                            if (!paciente.buscar(id))
+                            {
+                                Console.WriteLine("¡¡NO EXISTE EL REGISTRO!!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuFuncionario(funcionario);
+
+                            }
+                            else
+                            {
+                                clsListar.obtener("paciente");
+                                paciente.buscar(id);
+                                Console.WriteLine("Nombre: " + paciente.getNombre());
+                                Console.WriteLine("Apellido: " + paciente.getApellido());
+                                Console.WriteLine("Edad: " + paciente.getEdad());
+                                Console.WriteLine("Fecha de Nacimiento: " + paciente.getFechNac());
+                                Console.WriteLine("Direccion: " + paciente.getDireccion());
+                                Console.WriteLine("Numero de Telefono: " + paciente.getTelefono());
+                                Console.ReadKey();
+                            }
                             break;
                         }
                     case 3:
@@ -474,22 +485,67 @@ namespace ProyectoHospital01
                         }
                     case 4:
                         {
-                            clsListar.obtener("medico");
                             clsMedico medico = new clsMedico();
                             Console.WriteLine("Ingrese el id del medico del cual desee acceder a la informacion");
                             string id = Console.ReadLine();
-                            medico.buscar(id);
-                            Console.WriteLine("Nombre: " + medico.getNombre());
-                            Console.WriteLine("Apellido: " + medico.getApellido());
-                            Console.WriteLine("Especialidad: " + medico.getEspecialidad());
-                            Console.WriteLine("Edad: " + medico.getEdad());
-                            Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNac());
-                            Console.WriteLine("Direccion: " + medico.getDireccion());
-                            Console.WriteLine("Numero de Telefono: " + medico.getTelefono());
-                            Console.ReadKey();
+
+                            if (!medico.buscar(id))
+                            {
+                                Console.WriteLine("¡¡NO EXISTE EL REGISTRO!!");
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuFuncionario(funcionario);
+
+                            }
+                            else
+                            {
+                                clsListar.obtener("medico");
+                                Console.WriteLine("Nombre: " + medico.getNombre());
+                                Console.WriteLine("Apellido: " + medico.getApellido());
+                                Console.WriteLine("Especialidad: " + medico.getEspecialidad());
+                                Console.WriteLine("Edad: " + medico.getEdad());
+                                Console.WriteLine("Fecha de Nacimiento: " + medico.getFechNac());
+                                Console.WriteLine("Direccion: " + medico.getDireccion());
+                                Console.WriteLine("Numero de Telefono: " + medico.getTelefono());
+                                Console.ReadKey();
+                            }
                             break;
                         }
                     case 5:
+                        {
+                            clsDatos borrar = new clsDatos();
+
+                            Console.WriteLine("Elija al tipo de usuario que desea eliminar: \n" +
+                                              "1.Paciente\n" +
+                                              "2.Medico");
+                            selec = LectorOpciones();
+                            Console.Clear();
+                            if (selec == 1)
+                            {
+                                Console.WriteLine("\tUSUARIOS DE TIPO ==PACIENTE== ");
+                                clsListar.obtener("paciente");
+                                Console.WriteLine("\nIngrese la identificación del usuario a eliminar: ");
+                                string id = Console.ReadLine();
+                                borrar.borrarPersona(id);
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuFuncionario(funcionario);
+                            }
+                            else if (selec == 2)
+                            {
+                                Console.WriteLine("\tUSUARIOS DE TIPO ==MEDICO== ");
+                                clsListar.obtener("medico");
+                                Console.WriteLine("Ingrese la identificación del usuario a eliminar: ");
+                                string id = Console.ReadLine();
+                                Console.Clear();
+                                borrar.borrarPersona(id);
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuFuncionario(funcionario);
+                            }
+                            break;
+                        }
+                    case 6:
                         {
                             MenuBienvenida();
                             break;
@@ -501,7 +557,7 @@ namespace ProyectoHospital01
                             break;
                         }
                 }
-            } while (selec != 5);
+            } while (selec != 6);
         }
 
         
