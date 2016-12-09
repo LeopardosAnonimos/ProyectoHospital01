@@ -62,25 +62,20 @@ namespace ProyectoHospital01
         }
        
 
-        
+     
+           
         public void MenuBienvenida()
         {
-<<<<<<< HEAD
-            Console.WriteLine("\tBienvenido al Sistema del HOSPITAL VALLE CEREZO\n" + "Presione:\n" +
-                                "|== 1.Ingresar al sistema    ==|\n" +
-                                "|== 2.Para salir del sistema ==|\n");
-
+            
             //do
             // {
             // selec = LectorOpciones();
             // } while (selec == 0);
 
-=======
             Console.Clear();
             Console.WriteLine("\tHOSPITAL VALLE CEREZO\n" + "Presione:\n" + 
                                 "1.Ingresar al sistema \n" +
                                 "2.Para Salir\n");
->>>>>>> origin/master
 
                  //do
                     // {
@@ -191,21 +186,14 @@ namespace ProyectoHospital01
 
 
 
-
-
-
-
         public void MenuPaciente(clsPaciente paciente)
         {
             string nombreUp = paciente.getNombre().ToUpper();
             string apellidoUp = paciente.getApellido().ToUpper();
-<<<<<<< HEAD
-            Console.WriteLine("Bienvenido " + nombreUp + " " + apellidoUp + " \nSelecciona una opcion:\n");
 
-=======
             Console.Clear();
             Console.WriteLine("Bienvenido " + nombreUp + " "+ apellidoUp + " \nSelecciona una opcion:\n");
->>>>>>> origin/master
+
             Console.WriteLine("1. Listar Citas\n" +
                                 "2. Consultar Historia Clinica\n" +
                                 "3. Editar datos Ingresados\n" +
@@ -217,7 +205,7 @@ namespace ProyectoHospital01
                 {
                     case 1:
                         {
-                            
+                            //LISTAR CITAS
                             break;
                         }
                     case 2:
@@ -227,7 +215,7 @@ namespace ProyectoHospital01
                         }
                     case 3:
                         {
-                            // Funcion para sobreescribir los datos
+                            editarDatosPersona( paciente.getId() );
                             break;
                         }
                     case 4:
@@ -244,6 +232,8 @@ namespace ProyectoHospital01
                 }
             } while (selec != 4);
         }
+
+
 
        
         public void MenuPacienteConsultarHistoria( string id)
@@ -265,6 +255,8 @@ namespace ProyectoHospital01
 
 
         }
+
+
 
 
         public void MenuMedico(clsMedico medico)
@@ -324,6 +316,8 @@ namespace ProyectoHospital01
         }
 
 
+
+
        public void MenuElegirPaciente()
         {
                 Console.WriteLine("\nIngrese el numero de cedula del paciente al que desee acceder");
@@ -334,6 +328,7 @@ namespace ProyectoHospital01
         }
 
        
+
 
         public void MenuElegirHistoria(string id)
         {
@@ -509,9 +504,7 @@ namespace ProyectoHospital01
             } while (selec != 5);
         }
 
-
-
-
+        
 
 
 
@@ -580,7 +573,32 @@ namespace ProyectoHospital01
             Console.ReadKey();
         }
 
-          
+
+
+
+        public void editarDatosPersona(string id)
+        {
+            clsDatos dts = new clsDatos();
+
+            Console.WriteLine("Ingrese el numero del campo que desee modificar:" +
+                                  "\n1. Nombre" +
+                                  "\n2. Apellido" +
+                                  "\n3. Direccion" +
+                                  "\n4. Telefono" +
+                                  "\n5. Sexo" +
+                                  "\n6. Fecha de Nacimiento");
+
+            selec = LectorOpciones();
+            Console.WriteLine("Ingrese el texto que desea modificar");
+            string cambioArchivo = Console.ReadLine();
+            string[] opciones = { "", "nombre", "apellido", "direccion", "telefono", "sexo", "fechNac" };
+            string campo = opciones[selec];
+            dts.actualizarPersona(id, campo, cambioArchivo);
+
+            Console.WriteLine("Los datos han sido modificados con exito!");
+
+        }
+
 
 
     }

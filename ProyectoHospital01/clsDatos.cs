@@ -43,16 +43,25 @@ namespace ProyectoHospital01
 
         }
 
+
+
+
         public bool actualizarPersona(string id, string campo, string contenido)
         {
             return insertarContendido(contenido, pathPersonaCampo(id, campo));
         }
+
+
+
 
         public string obtenerDatoPersona(string id, string campo)
         {
             return obtenerArchivo(pathPersonaCampo(id, campo));
             
         }
+
+
+
 
         public bool borrarPersona(string id)
         {
@@ -65,15 +74,24 @@ namespace ProyectoHospital01
 
         }
 
+
+
+
         public bool existe(string path)
         {
             return System.IO.Directory.Exists(path);
         }
 
+
+
+
         public bool existeCampo(string id, string campo)
         {
             return System.IO.File.Exists(pathPersonaCampo(id, campo));
         }
+
+
+
 
         public string obtenerArchivo(string path)
         {
@@ -96,15 +114,24 @@ namespace ProyectoHospital01
             
         }
 
+
+
+
         public string pathPersona(string id)
         {
             return pathPersonas + "\\" + id;
         }
 
+
+
+
         public string pathPersonaCampo(string id, string campo)
         {
             return pathPersonas + "\\" + id + "\\" + campo + ".txt";
         }
+
+
+
 
         public void crearArchivo(string content, string filename, string path)
         {
@@ -138,6 +165,9 @@ namespace ProyectoHospital01
 
         }
 
+
+
+
         public bool insertarContendido(string content, string path)
         {
             try
@@ -157,6 +187,9 @@ namespace ProyectoHospital01
             }
             return false;
         }
+
+
+
 
         public bool borrarArchivo(string path)
         {
