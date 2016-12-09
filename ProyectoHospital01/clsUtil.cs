@@ -201,6 +201,7 @@ namespace ProyectoHospital01
             do
             {
                 selec = LectorOpciones();
+                Console.Clear();
                 switch (selec)
                 {
                     case 1:
@@ -439,8 +440,9 @@ namespace ProyectoHospital01
                                 "2. Informacion(buscar) Paciente\n" +
                                 "3. Ingresar un nuevo Medico\n" +
                                 "4. Informacion(buscar) Medico\n" +
-                                "5. Editar datos personales\n" +
-                                "6. Salir\n\n\t");
+                                "5. Eliminar usuario"+
+                                "6. Editar datos personales\n" +
+                                "7. Salir\n\n\t");
 
 
             selec = LectorOpciones();
@@ -498,23 +500,58 @@ namespace ProyectoHospital01
                         }
                     case 5:
                         {
-                            editarDatosPersona(funcionario.getId());
-                            MenuFuncionario(funcionario);
+                            clsDatos borrar = new clsDatos();
+
+                            Console.WriteLine("Elija al tipo de usuario que desea eliminar: \n" +
+                                              "1.Paciente\n" +
+                                              "2.Medico");
+                            selec = LectorOpciones();
+                            Console.Clear();
+                            if (selec == 1)
+                            {
+                                Console.WriteLine("\tUSUARIOS DE TIPO ==PACIENTE== ");
+                                clsListar.obtener("paciente");
+                                Console.WriteLine("\nIngrese la identificación del usuario a eliminar: ");
+                                string id = Console.ReadLine();
+                                borrar.borrarPersona(id);
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuFuncionario(funcionario);
+                            }
+                            else if (selec == 2)
+                            {
+                                Console.WriteLine("\tUSUARIOS DE TIPO ==MEDICO== ");
+                                clsListar.obtener("medico");
+                                Console.WriteLine("Ingrese la identificación del usuario a eliminar: ");
+                                string id = Console.ReadLine();
+                                Console.Clear();
+                                borrar.borrarPersona(id);
+                                Console.ReadKey();
+                                Console.Clear();
+                                MenuFuncionario(funcionario);
+                            }
+
+
                             break;
                         }
                     case 6:
                         {
+                            editarDatosPersona(funcionario.getId());
+                            MenuFuncionario(funcionario);
+                            break;
+                        }
+                    case 7:
+                        {
                             MenuBienvenida();
                             break;
                         }
-
                     default:
                         {
                             Console.WriteLine("Opcion no valida!");
                             break;
                         }
                 }
-            } while (selec != 5);
+            } while (selec != 7);
         }
 
         
@@ -604,6 +641,7 @@ namespace ProyectoHospital01
             selec = LectorOpciones();
             Console.WriteLine("Ingrese el texto que desea modificar");
             string cambioArchivo = Console.ReadLine();
+            Console.Clear();
             string[] opciones = { "", "nombre", "apellido", "direccion", "telefono", "sexo", "fechNac" };
             string campo = opciones[selec];
             dts.actualizarPersona(id, campo, cambioArchivo);
