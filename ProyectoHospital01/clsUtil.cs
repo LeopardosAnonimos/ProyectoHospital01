@@ -173,7 +173,8 @@ namespace ProyectoHospital01
                         }
                     case 2:
                         {
-                            MenuPacienteConsultarHistoria(paciente.getId());
+                            MenuPacienteConsultarHistoria(paciente.getId(), paciente);
+                            
                             break;
                         }
                     case 3:
@@ -229,25 +230,36 @@ namespace ProyectoHospital01
 
 
 
-       
-        public void MenuPacienteConsultarHistoria( string id)
+
+        public void MenuPacienteConsultarHistoria(string id, clsPaciente paciente)
         {
             Console.WriteLine("Sus hisorias clinicas son: ");
             clsListar.obtenerHistorias(id);
             clsHistClinica historia = new clsHistClinica();
             Console.WriteLine("Ingrese el numero de historia clinica al que desee acceder");
             string no_HistCl = Console.ReadLine();
-            historia.buscar(id, no_HistCl);
-            Console.WriteLine("En la historia clinica numero: " + historia.getNo_HistCl() + " existen los siguientes registros: ");
-            Console.WriteLine("La altura es: " + historia.getAltura());
-            Console.WriteLine("El peso es: " + historia.getPeso());
-            Console.WriteLine("Las concluciones medicas son:" + historia.getConcluMedicas());
-            Console.WriteLine("El diagnostico es: " + historia.getDiagnostico());
-            Console.WriteLine("Las observaciones generales son: " + historia.getObsGenerales());
-            Console.WriteLine("Los sintomas son: " + historia.getSintomas());
-            Console.WriteLine("La temperatura fue: " + historia.getTemperatura());
+
+            if (historia.buscar(id, no_HistCl))
+            {
 
 
+                Console.WriteLine("En la historia clinica numero: " + historia.getNo_HistCl() + " existen los siguientes registros: ");
+                Console.WriteLine("La altura es: " + historia.getAltura());
+                Console.WriteLine("El peso es: " + historia.getPeso());
+                Console.WriteLine("Las concluciones medicas son:" + historia.getConcluMedicas());
+                Console.WriteLine("El diagnostico es: " + historia.getDiagnostico());
+                Console.WriteLine("Las observaciones generales son: " + historia.getObsGenerales());
+                Console.WriteLine("Los sintomas son: " + historia.getSintomas());
+                Console.WriteLine("La temperatura fue: " + historia.getTemperatura());
+                Console.ReadKey();
+                MenuPaciente(paciente);
+            }
+            else
+            { 
+                Console.WriteLine("el numero de hist clinica no existe");
+                Console.ReadKey();
+                MenuPaciente(paciente);
+            }
         }
 
 
@@ -740,7 +752,7 @@ namespace ProyectoHospital01
             string anioNac = partesFecha[2];
             int anioNacInt = Convert.ToInt32(anioNac);
             int edadInt = 2016 - anioNacInt;
-
+            
             DateTime fecha = DateTime.Parse(fechaNac);
             char sexoChar = Convert.ToChar(sexo);
             
