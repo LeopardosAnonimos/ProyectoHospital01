@@ -181,7 +181,7 @@ namespace ProyectoHospital01
                         {
                             clsDatos obtener = new clsDatos();
                             Console.WriteLine("\t==Elija una opción:==\n" +
-                                              "\n1.Datos personales\n" +
+                                              "\n1.Editar datos personales\n" +
                                               "2.Consultar sus datos personales\n");
                             selec = LectorOpciones();
                             Console.Clear();
@@ -477,7 +477,7 @@ namespace ProyectoHospital01
                                 "4. Informacion(buscar) Medico\n" +
                                 "5. Eliminar usuario\n"+
                                 "6. Datos personales\n" +
-                                "7. Crear|Editar|Borrar una nuva cita"+
+                                "7. Crear|Editar|Borrar una nueva cita\n"+
                                 "8. Salir\n\n\t");
 
 
@@ -629,6 +629,8 @@ namespace ProyectoHospital01
             } while (selec != 8);
         }
 
+
+
         
         public void MenuCitas(clsFuncionario funcionario)
         {
@@ -723,6 +725,9 @@ namespace ProyectoHospital01
             }
         }
 
+
+
+
         public void IngresarDatos(int selec)
         {
 
@@ -748,6 +753,7 @@ namespace ProyectoHospital01
             Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAAA]");
             string fechaNac = Console.ReadLine();
 
+
             string[] partesFecha = fechaNac.Split('/');
             string anioNac = partesFecha[2];
             int anioNacInt = Convert.ToInt32(anioNac);
@@ -755,7 +761,7 @@ namespace ProyectoHospital01
             
             DateTime fecha = DateTime.Parse(fechaNac);
             char sexoChar = Convert.ToChar(sexo);
-            
+                        
 
             switch (selec)
             {
@@ -814,6 +820,9 @@ namespace ProyectoHospital01
             Console.WriteLine("\nLos datos han sido modificados con exito!");
 
         }
+
+
+
 
         private int ValidarOpciones(string abc)
         {
