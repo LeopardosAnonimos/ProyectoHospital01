@@ -295,7 +295,7 @@ namespace ProyectoHospital01
                     case 2:
                         {
                             clsListar.obtener("paciente");
-                            MenuElegirPaciente();
+                            MenuElegirPaciente(medico);
                             break;
                         }
                     case 3:
@@ -360,13 +360,15 @@ namespace ProyectoHospital01
 
 
 
-       public void MenuElegirPaciente()
+       public void MenuElegirPaciente(clsMedico medico)
         {
-                Console.WriteLine("\nIngrese el numero de cedula del paciente al que desee acceder");
+                Console.WriteLine("\nIngrese el numero de cedula del paciente al que desee acceder\n\n");
                 string id = Console.ReadLine();
+                Console.WriteLine("\nLas Historias Clinicas No:");
                 clsListar.obtenerHistorias(id);
                 MenuElegirHistoria(id);
                 Console.ReadKey();
+                MenuMedico(medico);
         }
 
        
@@ -374,11 +376,11 @@ namespace ProyectoHospital01
 
         public void MenuElegirHistoria(string id)
         {
-            Console.WriteLine("Desea: \n1. Editar los datos de una historia clinica" +
+            Console.WriteLine("\nDesea: \n1. Editar los datos de una historia clinica" +
                                 "\n2. Consultar una Historia Clinica");
             selec = LectorOpciones();
             clsHistClinica historia = new clsHistClinica();
-            Console.WriteLine("Ingrese el numero de historia clinica al que desee acceder");
+            Console.WriteLine("\n\nIngrese el numero de historia clinica al que desee acceder");
             //Lista de historias clinicas existentes...
             string no_HistCl = Console.ReadLine();
             historia.buscar(id, no_HistCl);
@@ -386,7 +388,7 @@ namespace ProyectoHospital01
             if (selec == 1)
             {
 
-                Console.WriteLine("Ingrese el numero del campo que desee modificar:" +
+                Console.WriteLine("\nIngrese el numero del campo que desee modificar:" +
                                   "\n1. Estatura" + 
                                   "\n2. Peso" +
                                   "\n3. Concluciones Medicas" +
@@ -404,6 +406,7 @@ namespace ProyectoHospital01
 
                 Console.WriteLine("\n\nEl campo " + campo + " ha sido modificado correctamente!");
                 Console.ReadKey();
+                Console.Clear();
 
             }
             else
@@ -417,10 +420,9 @@ namespace ProyectoHospital01
                 Console.WriteLine("Los sintomas son: " + historia.getSintomas());
                 Console.WriteLine("El estado es: " + historia.getEstado());
 
-
+                Console.ReadKey();
+                Console.Clear();
             }
-             
-                               
         }
 
 
@@ -492,7 +494,8 @@ namespace ProyectoHospital01
                     case 1:
                         {
                             Console.WriteLine("A continuacion ingrese los datos del nuevo Paciente");
-                            IngresarDatos(2);
+                            IngresarDatosFUN(2);
+                            MenuFuncionario(funcionario);
                             break;
                         }
                     case 2:
@@ -510,12 +513,14 @@ namespace ProyectoHospital01
                             Console.WriteLine("Direccion: " + paciente.getDireccion());
                             Console.WriteLine("Numero de Telefono: " + paciente.getTelefono());
                             Console.ReadKey();
+                            MenuFuncionario(funcionario);
                             break;
                         }
                     case 3:
                         {
                             Console.WriteLine("A continuacion ingrese los datos del nuevo Medico");
-                            IngresarDatos(1);
+                            IngresarDatosFUN(1);
+                            MenuFuncionario(funcionario);
                             break;
                         }
                     case 4:
@@ -533,6 +538,7 @@ namespace ProyectoHospital01
                             Console.WriteLine("Direccion: " + medico.getDireccion());
                             Console.WriteLine("Numero de Telefono: " + medico.getTelefono());
                             Console.ReadKey();
+                            MenuFuncionario(funcionario);
                             break;
                         }
                     case 5:
@@ -797,10 +803,69 @@ namespace ProyectoHospital01
 
 
 
+        public void IngresarDatosFUN(int selec)
+        {
+
+
+            Console.WriteLine("Inserte Cedula");
+            string id = Console.ReadLine();
+
+            Console.WriteLine("Inserte Nombre");
+            string nombre = Console.ReadLine();
+
+            Console.WriteLine("Inserte Apellido");
+            string apellido = Console.ReadLine();
+
+            Console.WriteLine("Inserte Direccion");
+            string direccion = Console.ReadLine();
+
+            Console.WriteLine("Inserte Telefono");
+            string telefono = Console.ReadLine();
+
+            Console.WriteLine("Inserte sexo (m/f)");
+            string sexo = Console.ReadLine();
+
+            Console.WriteLine("Ingrese su fecha de nacimiento[DD/MM/AAAA]");
+            string fechaNac = Console.ReadLine();
+            DateTime fecha = Convert.ToDateTime(fechaNac);
+            int edadInt = 2016 - fecha.Year;
+            char sexoChar = Convert.ToChar(sexo);
+
+
+            switch (selec)
+            {
+                case 1:
+                    string rol = "medico";
+                    Console.WriteLine("Ingrese su especialidad");
+                    string especialidad = Console.ReadLine();
+                    clsMedico medico = new clsMedico(id, rol, nombre, apellido, especialidad, direccion, telefono, sexoChar, edadInt, fecha);
+                    break;
+
+                case 2:
+                    rol = "paciente";
+                    clsPaciente paciente = new clsPaciente(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha);
+                    break;
+
+                case 3:
+                    rol = "funcionario";
+
+                    string oficina = " ";
+                    clsFuncionario funcionario = new clsFuncionario(id, rol, nombre, apellido, direccion, telefono, sexoChar, edadInt, fecha, oficina);
+                    break;
+
+
+            }
+
+            Console.ReadKey();
+        }
+
+
+
+
         public void editarDatosPersona(string id)
         {
             clsDatos dts = new clsDatos();
-
+            
             Console.WriteLine("\nIngrese el numero del campo que desee modificar:" +
                                   "\n1. Nombre" +
                                   "\n2. Apellido" +
