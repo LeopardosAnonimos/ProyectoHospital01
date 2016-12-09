@@ -13,56 +13,22 @@ namespace ProyectoHospital01
         private DateTime fecha = new DateTime();
 
 
-        //public int LectorOpciones()
-        //{
-        //    String abc = Console.ReadLine();
-        //    if(abc.Length > 0)
-        //    {
-
-        //        int opc = Convert.ToInt32(abc);
-
-        //        if (opc > 0 && opc <= 9)
-        //        {
-        //            return opc;
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
-
-        //        }
-
-        //    }
-        //    catch (System.FormatException)
-        //    {
-        //        Console.WriteLine("Se ha ingresado un valor no valido: " + abc + "\nIngrese el valor correcto: ");
-        //        return 0
-
-
-        //        int opc = Convert.ToInt16(abc);
-        //        return opc;
-
-        //    }
-
-        //    Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
-        //    return 0;
-        //}
-
-
         public int LectorOpciones()
         {
-            String abc = Console.ReadLine();
-            if (abc.Length > 0)
+            string abc;
+            int opc;
+
+            do
             {
-                int opc = Convert.ToInt16(abc);
-                return opc;
-            }
+                abc = Console.ReadLine();
+                opc = ValidarOpciones(abc);
 
-            Console.WriteLine("Se ha ingresado un valor no valido: " + abc + ".");
-            return 0;
+            } while (opc == 0);
+
+            return opc;
         }
-       
 
-     
+    
            
         public void MenuBienvenida()
         {
@@ -555,8 +521,7 @@ namespace ProyectoHospital01
         }
 
         
-
-
+        
 
         public void IngresarDatos(int selec)
         {
@@ -651,6 +616,32 @@ namespace ProyectoHospital01
         }
 
 
+
+
+        private int ValidarOpciones(string abc)
+        {
+            int opc;
+
+
+
+            try
+            {
+                opc = Convert.ToInt32(abc);
+
+                if (opc <= 0 || opc >= 9)
+                {
+                    Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
+                    return 0;
+                }
+                return opc;
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine("Opcion no valida! Ingrese el valor correcto: ");
+                return 0;
+            }
+
+        }
 
     }
 }
