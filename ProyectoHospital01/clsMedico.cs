@@ -8,7 +8,7 @@ namespace ProyectoHospital01
 {
     class clsMedico:clsPersona
     {
-        private string especialidad;
+        private String especialidad;
         
         
         public clsMedico(string id, string rol, string nombre, string apellido, string especialidad, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
@@ -19,7 +19,7 @@ namespace ProyectoHospital01
             base.buscar(id);
         }
 
-        public string getEspecialidad()
+        public String getEspecialidad()
         {
             return this.especialidad;
         }
@@ -27,13 +27,6 @@ namespace ProyectoHospital01
         public clsMedico() { }
 
         
-        public void verCitas()
-        {
-
-            Console.WriteLine("Citas pendientes");
-            clsListar.obtenerCitasMedico(this.getId());
-            Console.ReadKey();
-        }  
              
        
     }

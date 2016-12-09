@@ -108,44 +108,6 @@ namespace ProyectoHospital01
             }
         }
 
-        public static void obtenerCitasMedico(string idMedico)
-        {
-            try
-            {
-                datos = new clsDatos();
-                string[] dirs = Directory.GetDirectories(pathPersonas);
-                int i = 0;
-                string searchId = idMedico + "*";
-                string pathCitas;
-                string[] citas;
-                string no_cita;
-
-                foreach (string dir in dirs)
-                {
-                    pathCitas = dir + "\\citas";
-
-                    if (System.IO.Directory.Exists(pathCitas))
-                    {
-                        citas = Directory.GetDirectories(pathCitas, searchId);
-                        foreach(string cita in citas)
-                        {
-                            no_cita = cita.Split('\\')[5];
-                            Console.WriteLine(no_cita);
-                            i++;
-                        }
-                    }
-
-
-                }
-
-                Console.WriteLine("Existen " + i + " Citas en el registro.");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The process failed: {0}", e.ToString());
-            }
-        }
-
 
 
         public void obtenerDatosHistCl()

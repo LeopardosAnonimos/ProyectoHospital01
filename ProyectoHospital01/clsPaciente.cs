@@ -15,11 +15,11 @@ namespace ProyectoHospital01
         {
             return this.estado;
         }
+
+
+          
+
         
-
-
-
-
         public clsPaciente(string id, string rol, string nombre, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fechNac)
             :base()
         {
@@ -34,7 +34,6 @@ namespace ProyectoHospital01
 
         public clsPaciente()
         {
-             
         } 
  
        

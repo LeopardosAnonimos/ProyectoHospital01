@@ -36,7 +36,7 @@ namespace ProyectoHospital01
 
         public bool insertarCita(string id, string idMedico, string fecha, string hora)
         {
-            string no_cita = idMedico +  "-" + DateTime.Now.ToString("ddMMyyyy-HHmm");
+            string no_cita = DateTime.Now.ToString("ddMMyyyy-HHmm");
             string path = pathCita(id, no_cita);
 
             if (existe(path))

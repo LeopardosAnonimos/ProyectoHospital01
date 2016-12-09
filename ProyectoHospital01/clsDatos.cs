@@ -13,7 +13,7 @@ namespace ProyectoHospital01
         private string pathPersonas = @"c:\hospital\personas";
         private string currentPath = String.Empty;
 
-        public bool insertarPersona(string id, string rol, string name, string  apellido, string direccion, string telefono, char sexo, int edad, DateTime fecha)
+        public bool insertarPersona(string id, string rol, string name, string apellido, string direccion, string telefono, char sexo, int edad, DateTime fecha)
         {
             
             string path = pathPersona(id);
