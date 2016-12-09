@@ -263,8 +263,6 @@ namespace ProyectoHospital01
         public void MenuMedico(clsMedico medico)
         {
          
-            //  Console.WriteLine("Bienvenido " +" " + medico.getNombre()+" " + medico.getApellido() + "\nSelecciona una opcion:\n");
-
             string nombreUp = medico.getNombre().ToUpper();
             string apellidoUp = medico.getApellido().ToUpper();
             Console.Clear();
