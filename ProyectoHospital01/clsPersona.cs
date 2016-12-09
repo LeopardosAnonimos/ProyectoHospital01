@@ -123,6 +123,9 @@ namespace ProyectoHospital01
         }
         public DateTime getFechNac()
         {
+            //ME ESTA TRAYENDO UN EMPTY DATETIME!!!!!!!!!!!!!
+            //string fecha =  
+            //fechNac = fechNac.ToShortDateString;
             return this.fechNac;
         }
 

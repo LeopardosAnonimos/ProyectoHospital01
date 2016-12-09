@@ -10,7 +10,7 @@ namespace ProyectoHospital01
     class clsUtil
     {
         public int selec;
-        private DateTime fecha = new DateTime();
+       // private DateTime fecha = new DateTime();
 
 
         public int LectorOpciones()
